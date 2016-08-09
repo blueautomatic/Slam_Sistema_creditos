@@ -1,0 +1,2748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form_clientes_borrar</class>
+ <widget class="QWidget" name="Form_clientes_borrar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>1001</width>
+     <height>671</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(172, 55, 26);
+font: 75 11pt &quot;KacstOne&quot;;</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="icon">
+     <iconset>
+      <normalon>Íconos/basura.png</normalon>
+     </iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Borrar Cliente</string>
+    </attribute>
+    <widget class="QLineEdit" name="lne_dni_filtro_borrar">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>7</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="boton_buscar_borrar">
+     <property name="geometry">
+      <rect>
+       <x>891</x>
+       <y>6</y>
+       <width>80</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(235, 160, 143);
+font: 75 10pt &quot;KacstOne&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_121">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>10</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(235, 160, 143);
+font: 75 10pt &quot;KacstOne&quot;;</string>
+     </property>
+     <property name="text">
+      <string>DNI:</string>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>951</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 235, 231);
+font: 75 10pt &quot;KacstOne&quot;;
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_16">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/tarjeta-personal-de-datos-de-contacto.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos Personales</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_telfono_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>175</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_122">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>109</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fecha de Nacimiento:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dte_nacimiento_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>108</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/M/dd</string>
+       </property>
+       <property name="date">
+        <date>
+         <year>1945</year>
+         <month>5</month>
+         <day>17</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_estado_civil_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>108</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Soltero/era</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Casado/ada</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viudo/da</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Divorsiado/ada</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_123">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>144</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Barrio:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_domicilio_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>143</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Las violestas 68</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_124">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>41</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_125">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>108</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Estado Civil:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_barrio_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>141</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Las flores</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_126">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>177</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_ciudad_4">
+       <property name="geometry">
+        <rect>
+         <x>555</x>
+         <y>178</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Viedma</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_127">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>72</y>
+         <width>103</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo Documento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_128">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>43</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N°  Cliente :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nombre_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>38</y>
+         <width>181</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Alejandro</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_limite_credito_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>207</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>10000</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_cliente_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>716</x>
+         <y>42</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>00-001</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_129">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>207</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Email:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_tipo_doc_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>72</y>
+         <width>59</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>DNI </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIL</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIT </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lne_apellido_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>38</y>
+         <width>191</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Fernandez</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_130">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>75</y>
+         <width>52</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Número:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_131">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>240</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Observaciones: </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_132">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>210</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Límite por Créditos:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_133">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>39</y>
+         <width>53</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Apellido:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_134">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>178</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ciudad:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_email_4">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>208</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>email@email.com</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_135">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>144</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_doc_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>74</y>
+         <width>125</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>5678879</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_activo_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>38</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Activo</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_inactivo_buscar_2">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>68</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Inactivo</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txte_observaciones_4">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>258</y>
+         <width>911</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>3</x>
+         <y>17</y>
+         <width>941</width>
+         <height>421</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+      </widget>
+      <zorder>groupBox</zorder>
+      <zorder>lne_telfono_buscar_2</zorder>
+      <zorder>label_122</zorder>
+      <zorder>dte_nacimiento_buscar_2</zorder>
+      <zorder>cbx_estado_civil_buscar_2</zorder>
+      <zorder>label_123</zorder>
+      <zorder>lne_domicilio_buscar_2</zorder>
+      <zorder>label_124</zorder>
+      <zorder>label_125</zorder>
+      <zorder>lne_barrio_buscar_2</zorder>
+      <zorder>label_126</zorder>
+      <zorder>cbx_ciudad_4</zorder>
+      <zorder>label_127</zorder>
+      <zorder>label_128</zorder>
+      <zorder>lne_nombre_buscar_2</zorder>
+      <zorder>lne_limite_credito_4</zorder>
+      <zorder>lne_nro_cliente_buscar_2</zorder>
+      <zorder>label_129</zorder>
+      <zorder>cbx_tipo_doc_buscar_2</zorder>
+      <zorder>lne_apellido_buscar_2</zorder>
+      <zorder>label_130</zorder>
+      <zorder>label_131</zorder>
+      <zorder>label_132</zorder>
+      <zorder>label_133</zorder>
+      <zorder>label_134</zorder>
+      <zorder>lne_email_4</zorder>
+      <zorder>label_135</zorder>
+      <zorder>lne_nro_doc_buscar_2</zorder>
+      <zorder>ckbx_activo_buscar_2</zorder>
+      <zorder>ckbx_inactivo_buscar_2</zorder>
+      <zorder>txte_observaciones_4</zorder>
+     </widget>
+     <widget class="QWidget" name="tab_17">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos laborales</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_organismo_4">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>70</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Ministerio de Educación</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_ocupacion_4">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>40</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+       </property>
+       <property name="text">
+        <string>Auxiliar</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_antiguedad_4">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>70</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_136">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>40</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sueldo $:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_137">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>100</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_domicilio_laboral_4">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>130</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Las violetas 45</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_telefono_laboral_4">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>100</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_sueldo_4">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>40</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_recibo_sueldo_4">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>130</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Posee Recibo de Sueldo</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_138">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>70</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Organismo: </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_139">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>40</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ocupación:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_140">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>130</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_141">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>70</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Antigüedad Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_142">
+       <property name="geometry">
+        <rect>
+         <x>800</x>
+         <y>70</y>
+         <width>41</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>años</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_categoria_4">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>100</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_143">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>100</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Categoría: </string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="geometry">
+        <rect>
+         <x>3</x>
+         <y>10</y>
+         <width>941</width>
+         <height>411</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+      </widget>
+      <zorder>groupBox_2</zorder>
+      <zorder>lne_organismo_4</zorder>
+      <zorder>lne_ocupacion_4</zorder>
+      <zorder>lne_antiguedad_4</zorder>
+      <zorder>label_136</zorder>
+      <zorder>label_137</zorder>
+      <zorder>lne_domicilio_laboral_4</zorder>
+      <zorder>lne_telefono_laboral_4</zorder>
+      <zorder>lne_sueldo_4</zorder>
+      <zorder>ckbx_recibo_sueldo_4</zorder>
+      <zorder>label_138</zorder>
+      <zorder>label_139</zorder>
+      <zorder>label_140</zorder>
+      <zorder>label_141</zorder>
+      <zorder>label_142</zorder>
+      <zorder>lne_categoria_4</zorder>
+      <zorder>label_143</zorder>
+     </widget>
+     <widget class="QWidget" name="tab_18">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/calidad-de-la-pagina.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos Garante</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_garante_domicilio_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>135</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Las violestas 68</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_144">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>232</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Observaciones: </string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nombre_4">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>30</y>
+         <width>181</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Alejandro</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_145">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>67</y>
+         <width>52</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Número:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_146">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>169</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_147">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>169</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Email:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_barrio_4">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>133</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Las flores</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_limite_credito_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>199</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>10000</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_email_4">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>170</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>email@email.com</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_148">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>101</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fecha de Nacimiento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_149">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>202</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Límite por Créditos:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_150">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>64</y>
+         <width>103</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo Documento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_151">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>136</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Barrio:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_152">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>102</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ciudad:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nro_cliente_4">
+       <property name="geometry">
+        <rect>
+         <x>716</x>
+         <y>34</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>00-001</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txte_garante_observaciones_4">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>260</y>
+         <width>911</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_153">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>33</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_154">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>31</y>
+         <width>53</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Apellido:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_155">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>202</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Estado Civil:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_estado_civil_4">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>202</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Soltero/era</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Casado/ada</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viudo/da</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Divorsiado/ada</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_10">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>30</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Activo</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_tipo_doc_4">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>64</y>
+         <width>59</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>DNI </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIL</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIT </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_apellido_4">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>30</y>
+         <width>191</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Fernandez</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne__garante_telefono_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>167</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_ciudad_4">
+       <property name="geometry">
+        <rect>
+         <x>345</x>
+         <y>102</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Viedma</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_156">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>35</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N°  Cliente :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_157">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>136</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio :</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_11">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>60</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Inactivo</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nro_doc_4">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>66</y>
+         <width>125</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>5678879</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dte_garante_nacimiento_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>100</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/M/dd</string>
+       </property>
+       <property name="date">
+        <date>
+         <year>1945</year>
+         <month>5</month>
+         <day>17</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tw_garantes_lista_4">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>388</y>
+         <width>911</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <row>
+        <property name="text">
+         <string>Garante Princ.</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Garante Sec.</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Otro Garante</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nro. Cliente</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Tipo Doc.</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Número</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>F. Nacimiento</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Ciudad</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Domicilio</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Teléfono</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Estado</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QPushButton" name="boton_agregar_4">
+       <property name="geometry">
+        <rect>
+         <x>849</x>
+         <y>352</y>
+         <width>80</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Agregar</string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="geometry">
+        <rect>
+         <x>3</x>
+         <y>10</y>
+         <width>941</width>
+         <height>561</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+      </widget>
+      <zorder>groupBox_3</zorder>
+      <zorder>lne_garante_domicilio_4</zorder>
+      <zorder>label_144</zorder>
+      <zorder>lne_garante_nombre_4</zorder>
+      <zorder>label_145</zorder>
+      <zorder>label_146</zorder>
+      <zorder>label_147</zorder>
+      <zorder>lne_garante_barrio_4</zorder>
+      <zorder>lne_garante_limite_credito_4</zorder>
+      <zorder>lne_garante_email_4</zorder>
+      <zorder>label_148</zorder>
+      <zorder>label_149</zorder>
+      <zorder>label_150</zorder>
+      <zorder>label_151</zorder>
+      <zorder>label_152</zorder>
+      <zorder>lne_garante_nro_cliente_4</zorder>
+      <zorder>txte_garante_observaciones_4</zorder>
+      <zorder>label_153</zorder>
+      <zorder>label_154</zorder>
+      <zorder>label_155</zorder>
+      <zorder>cbx_garante_estado_civil_4</zorder>
+      <zorder>checkBox_10</zorder>
+      <zorder>cbx_garante_tipo_doc_4</zorder>
+      <zorder>lne_garante_apellido_4</zorder>
+      <zorder>lne__garante_telefono_4</zorder>
+      <zorder>cbx_garante_ciudad_4</zorder>
+      <zorder>label_156</zorder>
+      <zorder>label_157</zorder>
+      <zorder>checkBox_11</zorder>
+      <zorder>lne_garante_nro_doc_4</zorder>
+      <zorder>dte_garante_nacimiento_4</zorder>
+      <zorder>tw_garantes_lista_4</zorder>
+      <zorder>boton_agregar_4</zorder>
+     </widget>
+     <widget class="QWidget" name="tab_19">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/casilla-y-boligrafo.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Otros Datos</string>
+      </attribute>
+      <widget class="QCheckBox" name="ckbx_veraz_4">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>90</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Figura en el Veraz</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_bloqueado_4">
+       <property name="geometry">
+        <rect>
+         <x>602</x>
+         <y>150</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cliente Bloqueado</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_iva_4">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>30</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Responsable Inscripto</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_cbu_4">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>90</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>00451597859478396574780</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_158">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>60</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° CUIT:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_beneficio_4">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>120</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>00345687</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_159">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>90</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° CBU:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_160">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>120</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° Beneficio:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_cuit_4">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>60</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>00-5678879-00</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_161">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>30</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo IVA:</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_jub_pens_4">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>120</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Es Jubilado / Pensionado</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_facturas_4">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>60</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Presentó Facturas de Luz, Gas</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbt_monotributista_4">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>30</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Monotributista</string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>3</x>
+         <y>10</y>
+         <width>941</width>
+         <height>411</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+      </widget>
+      <zorder>groupBox_4</zorder>
+      <zorder>ckbx_veraz_4</zorder>
+      <zorder>ckbx_bloqueado_4</zorder>
+      <zorder>lne_iva_4</zorder>
+      <zorder>lne_cbu_4</zorder>
+      <zorder>label_158</zorder>
+      <zorder>lne_nro_beneficio_4</zorder>
+      <zorder>label_159</zorder>
+      <zorder>label_160</zorder>
+      <zorder>lne_cuit_4</zorder>
+      <zorder>label_161</zorder>
+      <zorder>ckbx_jub_pens_4</zorder>
+      <zorder>ckbx_facturas_4</zorder>
+      <zorder>rbt_monotributista_4</zorder>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>906</x>
+     <y>687</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>178</green>
+         <blue>140</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>178</green>
+         <blue>140</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>252</red>
+         <green>101</green>
+         <blue>25</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(235, 160, 143);</string>
+   </property>
+   <property name="text">
+    <string>Limpiar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>816</x>
+     <y>687</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>178</green>
+         <blue>140</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>178</green>
+         <blue>140</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Light">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>184</green>
+         <blue>148</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Midlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>253</red>
+         <green>142</green>
+         <blue>86</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Dark">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Mid">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>168</red>
+         <green>67</green>
+         <blue>16</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="BrightText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>126</red>
+         <green>50</green>
+         <blue>12</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>235</red>
+         <green>160</green>
+         <blue>143</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Shadow">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="AlternateBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>252</red>
+         <green>101</green>
+         <blue>25</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipBase">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>220</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ToolTipText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(235, 160, 143);</string>
+   </property>
+   <property name="text">
+    <string>Borrar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

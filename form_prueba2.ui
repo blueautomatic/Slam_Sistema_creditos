@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>904</x>
+     <y>1026</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Actualizar</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>981</width>
+     <height>671</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="icon">
+     <iconset>
+      <normalon>../../../../Descargas/boton-actualizar.png</normalon>
+     </iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Actualizar Cliente</string>
+    </attribute>
+    <widget class="QTabWidget" name="tabwt_clientenuevo_2">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>40</y>
+       <width>951</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_8">
+      <attribute name="icon">
+       <iconset>
+        <normalon>../../../../Descargas/tarjeta-personal-de-datos-de-contacto.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos Personales</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_telefono_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>167</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_37">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>101</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fecha de Nacimiento:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dte_nacimiento_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>100</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/M/dd</string>
+       </property>
+       <property name="date">
+        <date>
+         <year>1945</year>
+         <month>5</month>
+         <day>17</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_estado_civil_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>100</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Soltero/era</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Casado/ada</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viudo/da</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Divorsiado/ada</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_38">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>136</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Barrio:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_domicilio_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>135</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Las violestas 68</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_39">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>33</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_40">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>100</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Estado Civil:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_barrio_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>133</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Las flores</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_41">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>169</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_ciudad_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>555</x>
+         <y>170</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Viedma</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_53">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>64</y>
+         <width>103</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo Documento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_42">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>35</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N°  Cliente :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nombre_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>30</y>
+         <width>181</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Alejandro</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_limite_credito_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>199</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>10000</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_cliente_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>716</x>
+         <y>34</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00-001</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_43">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>199</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Email:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_tipo_doc_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>64</y>
+         <width>59</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>DNI </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIL</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIT </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lne_apellido_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>30</y>
+         <width>191</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fernandez</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_54">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>67</y>
+         <width>52</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Número:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_44">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>232</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Observaciones: </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_45">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>202</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Límite por Créditos:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_46">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>31</y>
+         <width>53</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Apellido:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_47">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>170</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ciudad:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_email_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>200</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>email@email.com</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_48">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>136</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_doc_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>66</y>
+         <width>125</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>5678879</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_activo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>30</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Activo</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_inactivo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>60</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Inactivo</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txte_observaciones_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>250</y>
+         <width>911</width>
+         <height>161</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_9">
+      <attribute name="icon">
+       <iconset>
+        <normalon>../../../../Descargas/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos laborales</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_organismo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>70</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ministerio de Educación</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_ocupacion_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>40</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Auxiliar</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_antiguedad_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>70</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_55">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>40</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sueldo $:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_56">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>100</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_domicilio_laboral_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>130</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Las violetas 45</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_telefono_laboral_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>100</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_sueldo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>40</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_recibo_sueldo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>130</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Posee Recibo de Sueldo</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_57">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>70</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Organismo: </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_58">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>40</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ocupación:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_59">
+       <property name="geometry">
+        <rect>
+         <x>79</x>
+         <y>130</y>
+         <width>161</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_60">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>70</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Antigüedad Laboral:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_61">
+       <property name="geometry">
+        <rect>
+         <x>800</x>
+         <y>70</y>
+         <width>41</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>años</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_categoria_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>100</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_62">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>100</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Categoría: </string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_10">
+      <attribute name="icon">
+       <iconset>
+        <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos Garante</string>
+      </attribute>
+      <widget class="QLineEdit" name="lne_garante_domicilio_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>125</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Las violestas 68</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_63">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>222</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Observaciones: </string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nombre_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>20</y>
+         <width>181</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Alejandro</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_64">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>57</y>
+         <width>52</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Número:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_65">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>159</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Teléfono:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_66">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>159</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Email:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_barrio_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>123</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Las flores</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_limite_credito_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>189</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>10000</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_email_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>160</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>email@email.com</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_67">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>91</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fecha de Nacimiento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_68">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>192</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Límite por Créditos:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_69">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>54</y>
+         <width>103</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo Documento:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_70">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>126</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Barrio:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_71">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>92</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ciudad:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nro_cliente_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>716</x>
+         <y>24</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00-001</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txte_garante_observaciones_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>250</y>
+         <width>911</width>
+         <height>81</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_72">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>23</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_73">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>21</y>
+         <width>53</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Apellido:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_74">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>192</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Estado Civil:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_estado_civil_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>192</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Soltero/era</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Casado/ada</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viudo/da</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Divorsiado/ada</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_garante_activo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>20</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Activo</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_tipo_doc_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>54</y>
+         <width>59</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>DNI </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIL</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CUIT </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_apellido_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>131</x>
+         <y>20</y>
+         <width>191</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fernandez</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne__garante_telefono_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>157</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>2920-000001</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbx_garante_ciudad_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>345</x>
+         <y>92</y>
+         <width>180</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Viedma</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_75">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>25</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N°  Cliente :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_76">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>126</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Domicilio :</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_garante_inactivo_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>50</y>
+         <width>85</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Inactivo</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_garante_nro_doc_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>56</y>
+         <width>125</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>5678879</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dte_garante_nacimiento_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>90</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/M/dd</string>
+       </property>
+       <property name="date">
+        <date>
+         <year>1945</year>
+         <month>5</month>
+         <day>17</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tw_garantes_lista_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>370</y>
+         <width>911</width>
+         <height>181</height>
+        </rect>
+       </property>
+       <row>
+        <property name="text">
+         <string>Garante Princ.</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Garante Sec.</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Otro Garante</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
+         </iconset>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nro. Cliente</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Tipo Doc.</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Número</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>F. Nacimiento</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Ciudad</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Domicilio</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Teléfono</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Estado</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QPushButton" name="boton_agregar_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>850</x>
+         <y>338</y>
+         <width>80</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Agregar</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_11">
+      <attribute name="icon">
+       <iconset>
+        <normalon>../../../../Descargas/casilla-y-boligrafo.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Otros Datos</string>
+      </attribute>
+      <widget class="QCheckBox" name="ckbx_veraz_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>90</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Figura en el Veraz</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_bloqueado_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>602</x>
+         <y>150</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cliente Bloqueado</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_iva_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>30</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Responsable Inscripto</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_cbu_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>90</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00451597859478396574780</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_77">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>60</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° CUIT:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_nro_beneficio_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>120</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00345687</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_78">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>90</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° CBU:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_79">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>120</y>
+         <width>161</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>N° Beneficio:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_cuit_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>271</x>
+         <y>60</y>
+         <width>300</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00-5678879-00</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_80">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>30</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tipo IVA:</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_jub_pens_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>120</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Es Jubilado / Pensionado</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ckbx_facturas_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>601</x>
+         <y>60</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Presentó Facturas de Luz, Gas</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbt_monotributista_actualizar">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>30</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Monotributista</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="boton_buscar_actualizar">
+     <property name="geometry">
+      <rect>
+       <x>880</x>
+       <y>20</y>
+       <width>80</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_122">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>22</y>
+       <width>59</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>DNI:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lne_dni_filtro_actualizar">
+     <property name="geometry">
+      <rect>
+       <x>719</x>
+       <y>20</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
