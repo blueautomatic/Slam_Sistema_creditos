@@ -1,8 +1,9 @@
 import sys
-from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox
+from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem
 from PyQt5 import uic
 from form_clientes_nuevo import Ui_Form_clientes_nuevo
-from N_cliente import N_datos_personales_cliente, N_party_address, N_party_otros, N_datos_laborales, N_party_garante,N_party_cliente
+from N_cliente import N_datos_personales_cliente, N_party_address, N_party_otros, N_datos_laborales, N_party_garante,N_party_cliente, N_party_contacto
+from N_creditos import N_creditos
 from PyQt5.QtCore import pyqtRemoveInputHook
 
 
@@ -10,7 +11,8 @@ class Dialogo(QDialog):
     obj_form= Ui_Form_clientes_nuevo()
     id_usu=1
     id_party =""
-    list_N_garantes = list()
+    list_garante = list()
+    nro_cliente = ""
 
     def __init__(self):
         QDialog.__init__(self)
@@ -33,7 +35,7 @@ class Dialogo(QDialog):
         
         obj_N_datos_garante= N_datos_personales_cliente("a")
         if numero_documento_garante != "":
-            obj_datos_garante = obj_N_datos_garante.get_garante_habilitado(str(numero_documento_garante))
+            obj_datos_garante = obj_N_datos_garante.get_garante_habilitado_buscar(str(numero_documento_garante))
             self.obj_form.lne_garante_apellido.setText(obj_datos_garante.apellido)
             self.obj_form.lne_garante_nombre.setText(obj_datos_garante.nombre)
             self.obj_form.lne_garante_estado.setText(obj_datos_garante.estado)
@@ -64,6 +66,7 @@ class Dialogo(QDialog):
 
         apellido = self.obj_form.lne_apellido.text()
         obj_N_datos_personales_cliente = N_datos_personales_cliente(apellido) 
+
         obj_N_datos_personales_cliente.nombre = self.obj_form.lne_nombre.text()  
         obj_N_datos_personales_cliente.apellido = self.obj_form.lne_apellido.text()
         obj_N_datos_personales_cliente.fec_nac = self.obj_form.dte_nacimiento.text()
@@ -71,13 +74,35 @@ class Dialogo(QDialog):
         obj_N_datos_personales_cliente.nro_doc = numero_documento
         obj_N_datos_personales_cliente.estado_civil = self.obj_form.cbx_estado_civil.currentText()
         obj_N_datos_personales_cliente.limite_credito = self.obj_form.lne_limite_credito.text()
+        obj_N_datos_personales_cliente.estado = self.obj_form.cbx_estado.currentText()
         #boton guardar
         obj_datos_personales_cliente = N_datos_personales_cliente(apellido)
 
         self.id_party=obj_datos_personales_cliente.guardar(obj_N_datos_personales_cliente, self.id_usu)
 
-        if self.id_party != "False" :                
-            self.obj_form.lne_nro_cliente.setText(str(self.id_party))
+
+
+        if self.id_party != "False" :
+            obj_party_cliente = N_party_cliente(self.id_party)
+
+
+            obj_party_cliente.guardar_N_party_cliente(self.obj_form.txte_observaciones.toPlainText(), self.id_party)
+            self.nro_cliente = obj_party_cliente.get_nro_cliente(self.id_party)
+            self.obj_form.lne_nro_cliente.setText(str(self.nro_cliente))
+
+            obj_party_contacto3= N_party_contacto(1)
+
+            obj_party_contacto3.type_contacto= "Telefono"
+            obj_party_contacto3.value =self.obj_form.lne_telefono.text()
+
+            obj_party_contacto_email=N_party_contacto(1)
+            obj_party_contacto_email.type_contacto="Email"
+            obj_party_contacto_email.value= self.obj_form.lne_email.text()
+
+            
+            obj_N_party_contacto=N_party_contacto(1)
+            obj_N_party_contacto.guardar(obj_party_contacto3, self.id_party)
+            obj_N_party_contacto.guardar(obj_party_contacto_email, self.id_party)
               
             ciudad = self.obj_form.lne_barrio.text()
             obj_N_party_address = N_party_address(ciudad)
@@ -105,23 +130,23 @@ class Dialogo(QDialog):
             else:
                 obj_N_datos_laborales.posee_recibo_sueldo = False
             #boton guardar
-            #pyqtRemoveInputHook()
-            #import pdb; pdb.set_trace()
+
             obj_datos_laborales= N_datos_laborales(organismo)
             obj_datos_laborales.guardar(obj_N_datos_laborales,self.id_party)
 
 
             cuit = self.obj_form.lne_cuit.text()
             obj_N_party_otros = N_party_otros(cuit)
-            obj_N_party_otros.tipo_iva = self.obj_form.lne_iva.text()
+            obj_N_party_otros.tipo_iva = self.obj_form.cbx_tipo_iva.currentText()
             obj_N_party_otros.cuit = self.obj_form.lne_cuit.text()
             obj_N_party_otros.cbu = self.obj_form.lne_cbu.text()
             obj_N_party_otros.num_beneficio = self.obj_form.lne_nro_beneficio.text()
             #boton guardar
             obj_party_otros= N_party_otros(cuit)
-            obj_party_garante.guardar(obj_N_party_garante, self.id_party)
+            obj_party_garante2 = N_party_garante("A")
+            obj_party_garante2.guardar(self.list_garante,self.nro_cliente)
 
-        else:
+        else: 
             msgBox = QMessageBox()
             msgBox.setWindowTitle("Error")
             msgBox.setText("No se pudo grabar: Número de documento duplicado, actualice los datos")
@@ -130,43 +155,84 @@ class Dialogo(QDialog):
 
     def agregar (self):
         number= self.obj_form.lne_garante_nro_doc.text()
+        id_party_party_garante=""
         try:
-            numero_documento_garante= int(number)
+            nro_doc_garante= int(number)
         except exception:
             msgBox = QMessageBox()
             msgBox.about(self, 'Error','Ingresar nuevamente el número de documento sin espacios y sin puntos')
             msgBox.exec_()
             return False
 
-        obj_N_Cliente_garante = N_datos_personales_cliente("a")
-        existe_garante = obj_N_Cliente_garante.get_existe_nro_doc_garante(numero_documento_garante)
-        existe_cliente = obj_N_Cliente_garante.get_existe_nro_doc_cliente(numero_documento_garante)
+        obj_Cliente_garante = N_party_garante("a")
+        existe_garante=False
+
+        existe_garante = obj_Cliente_garante.es_garante_de_otro_cliente(nro_doc_garante)
         
-        if (existe_garante == True ) or (existe_cliente == True) :
-            msgBox = QMessageBox.question(self, 'El Garante existe en el sistema. Validar Clientes y Garantes ', 'Desea agregarlo igualmente?',QMessageBox.Yes | QMessageBox.No)
+        obj_party_party_garante = N_datos_personales_cliente(1)
+        id_party_party_garante = obj_party_party_garante.get_id_party_party_garante(nro_doc_garante)
+
+
+        obj_N_creditos = N_creditos(1)
+        tiene_prestamo =  obj_N_creditos.get_tiene_prestamos_activo(self.obj_form.lne_garante_nro_doc.text())
+        
+        if (existe_garante == True ) or (tiene_prestamo == True) :
+            msgBox = QMessageBox.question(self, 'Validar Clientes y Garantes ', 'Desea agregarlo igualmente?',QMessageBox.Yes | QMessageBox.No)
             if msgBox == QMessageBox.Yes :
-                garante_nro_doc = self.form.lne_garante_nro_doc.text()
-                garante_nro_cliente = self.form.lne_garante_nro_cliente.text()
-                garante_apellido = self.form.lne_garante_apellido.text()
-                garante_nombre = self.form.lne_garante_nombre.text()
-                garante_estado = self.form.lne_garante_estado.text()
+                garante_nro_doc = self.obj_form.lne_garante_nro_doc.text()
+
+                cliente_nro_del_garante = int(self.obj_form.lne_garante_nro_cliente.text())
+                garante_apellido = self.obj_form.lne_garante_apellido.text()
+                garante_nombre = self.obj_form.lne_garante_nombre.text()
+                garante_estado = self.obj_form.lne_garante_estado.text()
+                tipo_garante = self.obj_form.cbx_tipo_garante.currentText()
                 
                 obj_N_party_garante = N_party_garante("A")
                 obj_party_garante = N_party_garante("A")
-                obj_party_garante.nro_doc = self.form.lne_garante_nro_doc.text()
-                obj_party_garante.comment = self.obj_form.txte_garante_observaciones.text()
-                obj_N_party_garante.guardar_garante(obj_party_garante)
-        
+                obj_party_garante.comment = self.obj_form.txte_garante_observaciones.toPlainText()
+                obj_party_garante.tipo_garante = self.obj_form.cbx_tipo_garante.currentText()
+                obj_party_garante.id_party_garante = id_party_party_garante
+                self.list_garante.append(obj_party_garante)
 
-        #AGREGAR REGISTROS EN LA GRILLA
-        rowPosition = self.obj_form.tw_registrotitulos.rowCount()
-        self.obj_form.tw_registrotitulos.insertRow(rowPosition)
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 0, QTableWidgetItem(titulo_grado))
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 1, QTableWidgetItem(universidad_grado))
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 2, QTableWidgetItem(str(dte_fecha_titulo_grado)))
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 3, QTableWidgetItem(str(dte_fecha_aut_min_educ_grado)))
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 4, QTableWidgetItem(str(dte_fecha_aut_min_int_grado)))
-        self.obj_form.tw_registrotitulos.setItem(rowPosition , 5, QTableWidgetItem(str(especialidad)))
+
+                #AGREGAR REGISTROS EN LA GRILLA
+                rowPosition = self.obj_form.tw_garantes_lista.rowCount()
+                self.obj_form.tw_garantes_lista.insertRow(rowPosition)
+                 #pyqtRemoveInputHook()
+                #import pdb; pdb.set_trace()
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 0, QTableWidgetItem(garante_estado))
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 1, QTableWidgetItem(tipo_garante))
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 2, QTableWidgetItem(cliente_nro_del_garante))
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(garante_apellido))
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(garante_nombre))
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(garante_nro_doc))
+        else: 
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            garante_nro_doc = self.obj_form.lne_garante_nro_doc.text()
+            cliente_nro_del_garante = self.obj_form.lne_garante_nro_cliente.text()
+            garante_apellido = self.obj_form.lne_garante_apellido.text()
+            garante_nombre = self.obj_form.lne_garante_nombre.text()
+            garante_estado = self.obj_form.lne_garante_estado.text()
+
+            
+            obj_N_party_garante = N_party_garante("A")
+            obj_party_garante = N_party_garante("A")
+            obj_party_garante.comment = self.obj_form.txte_garante_observaciones.toPlainText()
+            obj_party_garante.tipo_garante = self.obj_form.cbx_tipo_garante.currentText()
+            obj_party_garante.id_party_garante = id_party_party_garante
+            self.list_garante.append(obj_party_garante)
+
+            #AGREGAR REGISTROS EN LA GRILLA
+            rowPosition = self.obj_form.tw_garantes_lista.rowCount()
+            self.obj_form.tw_garantes_lista.insertRow(rowPosition)
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(garante_nro_doc))
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(garante_nombre))
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(garante_apellido))
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 2, QTableWidgetItem(cliente_nro_del_garante))
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 1, QTableWidgetItem(garante_nro_doc))
+            self.obj_form.tw_garantes_lista.setItem(rowPosition , 0, QTableWidgetItem(garante_estado))
+
 
 
 app = QApplication(sys.argv)

@@ -3,38 +3,41 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func,Boolean
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
+from PyQt5.QtCore import pyqtRemoveInputHook
 
 Base = declarative_base()
 class E_party_contacto(Base):
-	__tablename__="party_contact"
-	id_contact = Column(Integer, primary_key=True, autoincrement=True)	
-	id_party = Column(Integer, ForeignKey('party_party.id_party'))
-	create_date = Column(DateTime, default=func.now())
-	write_date = Column(DateTime, default=func.now())
-	comment = Column(String)
-	value = Column(String)
-	type_contacto = Column(String)
-	  
+    __tablename__="party_contact"
+    id_contact = Column(Integer, primary_key=True, autoincrement=True)  
+    id_party = Column(Integer)
+    create_date = Column(DateTime, default=func.now())
+    write_date = Column(DateTime, default=func.now())
+    comment = Column(String)
+    value = Column(String)
+    type_contacto = Column(String)
+      
 
-	def __init__(self,id_party,id_contact,comment,value,type_contacto,create_date,write_date):
-		self.id_party = id_party
-		self.comment = comment
-		self.create_uid = create_uid
-		self.create_date = create_date
-		self.value = value
-		self.write_date = write_date
-		self.activo = activo
-		self.type_contacto = type_contacto
+    def __init__(self,id_party):
+        a=id_party
 
-	def guardar(self):
-		engine=create_engine('postgresql://postgres:121212@localhost:5432/credired')
-		Session= sessionmaker(bind=engine) 
-		session=Session()
-		new_record = E_party_contacto		
-		new_record.comment = comment
-		new_record.value = value
-		new_record.type_contacto = type_contacto
-		session.add(new_record)
-		session.commit()
+    def guardar(self,obj_N_party_contacto,id_party):
+        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        Session= sessionmaker(bind=engine) 
+        session=Session()
+       # pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        new_record = E_party_contacto(1)      
+        new_record.comment = ""
+        new_record.value = obj_N_party_contacto.value
+        new_record.type_contacto = obj_N_party_contacto.type_contacto
+        new_record.id_party = id_party
+        session.add(new_record)
+        session.commit()
+
+    def get_list_party_contacto(self, id_party):
+        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        Session= sessionmaker(bind=engine) 
+        session=Session()
+        list_party_contacto = session.query(E_party_contacto).filter_by(id_party=id_party).all()
+        return list_party_contacto
 

@@ -12,16 +12,27 @@ class E_party_cliente(base):
     __tablename__="party_cliente"
     nro_cliente = Column(Integer, primary_key=True, autoincrement=True)
     id_party = Column(Integer)
+    comment= Column(String)
 
     def __init__(self, id_party):
         a= id_party
 
-    def get_nro_cliente(self,id_party):
+    def get_party_cliente(self,id_party):
         engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
         Session= sessionmaker(bind=engine) 
         session=Session()
-        pyqtRemoveInputHook()
-        import pdb; pdb.set_trace()
+
         obj_party_cliente = session.query(E_party_cliente).filter_by(id_party=id_party).first()
           
-        return obj_party_cliente.nro_cliente
+        return obj_party_cliente
+
+    def guardar(self,comment, id_party):
+        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        Session= sessionmaker(bind=engine) 
+        session=Session()
+        new_record = E_party_cliente(1)
+        new_record.id_party = id_party
+        new_record.comment= comment
+        session.add(new_record)
+        session.commit()
+

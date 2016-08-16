@@ -214,19 +214,6 @@ background-color: rgb(255, 255, 255);
        <property name="title">
         <string/>
        </property>
-       <widget class="QCheckBox" name="ckbx_inactivo">
-        <property name="geometry">
-         <rect>
-          <x>820</x>
-          <y>80</y>
-          <width>101</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Bloqueado</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_12">
         <property name="geometry">
          <rect>
@@ -310,9 +297,9 @@ background-color: rgb(255, 255, 255);
        <widget class="QLabel" name="label_13">
         <property name="geometry">
          <rect>
-          <x>349</x>
-          <y>117</y>
-          <width>131</width>
+          <x>380</x>
+          <y>120</y>
+          <width>91</width>
           <height>16</height>
          </rect>
         </property>
@@ -465,22 +452,6 @@ background-color: rgb(255, 255, 255);
         </property>
         <property name="text">
          <string>Nombre :</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="ckbx_activo">
-        <property name="geometry">
-         <rect>
-          <x>820</x>
-          <y>50</y>
-          <width>85</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Activo</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_telefono">
@@ -650,17 +621,47 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="ckbx_Cupo">
+       <widget class="QComboBox" name="cbx_estado">
         <property name="geometry">
          <rect>
-          <x>820</x>
-          <y>110</y>
+          <x>752</x>
+          <y>84</y>
+          <width>141</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Activo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bloqueado</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cupo Cubierto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>612</x>
+          <y>84</y>
           <width>121</width>
-          <height>21</height>
+          <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>Cupo Completo</string>
+         <string>Estado Persona</string>
         </property>
        </widget>
       </widget>
@@ -729,9 +730,9 @@ background-color: rgb(239, 235, 231);
           <height>141</height>
          </rect>
         </property>
-        <row>
+        <column>
          <property name="text">
-          <string>Garante Princ.</string>
+          <string>Estado</string>
          </property>
          <property name="background">
           <color>
@@ -740,46 +741,12 @@ background-color: rgb(239, 235, 231);
            <blue>220</blue>
           </color>
          </property>
-         <property name="icon">
-          <iconset>
-           <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
-          </iconset>
-         </property>
-        </row>
-        <row>
+        </column>
+        <column>
          <property name="text">
-          <string>Garante Sec.</string>
+          <string>Tipo Garante</string>
          </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
-          </iconset>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Otro Garante</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normalon>../../../../Descargas/calidad-de-la-pagina.png</normalon>
-          </iconset>
-         </property>
-        </row>
+        </column>
         <column>
          <property name="text">
           <string>Nro. Cliente</string>
@@ -819,18 +786,6 @@ background-color: rgb(239, 235, 231);
         <column>
          <property name="text">
           <string>Número Documento</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Estado</string>
          </property>
          <property name="background">
           <color>
@@ -952,8 +907,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QLineEdit" name="lne_garante_apellido">
         <property name="geometry">
          <rect>
-          <x>120</x>
-          <y>70</y>
+          <x>140</x>
+          <y>50</y>
           <width>191</width>
           <height>23</height>
          </rect>
@@ -965,8 +920,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>350</x>
-          <y>75</y>
+          <x>30</x>
+          <y>80</y>
           <width>71</width>
           <height>16</height>
          </rect>
@@ -978,8 +933,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QLabel" name="label_29">
         <property name="geometry">
          <rect>
-          <x>14</x>
-          <y>73</y>
+          <x>34</x>
+          <y>53</y>
           <width>61</width>
           <height>16</height>
          </rect>
@@ -991,9 +946,9 @@ p, li { white-space: pre-wrap; }
        <widget class="QLineEdit" name="lne_garante_nombre">
         <property name="geometry">
          <rect>
-          <x>420</x>
-          <y>70</y>
-          <width>181</width>
+          <x>140</x>
+          <y>80</y>
+          <width>191</width>
           <height>23</height>
          </rect>
         </property>
@@ -1004,8 +959,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QLabel" name="label_23">
         <property name="geometry">
          <rect>
-          <x>630</x>
-          <y>70</y>
+          <x>390</x>
+          <y>50</y>
           <width>61</width>
           <height>16</height>
          </rect>
@@ -1017,14 +972,57 @@ p, li { white-space: pre-wrap; }
        <widget class="QLineEdit" name="lne_garante_estado">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>70</y>
+          <x>480</x>
+          <y>50</y>
           <width>181</width>
           <height>23</height>
          </rect>
         </property>
         <property name="text">
          <string/>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbx_tipo_garante">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>80</y>
+          <width>181</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Garante Principal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Garante Secundario</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Otro Garante</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>80</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tipo Garante :</string>
         </property>
        </widget>
       </widget>
@@ -1129,7 +1127,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string/>
+         <string>e</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_telefono_laboral">
@@ -1489,7 +1487,7 @@ background-color: rgb(255, 255, 255);
          <string>N° CBU:</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="cbx_tipo_iva">
         <property name="geometry">
          <rect>
           <x>270</x>
@@ -1513,44 +1511,6 @@ background-color: rgb(255, 255, 255);
           <string>Monotributista</string>
          </property>
         </item>
-       </widget>
-       <widget class="QComboBox" name="comboBox_2">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>200</y>
-          <width>141</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Activo</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bloqueado</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Cupo Cubierto</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="label_37">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>200</y>
-          <width>121</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Estado Cliente</string>
-        </property>
        </widget>
       </widget>
      </widget>

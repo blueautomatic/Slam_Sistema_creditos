@@ -25,8 +25,8 @@ class E_party_party(base):
 
 
       # def __init__(self,id_party,create_date,write_uid,write_date,nombre,apellido,tipo,num_doc,estado_civil,num_cliente):
-      def __init__(self,a):
-            a = a
+      def __init__(self,rt):
+            a = rt
             self.create_date =func.now()
             self.write_date = func.now()
             self.write_uid = 1
@@ -43,13 +43,13 @@ class E_party_party(base):
             new_record.fec_nac = obj_N_datos_personales_cliente.fec_nac
             new_record.num_doc = obj_N_datos_personales_cliente.nro_doc
             new_record.estado_civil = obj_N_datos_personales_cliente.estado_civil
-            new_record.limite_credito = obj_form_N_datos_personales_cliente.limite_credito
+            new_record.limite_credito = obj_N_datos_personales_cliente.limite_credito
             new_record.estado= obj_N_datos_personales_cliente.estado
             session.add(new_record)
             try :
                   session.commit()
                   num_doc=obj_N_datos_personales_cliente.nro_doc
-                  obj_party_party = session.query(E_party_party).filter_by(num_doc=num_doc).first()
+                  obj_party_party = session.query(E_party_party).filter_by(num_doc=str(num_doc)).first()
                   return obj_party_party.id_party
 
             except IntegrityError : 
@@ -60,7 +60,7 @@ class E_party_party(base):
             engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
             Session= sessionmaker(bind=engine)
             session=Session()
-            obj_party_party = session.query(E_party_party).filter_by(num_doc=nro_doc).first()
+            obj_party_party = session.query(E_party_party).filter_by(num_doc=str(nro_doc)).first()
             return obj_party_party
 
             
@@ -70,5 +70,15 @@ class E_party_party(base):
             Session= sessionmaker(bind=engine)
             session=Session()
 
-            obj_party_party = session.query(E_party_party).filter_by(num_doc=nro_doc).first()
+            obj_party_party = session.query(E_party_party).filter_by(num_doc=str(nro_doc)).first()
             return obj_party_party.id_party
+
+      def buscar_id_party_por_nro_doc(self, nro_doc):
+            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+            Session= sessionmaker(bind=engine)
+            session=Session()
+
+            obj_party_party = session.query(E_party_party).filter_by(num_doc=str(nro_doc)).first()
+            return obj_party_party
+
+

@@ -4,6 +4,7 @@ from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, Numeric, f
 from sqlalchemy import create_engine
 #from N_cliente import N_datos_datos_laborales
 from sqlalchemy.orm import sessionmaker
+from PyQt5.QtCore import pyqtRemoveInputHook
 
 base = declarative_base()
 class E_datos_laborales(base):
@@ -23,6 +24,17 @@ class E_datos_laborales(base):
 
         def __init__(self,id):
             a = id
+
+        def get_datos_laborales(self, id_party):
+
+            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+            Session= sessionmaker(bind=engine) 
+            session=Session()
+
+            obj_party_laborales = session.query(E_datos_laborales).filter_by(id_party=id_party).first()          
+            return obj_party_laborales
+
+
 
         def guardar(self,obj_N_datos_laborales,id_party):
 
