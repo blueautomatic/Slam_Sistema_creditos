@@ -11,7 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Alta Persona</string>
+   <string>Alta Cliente</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font:  75 10Pt &quot;Century Schoolbook L&quot;;
+selection-background-color: rgb(218, 175, 158);
+selection-color: rgb(0, 0, 0);
+</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
@@ -52,6 +58,24 @@
         </color>
        </brush>
       </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>218</red>
+         <green>175</green>
+         <blue>158</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="HighlightedText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
      </active>
      <inactive>
       <colorrole role="Button">
@@ -78,6 +102,24 @@
          <red>172</red>
          <green>55</green>
          <blue>26</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>218</red>
+         <green>175</green>
+         <blue>158</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="HighlightedText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -110,12 +152,30 @@
         </color>
        </brush>
       </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>218</red>
+         <green>175</green>
+         <blue>158</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="HighlightedText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
      </disabled>
     </palette>
    </property>
    <property name="font">
     <font>
-     <family>KacstOne</family>
+     <family>Century Schoolbook L</family>
      <pointsize>11</pointsize>
      <weight>9</weight>
      <italic>false</italic>
@@ -124,7 +184,8 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(172, 55, 26);
-font: 75 11pt &quot;KacstOne&quot;;</string>
+font:  75 11Pt &quot;Century Schoolbook L&quot;;
+</string>
    </property>
    <property name="currentIndex">
     <number>0</number>
@@ -149,7 +210,7 @@ font: 75 11pt &quot;KacstOne&quot;;</string>
      </property>
      <property name="font">
       <font>
-       <family>KacstOne</family>
+       <family>Century Schoolbook L</family>
        <pointsize>10</pointsize>
        <weight>9</weight>
        <italic>false</italic>
@@ -158,10 +219,11 @@ font: 75 11pt &quot;KacstOne&quot;;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(239, 235, 231);
-font: 75 10pt &quot;KacstOne&quot;;</string>
+font:  75 10Pt &quot;Century Schoolbook L&quot;;
+</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_4">
       <attribute name="icon">
@@ -240,7 +302,7 @@ background-color: rgb(255, 255, 255);
          <string>Barrio:</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_nombre">
+       <widget class="QLineEdit" name="lne_nombre_nuevo">
         <property name="geometry">
          <rect>
           <x>449</x>
@@ -250,7 +312,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>Alejandro</string>
+         <string/>
         </property>
        </widget>
        <widget class="QComboBox" name="cbx_ciudad">
@@ -267,6 +329,16 @@ background-color: rgb(255, 255, 255);
           <string>Viedma</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Patagones</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Otros</string>
+         </property>
+        </item>
        </widget>
        <widget class="QLineEdit" name="lne_barrio">
         <property name="geometry">
@@ -278,7 +350,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>Las flores</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="label_3">
@@ -297,9 +369,9 @@ background-color: rgb(255, 255, 255);
        <widget class="QLabel" name="label_13">
         <property name="geometry">
          <rect>
-          <x>380</x>
-          <y>120</y>
-          <width>91</width>
+          <x>349</x>
+          <y>117</y>
+          <width>131</width>
           <height>16</height>
          </rect>
         </property>
@@ -312,7 +384,7 @@ background-color: rgb(255, 255, 255);
          <rect>
           <x>38</x>
           <y>117</y>
-          <width>181</width>
+          <width>141</width>
           <height>16</height>
          </rect>
         </property>
@@ -330,7 +402,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>5678879</string>
+         <string/>
         </property>
        </widget>
        <widget class="QComboBox" name="cbx_estado_civil">
@@ -344,22 +416,22 @@ background-color: rgb(255, 255, 255);
         </property>
         <item>
          <property name="text">
-          <string>Soltero/era</string>
+          <string>Soltero/a</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Casado/ada</string>
+          <string>Casado/a</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Viudo/da</string>
+          <string>Viudo/a</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Divorsiado/ada</string>
+          <string>Divorsiado/a</string>
          </property>
         </item>
        </widget>
@@ -399,7 +471,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>Las violestas 68</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="label_8">
@@ -416,6 +488,9 @@ background-color: rgb(255, 255, 255);
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_nro_cliente">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>750</x>
@@ -464,7 +539,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>2920-000001</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_email">
@@ -477,20 +552,30 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>email@email.com</string>
+         <string/>
         </property>
        </widget>
        <widget class="QDateEdit" name="dte_nacimiento">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>115</y>
+          <x>210</x>
+          <y>110</y>
           <width>101</width>
-          <height>22</height>
+          <height>25</height>
          </rect>
         </property>
+        <property name="maximumDate">
+         <date>
+          <year>7999</year>
+          <month>12</month>
+          <day>26</day>
+         </date>
+        </property>
         <property name="displayFormat">
-         <string>yyyy/M/dd</string>
+         <string>dd/M/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
         </property>
         <property name="date">
          <date>
@@ -529,9 +614,9 @@ background-color: rgb(255, 255, 255);
        <widget class="QComboBox" name="cbx_tipo_doc">
         <property name="geometry">
          <rect>
-          <x>180</x>
+          <x>168</x>
           <y>77</y>
-          <width>59</width>
+          <width>71</width>
           <height>23</height>
          </rect>
         </property>
@@ -574,7 +659,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>Fernandez</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_limite_credito">
@@ -587,7 +672,7 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="label_5">
@@ -616,9 +701,9 @@ background-color: rgb(255, 255, 255);
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'KacstOne'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:131073;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Schoolbook L'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; -qt-user-state:131073; font-family:'KacstOne';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'KacstOne';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QComboBox" name="cbx_estado">
@@ -633,6 +718,21 @@ p, li { white-space: pre-wrap; }
         <item>
          <property name="text">
           <string>Activo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Moroso</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Inactivo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Judicial</string>
          </property>
         </item>
         <item>
@@ -663,6 +763,483 @@ p, li { white-space: pre-wrap; }
         <property name="text">
          <string>Estado Persona</string>
         </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos laborales</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="geometry">
+        <rect>
+         <x>27</x>
+         <y>27</y>
+         <width>921</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLineEdit" name="lne_organismo">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>90</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_sueldo">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>60</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_categoria">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>120</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_telefono_laboral">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>120</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_ocupacion">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>60</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>90</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Antigüedad Laboral:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>59</x>
+          <y>150</y>
+          <width>161</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Domicilio Laboral:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>59</x>
+          <y>120</y>
+          <width>141</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Teléfono Laboral:</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="ckbx_recibo_sueldo_nuevo">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>150</y>
+          <width>211</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Posee Recibo de Sueldo</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>60</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sueldo $:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>59</x>
+          <y>90</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Organismo: </string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_domicilio_laboral">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>150</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>120</y>
+          <width>121</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Categoría laboral: </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>59</x>
+          <y>60</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Empresa:</string>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="lne_antiguedad">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>90</y>
+          <width>121</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="displayFormat">
+         <string>dd/M/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="icon">
+       <iconset>
+        <normalon>Íconos/casilla-y-boligrafo.png</normalon>
+       </iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Otros Datos</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>23</x>
+         <y>29</y>
+         <width>931</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Century Schoolbook L</family>
+         <pointsize>10</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>128</x>
+          <y>70</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tipo IVA:</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="ckbx_veraz">
+        <property name="geometry">
+         <rect>
+          <x>599</x>
+          <y>130</y>
+          <width>211</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Figura en el Veraz</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_nro_beneficio">
+        <property name="geometry">
+         <rect>
+          <x>269</x>
+          <y>160</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>128</x>
+          <y>160</y>
+          <width>121</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>N° Beneficio:</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="ckbx_jub_pens">
+        <property name="geometry">
+         <rect>
+          <x>599</x>
+          <y>160</y>
+          <width>211</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Es Jubilado / Pensionado</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>128</x>
+          <y>100</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>N° CUIT/CUIL:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_cbu">
+        <property name="geometry">
+         <rect>
+          <x>269</x>
+          <y>130</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="ckbx_facturas">
+        <property name="geometry">
+         <rect>
+          <x>599</x>
+          <y>100</y>
+          <width>251</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Presentó Facturas de Luz, Gas</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_cuit">
+        <property name="geometry">
+         <rect>
+          <x>269</x>
+          <y>100</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>128</x>
+          <y>130</y>
+          <width>141</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>N° CBU:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbx_tipo_iva">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>70</y>
+          <width>231</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Consumidor final</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Responsable inscripto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Monotributista</string>
+         </property>
+        </item>
        </widget>
       </widget>
      </widget>
@@ -730,16 +1307,13 @@ background-color: rgb(239, 235, 231);
           <height>141</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(239, 235, 231);
+</string>
+        </property>
         <column>
          <property name="text">
           <string>Estado</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
          </property>
         </column>
         <column>
@@ -751,52 +1325,24 @@ background-color: rgb(239, 235, 231);
          <property name="text">
           <string>Nro. Cliente</string>
          </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
         </column>
         <column>
          <property name="text">
           <string>Apellido</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Nombre</string>
          </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
         </column>
         <column>
          <property name="text">
           <string>Número Documento</string>
          </property>
-         <property name="background">
-          <color>
-           <red>252</red>
-           <green>227</green>
-           <blue>220</blue>
-          </color>
-         </property>
         </column>
        </widget>
-       <widget class="QLineEdit" name="lne_garante_nro_cliente">
+       <widget class="QLineEdit" name="lne_garante_nro_cliente_nuevo">
         <property name="geometry">
          <rect>
           <x>400</x>
@@ -848,8 +1394,8 @@ background-color: rgb(239, 235, 231);
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'KacstOne'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;a&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century Schoolbook L'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'KacstOne';&quot;&gt;a&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_31">
@@ -865,7 +1411,7 @@ p, li { white-space: pre-wrap; }
          <string>N°  Cliente :</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="boton_agregar">
+       <widget class="QPushButton" name="boton_agregar_nuevo">
         <property name="geometry">
          <rect>
           <x>840</x>
@@ -878,7 +1424,7 @@ p, li { white-space: pre-wrap; }
          <string>Agregar</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_garante_nro_doc">
+       <widget class="QLineEdit" name="lne_garante_nro_doc_nuevo">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -888,10 +1434,10 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="text">
-         <string>5678879</string>
+         <string/>
         </property>
        </widget>
-       <widget class="QPushButton" name="boton_buscar_garante">
+       <widget class="QPushButton" name="boton_buscar_garante_nuevo">
         <property name="geometry">
          <rect>
           <x>560</x>
@@ -993,11 +1539,6 @@ p, li { white-space: pre-wrap; }
         </property>
         <item>
          <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>Garante Principal</string>
          </property>
         </item>
@@ -1025,497 +1566,23 @@ p, li { white-space: pre-wrap; }
          <string>Tipo Garante :</string>
         </property>
        </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab_5">
-      <attribute name="icon">
-       <iconset>
-        <normalon>Íconos/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</normalon>
-       </iconset>
-      </attribute>
-      <attribute name="title">
-       <string>Datos laborales</string>
-      </attribute>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="geometry">
-        <rect>
-         <x>27</x>
-         <y>27</y>
-         <width>921</width>
-         <height>241</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QGroupBox{
-background-color: rgb(239, 235, 231);
-border-style: solid;
-border-width: 5px;
-border-color: rgb(172, 55, 26);
-}
-
-QLabel{
-background-color: rgb(239, 235, 231);
-}
-
-QLineEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QTextEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QComboBox{
-background-color: rgb(255, 255, 255);
-}
-
-QDateEdit{
-background-color: rgb(255, 255, 255);
-}
-
-</string>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <widget class="QLabel" name="label_20">
+       <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>780</x>
-          <y>90</y>
-          <width>41</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>años</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_organismo">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>90</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ministerio de Educación</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_sueldo">
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>60</y>
-          <width>101</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_categoria">
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>120</y>
-          <width>101</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>e</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_telefono_laboral">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>120</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>2920-000001</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_ocupacion">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>60</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Auxiliar</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_18">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>90</y>
-          <width>131</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Antigüedad Laboral:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_16">
-        <property name="geometry">
-         <rect>
-          <x>59</x>
-          <y>150</y>
-          <width>161</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Domicilio Laboral:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_antiguedad">
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>90</y>
-          <width>101</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_17">
-        <property name="geometry">
-         <rect>
-          <x>59</x>
-          <y>120</y>
+          <x>750</x>
+          <y>20</y>
           <width>141</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Teléfono Laboral:</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="ckbx_recibo_sueldo">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>150</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Posee Recibo de Sueldo</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_19">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>60</y>
-          <width>80</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Sueldo $:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_15">
-        <property name="geometry">
-         <rect>
-          <x>59</x>
-          <y>90</y>
-          <width>80</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Organismo: </string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_domicilio_laboral">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>150</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Las violetas 45</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_21">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>120</y>
-          <width>121</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Categoría laboral: </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>59</x>
-          <y>60</y>
-          <width>80</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ocupación:</string>
-        </property>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab_7">
-      <attribute name="icon">
-       <iconset>
-        <normalon>Íconos/casilla-y-boligrafo.png</normalon>
-       </iconset>
-      </attribute>
-      <attribute name="title">
-       <string>Otros Datos</string>
-      </attribute>
-      <widget class="QGroupBox" name="groupBox_4">
-       <property name="geometry">
-        <rect>
-         <x>23</x>
-         <y>29</y>
-         <width>931</width>
-         <height>271</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>KacstOne</family>
-         <pointsize>10</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QGroupBox{
-background-color: rgb(239, 235, 231);
-border-style: solid;
-border-width: 5px;
-border-color: rgb(172, 55, 26);
-}
-
-QLabel{
-background-color: rgb(239, 235, 231);
-}
-
-QLineEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QTextEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QComboBox{
-background-color: rgb(255, 255, 255);
-}
-
-QDateEdit{
-background-color: rgb(255, 255, 255);
-}
-
-</string>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <widget class="QLabel" name="label_36">
-        <property name="geometry">
-         <rect>
-          <x>128</x>
-          <y>70</y>
-          <width>80</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tipo IVA:</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="ckbx_veraz">
-        <property name="geometry">
-         <rect>
-          <x>599</x>
-          <y>130</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Figura en el Veraz</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_nro_beneficio">
-        <property name="geometry">
-         <rect>
-          <x>269</x>
-          <y>160</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>00345687</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_35">
-        <property name="geometry">
-         <rect>
-          <x>128</x>
-          <y>160</y>
-          <width>121</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>N° Beneficio:</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="ckbx_jub_pens">
-        <property name="geometry">
-         <rect>
-          <x>599</x>
-          <y>160</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Es Jubilado / Pensionado</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_33">
-        <property name="geometry">
-         <rect>
-          <x>128</x>
-          <y>100</y>
-          <width>80</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>N° CUIT:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_cbu">
-        <property name="geometry">
-         <rect>
-          <x>269</x>
-          <y>130</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>00451597859478396574780</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="ckbx_facturas">
-        <property name="geometry">
-         <rect>
-          <x>599</x>
-          <y>100</y>
-          <width>251</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Presentó Facturas de Luz, Gas</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lne_cuit">
-        <property name="geometry">
-         <rect>
-          <x>269</x>
-          <y>100</y>
-          <width>300</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>00-5678879-00</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_34">
-        <property name="geometry">
-         <rect>
-          <x>128</x>
-          <y>130</y>
-          <width>141</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>N° CBU:</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="cbx_tipo_iva">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>70</y>
-          <width>231</width>
           <height>23</height>
          </rect>
         </property>
-        <item>
-         <property name="text">
-          <string>Consumidor final</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Resposable inscripto</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Monotributista</string>
-         </property>
-        </item>
+        <property name="text">
+         <string>Limpiar Garante</string>
+        </property>
        </widget>
       </widget>
      </widget>
     </widget>
-    <widget class="QPushButton" name="boton_limpiar">
+    <widget class="QPushButton" name="boton_limpiar_nuevo">
      <property name="geometry">
       <rect>
        <x>820</x>
@@ -1533,7 +1600,7 @@ font: 75 10pt &quot;KacstOne&quot;;
       <string>Limpiar</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="boton_guardar">
+    <widget class="QPushButton" name="boton_guardar_nuevo">
      <property name="geometry">
       <rect>
        <x>910</x>
@@ -1554,6 +1621,564 @@ font: 75 10pt &quot;KacstOne&quot;;
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lne_apellido</tabstop>
+  <tabstop>lne_nombre_nuevo</tabstop>
+  <tabstop>lne_nro_cliente</tabstop>
+  <tabstop>cbx_tipo_doc</tabstop>
+  <tabstop>lne_nro_doc</tabstop>
+  <tabstop>cbx_estado</tabstop>
+  <tabstop>dte_nacimiento</tabstop>
+  <tabstop>cbx_estado_civil</tabstop>
+  <tabstop>lne_domicilio</tabstop>
+  <tabstop>lne_barrio</tabstop>
+  <tabstop>lne_telefono</tabstop>
+  <tabstop>cbx_ciudad</tabstop>
+  <tabstop>lne_limite_credito</tabstop>
+  <tabstop>lne_email</tabstop>
+  <tabstop>txte_observaciones</tabstop>
+  <tabstop>lne_ocupacion</tabstop>
+  <tabstop>lne_sueldo</tabstop>
+  <tabstop>lne_organismo</tabstop>
+  <tabstop>lne_telefono_laboral</tabstop>
+  <tabstop>lne_categoria</tabstop>
+  <tabstop>lne_domicilio_laboral</tabstop>
+  <tabstop>ckbx_recibo_sueldo_nuevo</tabstop>
+  <tabstop>lne_garante_nro_doc_nuevo</tabstop>
+  <tabstop>lne_garante_nro_cliente_nuevo</tabstop>
+  <tabstop>boton_buscar_garante_nuevo</tabstop>
+  <tabstop>lne_garante_apellido</tabstop>
+  <tabstop>lne_garante_estado</tabstop>
+  <tabstop>lne_garante_nombre</tabstop>
+  <tabstop>cbx_tipo_garante</tabstop>
+  <tabstop>txte_garante_observaciones</tabstop>
+  <tabstop>tw_garantes_lista</tabstop>
+  <tabstop>cbx_tipo_iva</tabstop>
+  <tabstop>lne_cuit</tabstop>
+  <tabstop>ckbx_facturas</tabstop>
+  <tabstop>lne_cbu</tabstop>
+  <tabstop>ckbx_veraz</tabstop>
+  <tabstop>lne_nro_beneficio</tabstop>
+  <tabstop>ckbx_jub_pens</tabstop>
+  <tabstop>boton_limpiar_nuevo</tabstop>
+  <tabstop>boton_guardar_nuevo</tabstop>
+  <tabstop>boton_agregar_nuevo</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_email</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>876</x>
+     <y>554</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>775</x>
+     <y>344</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_barrio</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>855</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>702</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_cliente</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>849</x>
+     <y>553</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>800</x>
+     <y>179</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nombre_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>867</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>621</x>
+     <y>168</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_apellido</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>863</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_doc</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>892</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_domicilio</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>893</x>
+     <y>558</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>438</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_telefono</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>832</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>310</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_limite_credito</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>887</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>462</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>tw_garantes_lista</receiver>
+   <slot>clearContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>873</x>
+     <y>563</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>631</x>
+     <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>tw_garantes_lista</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>892</x>
+     <y>554</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>692</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nombre</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>874</x>
+     <y>551</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_estado</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>860</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>649</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_cliente_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>888</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>486</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_doc_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>890</x>
+     <y>562</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_apellido</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>899</x>
+     <y>564</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>txte_garante_observaciones</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>906</x>
+     <y>562</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>556</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_ocupacion</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>849</x>
+     <y>553</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_organismo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>904</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>507</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_telefono_laboral</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>888</x>
+     <y>562</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_domicilio_laboral</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>874</x>
+     <y>560</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_sueldo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>782</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_categoria</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>858</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>760</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_cuit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>852</x>
+     <y>554</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>549</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_cbu</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>861</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_beneficio</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>883</x>
+     <y>559</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>593</x>
+     <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar_nuevo</sender>
+   <signal>clicked()</signal>
+   <receiver>txte_observaciones</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>905</x>
+     <y>558</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>631</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_doc_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>839</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_apellido</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>878</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nombre</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>856</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_estado</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>897</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>629</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_cliente_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>922</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

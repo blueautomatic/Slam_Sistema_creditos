@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form_empresa_datos</class>
+ <widget class="QDialog" name="Form_empresa_datos">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1020</width>
-    <height>635</height>
+    <width>630</width>
+    <height>543</height>
    </rect>
   </property>
   <property name="palette">
@@ -25,9 +25,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -97,18 +97,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -118,6 +118,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>170</green>
+        <blue>127</blue>
        </color>
       </brush>
      </colorrole>
@@ -162,9 +171,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -234,18 +243,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -255,6 +264,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>170</green>
+        <blue>127</blue>
        </color>
       </brush>
      </colorrole>
@@ -299,9 +317,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -371,18 +389,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>207</red>
-        <green>207</green>
-        <blue>207</blue>
+        <red>239</red>
+        <green>235</green>
+        <blue>231</blue>
        </color>
       </brush>
      </colorrole>
@@ -392,6 +410,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>170</green>
+        <blue>127</blue>
        </color>
       </brush>
      </colorrole>
@@ -429,305 +456,592 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Alta Empresa</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <property name="styleSheet">
+   <string notr="true">selection-background-color: rgb(255, 170, 127);
+background-color: rgb(239, 235, 231);</string>
+  </property>
+  <widget class="QPushButton" name="boton_guardar">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>380</y>
-     <width>80</width>
+     <x>559</x>
+     <y>510</y>
+     <width>61</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(251, 204, 193);
+font:  10pt &quot;KacstOne&quot;;</string>
    </property>
    <property name="text">
     <string>Guardar</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="boton_limpiar">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>380</y>
-     <width>80</width>
+     <x>490</x>
+     <y>510</y>
+     <width>61</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(251, 204, 193);
+font:  10pt &quot;KacstOne&quot;;</string>
    </property>
    <property name="text">
     <string>Limpiar</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>40</y>
-     <width>521</width>
-     <height>321</height>
+     <x>10</x>
+     <y>10</y>
+     <width>611</width>
+     <height>491</height>
     </rect>
    </property>
-   <property name="acceptDrops">
-    <bool>true</bool>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(172, 55, 26);
+font:  11pt &quot;KacstOne&quot;;</string>
    </property>
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="title">
-    <string>    Datos de la Empresa</string>
-   </property>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>40</y>
-      <width>301</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Saab</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>Slam</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nombre de la Empresa:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>70</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ciudad:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>100</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Dirección:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Teléfono/Fax:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>E-mail:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>190</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Website:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>70</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Viedma</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>100</y>
-      <width>300</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>las violetas 60</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>130</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>2920-002332</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>160</y>
-      <width>261</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>slamcoop@slam.com</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_6">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>190</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>slamcoop.com.ar</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>250</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>20000</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>220</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tipo de IVA:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>250</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ingresos Brutos:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>280</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>N° de CUIT:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_9">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>280</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>00-23434567-0</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>220</y>
-      <width>161</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Responsable inscripto</string>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="icon">
+     <iconset>
+      <normaloff>Íconos/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</normaloff>Íconos/hombre-en-el-escritorio-de-la-oficina-con-un-ordenador.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Empresa</string>
+    </attribute>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>571</width>
+       <height>401</height>
+      </rect>
      </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Exento</string>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(239, 235, 231);
+font:  10pt &quot;KacstOne&quot;;
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
      </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Monotributo</string>
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-    </item>
+     <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>Íconos/tarjeta-personal-de-datos-de-contacto.png</normaloff>Íconos/tarjeta-personal-de-datos-de-contacto.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Datos de la Empresa</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>24</x>
+         <y>26</y>
+         <width>521</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}
+
+</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLineEdit" name="lne_nombre">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>27</y>
+          <width>301</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>KacstOne</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>27</y>
+          <width>151</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nombre de la Empresa:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>57</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ciudad:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>87</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dirección:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>117</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Teléfono/Fax:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>147</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>E-mail:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>177</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Website:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_ciudad">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>57</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_direccion">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>87</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_telefono">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>117</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_email">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>147</y>
+          <width>261</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_website">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>177</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_ingresos_brutos">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>237</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>207</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tipo de IVA:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>237</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ingresos Brutos:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>27</x>
+          <y>267</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>N° de CUIT:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_cuit">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>267</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbx_tipo_iva">
+        <property name="geometry">
+         <rect>
+          <x>197</x>
+          <y>207</y>
+          <width>171</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Responsable inscripto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Exento</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Monotributo</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>23</x>
+          <y>297</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nombre de  fantasia</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_nombre_fantasia">
+        <property name="geometry">
+         <rect>
+          <x>198</x>
+          <y>296</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nombre</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>519</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>431</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_ciudad</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>521</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_direccion</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>455</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_telefono</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>525</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>354</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_email</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_website</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>524</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>310</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_ingresos_brutos</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>369</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_cuit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>523</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>397</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nombre_fantasia</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>523</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>368</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

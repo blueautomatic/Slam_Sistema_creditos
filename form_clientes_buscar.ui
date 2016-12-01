@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1038</width>
+    <width>983</width>
     <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Buscar Cliente</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>981</width>
-     <height>571</height>
+     <width>961</width>
+     <height>591</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -74,7 +74,7 @@ background-color: rgb(255, 255, 255);
 </string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_16">
       <attribute name="icon">
@@ -91,7 +91,7 @@ background-color: rgb(255, 255, 255);
          <x>3</x>
          <y>17</y>
          <width>941</width>
-         <height>421</height>
+         <height>441</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -448,7 +448,7 @@ background-color: rgb(255, 255, 255);
          <string notr="true">background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>5678879</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="lne_limite_credito_buscar">
@@ -680,7 +680,7 @@ background-color: rgb(255, 255, 255);
          <string>Posee Recibo de Sueldo</string>
         </property>
         <property name="checked">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_137">
@@ -1001,7 +1001,7 @@ background-color: rgb(255, 255, 255);
        <property name="title">
         <string/>
        </property>
-       <widget class="QCheckBox" name="ckbx_facturas">
+       <widget class="QCheckBox" name="ckbx_facturas_buscar">
         <property name="geometry">
          <rect>
           <x>580</x>
@@ -1014,7 +1014,7 @@ background-color: rgb(255, 255, 255);
          <string>Presentó Facturas de Luz, Gas</string>
         </property>
         <property name="checked">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_36">
@@ -1043,7 +1043,7 @@ background-color: rgb(255, 255, 255);
          <string>N° CBU:</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="ckbx_veraz">
+       <widget class="QCheckBox" name="ckbx_veraz_buscar">
         <property name="geometry">
          <rect>
           <x>580</x>
@@ -1056,7 +1056,7 @@ background-color: rgb(255, 255, 255);
          <string>Figura en el Veraz</string>
         </property>
         <property name="checked">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_33">
@@ -1085,7 +1085,7 @@ background-color: rgb(255, 255, 255);
          <string>N° Beneficio:</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="ckbx_jub_pens">
+       <widget class="QCheckBox" name="ckbx_jub_pens_buscar">
         <property name="geometry">
          <rect>
           <x>580</x>
@@ -1098,7 +1098,7 @@ background-color: rgb(255, 255, 255);
          <string>Es Jubilado / Pensionado</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_cbu">
+       <widget class="QLineEdit" name="lne_cbu_buscar">
         <property name="geometry">
          <rect>
           <x>250</x>
@@ -1108,35 +1108,10 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>00451597859478396574780</string>
+         <string/>
         </property>
        </widget>
-       <widget class="QComboBox" name="cbx_tipo_iva">
-        <property name="geometry">
-         <rect>
-          <x>251</x>
-          <y>40</y>
-          <width>231</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Consumidor final</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Resposable inscripto</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Monotributista</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLineEdit" name="lne_nro_beneficio">
+       <widget class="QLineEdit" name="lne_nro_beneficio_buscar">
         <property name="geometry">
          <rect>
           <x>250</x>
@@ -1146,10 +1121,10 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>00345687</string>
+         <string/>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_cuit">
+       <widget class="QLineEdit" name="lne_cuit_buscar">
         <property name="geometry">
          <rect>
           <x>250</x>
@@ -1159,7 +1134,20 @@ background-color: rgb(255, 255, 255);
          </rect>
         </property>
         <property name="text">
-         <string>00-5678879-00</string>
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_tipo_iva_buscar">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>40</y>
+          <width>300</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
@@ -1204,10 +1192,10 @@ background-color: rgb(255, 255, 255);
     <widget class="QPushButton" name="boton_buscar_buscar">
      <property name="geometry">
       <rect>
-       <x>869</x>
+       <x>843</x>
        <y>9</y>
        <width>80</width>
-       <height>20</height>
+       <height>30</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1221,7 +1209,7 @@ font: 75 10pt &quot;KacstOne&quot;;</string>
     <widget class="QLabel" name="label_121">
      <property name="geometry">
       <rect>
-       <x>678</x>
+       <x>644</x>
        <y>12</y>
        <width>31</width>
        <height>16</height>
@@ -1247,7 +1235,7 @@ font: 75 10pt &quot;KacstOne&quot;;</string>
     <widget class="QLineEdit" name="lne_dni_filtro_buscar">
      <property name="geometry">
       <rect>
-       <x>709</x>
+       <x>675</x>
        <y>10</y>
        <width>151</width>
        <height>20</height>
@@ -1257,9 +1245,460 @@ font: 75 10pt &quot;KacstOne&quot;;</string>
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="boton_limpiar">
+     <property name="geometry">
+      <rect>
+       <x>860</x>
+       <y>530</y>
+       <width>80</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(235, 160, 143);
+font: 75 10pt &quot;KacstOne&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Limpiar</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_apellido_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>887</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_tipo_doc_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>912</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nombre_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>893</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_cliente_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>905</x>
+     <y>598</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>753</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_doc_cliente</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>900</x>
+     <y>589</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>505</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_estado</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>920</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>795</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_fecha_nac</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>908</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_estado_civil</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>907</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>570</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_domicilio_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>906</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_barrio_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>906</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>661</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_telefono_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>910</x>
+     <y>597</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_ciudad_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>908</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>611</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_limite_credito_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>895</x>
+     <y>596</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>462</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_email_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>907</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>txte_observaciones_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>872</x>
+     <y>583</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>452</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_dni_filtro_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>934</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>777</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_ocupacion_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>925</x>
+     <y>597</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_sueldo_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>935</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>800</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_antiguedad_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>923</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>795</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_categoria_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>598</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>793</x>
+     <y>241</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_organismo_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>914</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_telefono_laboral_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>914</x>
+     <y>588</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_domicilio_laboral_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>927</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>482</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_tipo_iva_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>930</x>
+     <y>587</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>534</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_cuit_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_cbu_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>921</x>
+     <y>596</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>538</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nro_beneficio_buscar</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>904</x>
+     <y>590</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>478</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
+

@@ -38,18 +38,25 @@ FORMS    += mainwindow.ui \
     form_clientes_buscar.ui \
     form_creditos_cuotas_buscar.ui \
     form_descargas_direccion.ui \
-    form_prestamos_generar_caida.ui \
     form_usuario_actualizar.ui \
     form_usuario_borrar.ui \
     form_usuario.ui \
     form_creditos_agregar_nuevos.ui \
     form_pagare_texto.ui \
-    form_cobradores_registrar.ui \
     form_empresa_datos_actualizar.ui \
+    form_cuotas_pagar.ui \
+    form_garante_historial.ui \
+    form_clientes_imprimir.ui \
+    form_cuotas_vencidas_30dias.ui \
+    ../crediredCobradorEmpresaUsuario/form_empresa_datos_actualizar.ui \
+    ../crediredCobradorEmpresaUsuario/empresaCredired/form_empresa_datos.ui \
     form_empresa_datos.ui \
-    form_prueba.ui \
-    form_prueba2.ui \
-    form_prueba3.ui
+    form_login.ui \
+    form_punitorios.ui \
+    form_credito_calcular.ui \
+    form_caja_diaria.ui \
+    form_egresos_diarios.ui \
+    form_ingresos_diarios.ui
 
 DISTFILES += \
     logica de pago credired.odt \

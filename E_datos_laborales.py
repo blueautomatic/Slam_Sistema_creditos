@@ -1,6 +1,6 @@
 import sys 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, Numeric, func, Boolean
+from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, Numeric, func, Boolean, update
 from sqlalchemy import create_engine
 #from N_cliente import N_datos_datos_laborales
 from sqlalchemy.orm import sessionmaker
@@ -13,43 +13,48 @@ class E_datos_laborales(base):
         id = Column(Integer, primary_key=True, autoincrement=True)
         id_party = Column(Integer)
         sueldo = Column(Numeric)
-        anti_laboral = Column(String)
+        anti_laboral = Column(DateTime)
         tel_laboral = Column(String)
         dom_laboral = Column(String)
         organismo = Column(String)
         ocupacion = Column(String)
         categoria = Column(String)
         posee_recibo_sueldo = Column(Boolean)
+        session=""
     
 
-        def __init__(self,id):
-            a = id
+        def __init__(self):
+            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+            Session= sessionmaker(bind=engine) 
+            self.session=Session()
 
         def get_datos_laborales(self, id_party):
 
-            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-            Session= sessionmaker(bind=engine) 
-            session=Session()
-
-            obj_party_laborales = session.query(E_datos_laborales).filter_by(id_party=id_party).first()          
+            obj_party_laborales = self.session.query(E_datos_laborales).filter_by(id_party=id_party).first()
+            self.session.close()          
             return obj_party_laborales
 
+        @classmethod
+        def guardar(cls,obj_N_datos_laborales,id_party):
+            obj_E_datos_laborales = cls()
+            obj_E_datos_laborales.sueldo = obj_N_datos_laborales.sueldo    
+            obj_E_datos_laborales.anti_laboral = obj_N_datos_laborales.anti_laboral
+            obj_E_datos_laborales.tel_laboral = obj_N_datos_laborales.tel_laboral
+            obj_E_datos_laborales.dom_laboral = obj_N_datos_laborales.dom_laboral
+            obj_E_datos_laborales.organismo = obj_N_datos_laborales.organismo
+            obj_E_datos_laborales.ocupacion = obj_N_datos_laborales.ocupacion
+            obj_E_datos_laborales.categoria = obj_N_datos_laborales.categoria
+            obj_E_datos_laborales.id_party = id_party
+            obj_E_datos_laborales.posee_recibo_sueldo = obj_N_datos_laborales.posee_recibo_sueldo
+            obj_E_datos_laborales.session.add(obj_E_datos_laborales)
+            obj_E_datos_laborales.session.commit()
+            obj_E_datos_laborales.session.close()
 
 
-        def guardar(self,obj_N_datos_laborales,id_party):
 
-            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-            Session= sessionmaker(bind=engine) 
-            session=Session()
-            new_record = E_datos_laborales(1)
-            new_record.sueldo = obj_N_datos_laborales.sueldo    
-            new_record.anti_laboral = obj_N_datos_laborales.anti_laboral
-            new_record.tel_laboral = obj_N_datos_laborales.tel_laboral
-            new_record.dom_laboral = obj_N_datos_laborales.dom_laboral
-            new_record.organismo = obj_N_datos_laborales.organismo
-            new_record.ocupacion = obj_N_datos_laborales.ocupacion
-            new_record.categoria = obj_N_datos_laborales.categoria
-            new_record.id_party = id_party
-            new_record.posee_recibo_sueldo = obj_N_datos_laborales.posee_recibo_sueldo
-            session.add(new_record)
-            session.commit()
+        def actualizar(self,obj_N_datos_laborales,id_party):
+            
+            u = update(E_datos_laborales).where(E_datos_laborales.id_party == id_party).values(ocupacion=obj_N_datos_laborales.ocupacion,organismo=obj_N_datos_laborales.organismo, categoria= obj_N_datos_laborales.categoria,posee_recibo_sueldo=obj_N_datos_laborales.posee_recibo_sueldo,sueldo=obj_N_datos_laborales.sueldo,anti_laboral=obj_N_datos_laborales.anti_laboral,tel_laboral=obj_N_datos_laborales.tel_laboral,dom_laboral=obj_N_datos_laborales.dom_laboral) 
+            self.session.execute(u)
+            self.session.commit()
+            self.session.close()

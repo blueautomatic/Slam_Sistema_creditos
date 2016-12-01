@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_clientes_borrar.ui'
 #
-# Created: Wed Aug  3 13:20:26 2016
+# Created: Thu Oct 20 17:13:16 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
