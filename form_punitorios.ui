@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Form_punitorios</class>
+ <widget class="QWidget" name="Form_punitorios">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -100,7 +100,7 @@ background-color: rgb(239, 235, 231);
        </rect>
       </property>
       <property name="displayFormat">
-       <string>dd/mm/yyyy</string>
+       <string>dd/MM/yyyy</string>
       </property>
       <property name="calendarPopup">
        <bool>true</bool>
@@ -190,31 +190,6 @@ background-color: rgb(239, 235, 231);
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>200</number>
       </attribute>
-      <row>
-       <property name="text">
-        <string/>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string/>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string/>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string/>
-       </property>
-      </row>
-      <column>
-       <property name="text">
-        <string>Número</string>
-       </property>
-      </column>
       <column>
        <property name="text">
         <string>Fecha</string>

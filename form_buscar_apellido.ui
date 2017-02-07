@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form_buscar_apellido</class>
+ <widget class="QWidget" name="Form_buscar_apellido">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>643</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Buscar por Apellido</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(211, 211, 186);
+</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>621</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">selection-background-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);
+font: 10pt &quot;KacstOne&quot;;
+background-color: rgb(172, 55, 26);
+
+</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="icon">
+     <iconset>
+      <normaloff>Íconos/prismaticos.png</normaloff>Íconos/prismaticos.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Buscar por Apellido</string>
+    </attribute>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>70</y>
+       <width>601</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(211, 211, 186);
+</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Resultado de Búsqueda</string>
+      </attribute>
+      <widget class="QTableWidget" name="tw_resultado">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>10</y>
+         <width>581</width>
+         <height>301</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(211, 203, 184);
+</string>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>150</number>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>DNI</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>2</x>
+       <y>10</y>
+       <width>431</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{
+background-color: rgb(211, 211, 186);
+border-style: solid;
+border-width: 3px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+}
+
+QLabel{
+background-color: rgb(239, 235, 231);
+}
+
+QLineEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255);
+}
+
+QComboBox{
+background-color: rgb(255, 255, 255);
+}
+
+QDateEdit{
+background-color: rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>15</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(211, 211, 186);
+</string>
+      </property>
+      <property name="text">
+       <string>Apellido : </string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lne_apellido">
+      <property name="geometry">
+       <rect>
+        <x>89</x>
+        <y>16</y>
+        <width>211</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="boton_apellido_buscar">
+      <property name="geometry">
+       <rect>
+        <x>309</x>
+        <y>16</y>
+        <width>80</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>lne_apellido</tabstop>
+  <tabstop>boton_apellido_buscar</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>tw_resultado</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -1077,9 +1077,9 @@ border-bottom-color: rgb(204, 0, 3);
      <string>ARCHIVO</string>
     </property>
     <addaction name="actionUsu"/>
+    <addaction name="actionUsu_Act"/>
     <addaction name="actionEmpresa"/>
     <addaction name="actionEmpresaActualizar"/>
-    <addaction name="actionUsu_Act"/>
    </widget>
    <widget class="QMenu" name="menuOPERACIONES">
     <property name="title">
@@ -1102,6 +1102,7 @@ border-bottom-color: rgb(204, 0, 3);
     <addaction name="action_cliente_actualizar"/>
     <addaction name="action_buscar_cliente"/>
     <addaction name="actionHISTORIAL_GARANTE"/>
+    <addaction name="actionBuscar_apellido"/>
    </widget>
    <widget class="QMenu" name="menuCR_DITOS">
     <property name="title">
@@ -1118,6 +1119,7 @@ border-bottom-color: rgb(204, 0, 3);
     <addaction name="actionCOBRAR_CUOTAS"/>
     <addaction name="actionCONSULTA_DEUDORES"/>
     <addaction name="actionGenerador_punitorios"/>
+    <addaction name="actionReparar_Cuotas"/>
    </widget>
    <widget class="QMenu" name="menuCAJA">
     <property name="title">
@@ -1376,12 +1378,12 @@ border-bottom-color: rgb(204, 0, 3);
    </attribute>
    <addaction name="separator"/>
    <addaction name="separator"/>
-   <addaction name="action_credito_agregar_nuevo"/>
+   <addaction name="action_alta_cliente_nuevo"/>
    <addaction name="separator"/>
+   <addaction name="action_credito_agregar_nuevo"/>
    <addaction name="separator"/>
    <addaction name="actionCOBRAR_CUOTAS"/>
    <addaction name="separator"/>
-   <addaction name="action_alta_cliente_nuevo"/>
   </widget>
   <action name="actionCONFIGURAR_OPCIONES">
    <property name="icon">
@@ -1417,7 +1419,7 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/icon(1).png</normaloff>Íconos/icon(1).png</iconset>
    </property>
    <property name="text">
-    <string>AGREGAR NUEVOS CRÉDITOS</string>
+    <string>Agregar Nuevos Créditos</string>
    </property>
   </action>
   <action name="actionGENERADOR_CA_DA_DE_PR_STAMOS">
@@ -1453,8 +1455,13 @@ border-bottom-color: rgb(204, 0, 3);
    </property>
   </action>
   <action name="actionHist_cred_y_ctas">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/documento-financiero.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
-    <string>HISTORIAL CRÉDITOS Y CUOTAS</string>
+    <string>Historial Créditos y Cuotas</string>
    </property>
   </action>
   <action name="actionBAJA_CR_DITOS">
@@ -1490,7 +1497,7 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</iconset>
    </property>
    <property name="text">
-    <string>COBRAR CUOTAS</string>
+    <string>Cobrar Cuotas</string>
    </property>
   </action>
   <action name="actionPUNITORIOS_DE_CUOTAS">
@@ -1518,7 +1525,7 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/signo-de-interrogacion.png</normaloff>Íconos/signo-de-interrogacion.png</iconset>
    </property>
    <property name="text">
-    <string>CONSULTA DEUDORES</string>
+    <string>Consulta Deudores</string>
    </property>
   </action>
   <action name="actionREPORTE_DEUDORES">
@@ -1561,7 +1568,7 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/prismaticos.png</normaloff>Íconos/prismaticos.png</iconset>
    </property>
    <property name="text">
-    <string>BUSCAR CLIENTES</string>
+    <string>Buscar Clientes</string>
    </property>
   </action>
   <action name="actionUsuarios">
@@ -1588,7 +1595,7 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/silueta-masculina-de-usuario.png</normaloff>Íconos/silueta-masculina-de-usuario.png</iconset>
    </property>
    <property name="text">
-    <string>ACTUALIZAR CLIENTE</string>
+    <string>Actualizar Cliente</string>
    </property>
   </action>
   <action name="actionCobradores">
@@ -1615,10 +1622,14 @@ border-bottom-color: rgb(204, 0, 3);
      <normaloff>Íconos/silueta-masculina-de-usuario.png</normaloff>Íconos/silueta-masculina-de-usuario.png</iconset>
    </property>
    <property name="text">
-    <string>CLIENTE NUEVO</string>
+    <string>Cliente Nuevo</string>
    </property>
   </action>
   <action name="actionEmpresaActualizar">
+   <property name="icon">
+    <iconset>
+     <normaloff>Íconos/boton-actualizar.png</normaloff>Íconos/boton-actualizar.png</iconset>
+   </property>
    <property name="text">
     <string>Empresa Actualizar</string>
    </property>
@@ -1639,33 +1650,91 @@ border-bottom-color: rgb(204, 0, 3);
    </property>
   </action>
   <action name="actionHISTORIAL_GARANTE">
+   <property name="icon">
+    <iconset>
+     <normaloff>Íconos/calidad-de-la-pagina.png</normaloff>
+     <normalon>Íconos/herramientas-de-papel-y-lapiz.png</normalon>Íconos/calidad-de-la-pagina.png</iconset>
+   </property>
    <property name="text">
-    <string>HISTORIAL GARANTE</string>
+    <string>Historial Garantes</string>
    </property>
   </action>
   <action name="actionEgresos">
+   <property name="icon">
+    <iconset>
+     <normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</iconset>
+   </property>
    <property name="text">
     <string>Egresos</string>
    </property>
   </action>
   <action name="actionIngresos">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/maquina-de-facturacion-electronica-con-escaner.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Ingresos</string>
    </property>
   </action>
   <action name="actionCALCULADOR">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/calculadora.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
-    <string>CALCULADOR</string>
+    <string>Calculador</string>
    </property>
   </action>
   <action name="actionUsu_Act">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/boton-actualizar.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Usuario Actualizar</string>
    </property>
   </action>
   <action name="actionGenerador_punitorios">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/calculadora.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
-    <string>GENERADOR DE PUNITORIOS</string>
+    <string>Generador de Punitorios</string>
+   </property>
+  </action>
+  <action name="actionReparar_Cuotas">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/icono-de-una-tuerca.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Reparar Cuotas</string>
+   </property>
+  </action>
+  <action name="actionBuscar_por_Apellido">
+   <property name="icon">
+    <iconset>
+     <normaloff>Íconos/prismaticos.png</normaloff>Íconos/prismaticos.png</iconset>
+   </property>
+   <property name="text">
+    <string>Buscar por Apellido</string>
+   </property>
+  </action>
+  <action name="actionBuscar_apellido">
+   <property name="icon">
+    <iconset>
+     <normalon>Íconos/prismaticos.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Buscar por Apellido</string>
    </property>
   </action>
  </widget>

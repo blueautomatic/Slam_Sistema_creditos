@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_creditos_agregar_nuevos.ui'
 #
-# Created: Mon Nov 14 11:21:19 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -242,10 +241,10 @@ class Ui_form_agregar_nuevos_creditos(object):
         self.label = QtWidgets.QLabel(self.groupBox)
         self.label.setGeometry(QtCore.QRect(10, 24, 41, 16))
         self.label.setObjectName("label")
-        self.lne_nro_doc_creditonuevo = QtWidgets.QLineEdit(self.groupBox)
-        self.lne_nro_doc_creditonuevo.setGeometry(QtCore.QRect(60, 20, 141, 20))
-        self.lne_nro_doc_creditonuevo.setText("")
-        self.lne_nro_doc_creditonuevo.setObjectName("lne_nro_doc_creditonuevo")
+        self.lne_nom_ape = QtWidgets.QLineEdit(self.groupBox)
+        self.lne_nom_ape.setGeometry(QtCore.QRect(280, 20, 261, 20))
+        self.lne_nom_ape.setText("")
+        self.lne_nom_ape.setObjectName("lne_nom_ape")
         self.boton_buscar_cliente_creditonuevo = QtWidgets.QPushButton(self.groupBox)
         self.boton_buscar_cliente_creditonuevo.setGeometry(QtCore.QRect(210, 20, 51, 23))
         self.boton_buscar_cliente_creditonuevo.setStyleSheet("QPushButton{\n"
@@ -258,9 +257,9 @@ class Ui_form_agregar_nuevos_creditos(object):
         self.lne_nro_creditonuevo_2.setGeometry(QtCore.QRect(660, 20, 41, 20))
         self.lne_nro_creditonuevo_2.setText("")
         self.lne_nro_creditonuevo_2.setObjectName("lne_nro_creditonuevo_2")
-        self.lne_nom_ape = QtWidgets.QLineEdit(self.groupBox)
-        self.lne_nom_ape.setGeometry(QtCore.QRect(330, 20, 291, 23))
-        self.lne_nom_ape.setObjectName("lne_nom_ape")
+        self.lne_nro_doc_creditonuevo = QtWidgets.QLineEdit(self.groupBox)
+        self.lne_nro_doc_creditonuevo.setGeometry(QtCore.QRect(50, 20, 141, 23))
+        self.lne_nro_doc_creditonuevo.setObjectName("lne_nro_doc_creditonuevo")
         self.groupBox_2 = QtWidgets.QGroupBox(self.tab_2)
         self.groupBox_2.setGeometry(QtCore.QRect(24, 274, 1011, 281))
         font = QtGui.QFont()
@@ -348,6 +347,13 @@ class Ui_form_agregar_nuevos_creditos(object):
         self.lne_credito_total_creditonuevo.setGeometry(QtCore.QRect(530, 240, 111, 21))
         self.lne_credito_total_creditonuevo.setText("")
         self.lne_credito_total_creditonuevo.setObjectName("lne_credito_total_creditonuevo")
+        self.boton_imprimir = QtWidgets.QPushButton(self.groupBox_2)
+        self.boton_imprimir.setGeometry(QtCore.QRect(420, 240, 71, 23))
+        self.boton_imprimir.setStyleSheet("QPushButton{\n"
+"background-color: rgb(253, 194, 179);\n"
+"}\n"
+"")
+        self.boton_imprimir.setObjectName("boton_imprimir")
         self.groupBox_3 = QtWidgets.QGroupBox(self.tab_2)
         self.groupBox_3.setGeometry(QtCore.QRect(24, 580, 1011, 51))
         self.groupBox_3.setStyleSheet("QGroupBox{\n"
@@ -654,6 +660,9 @@ class Ui_form_agregar_nuevos_creditos(object):
 "font: 10pt \"KacstOne\";\n"
 "}")
         self.boton_limpiar_creditonuevo.setObjectName("boton_limpiar_creditonuevo")
+        self.lne_party_party = QtWidgets.QLineEdit(self.tab)
+        self.lne_party_party.setGeometry(QtCore.QRect(20, 610, 16, 16))
+        self.lne_party_party.setObjectName("lne_party_party")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("../../../Descargas/Íconos/icon(1).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tab, icon1, "")
@@ -663,19 +672,19 @@ class Ui_form_agregar_nuevos_creditos(object):
         self.tabWidget_2.setCurrentIndex(0)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nro_creditonuevo.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_importe_prestamo_creditonuevo.clear)
-        self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nro_doc_creditonuevo.clear)
+        self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nom_ape.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nro_creditonuevo.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_interes_creditonuevo.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_gastos_creditonuevo.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_credito_total_creditonuevo.clear)
-        self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nom_ape.clear)
+        self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nro_doc_creditonuevo.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_nro_creditonuevo_2.clear)
         self.boton_limpiar_creditonuevo.clicked.connect(self.lne_observaciones_creditonuevo.clear)
         QtCore.QMetaObject.connectSlotsByName(form_agregar_nuevos_creditos)
         form_agregar_nuevos_creditos.setTabOrder(self.tabWidget_2, self.lne_nro_creditonuevo_2)
         form_agregar_nuevos_creditos.setTabOrder(self.lne_nro_creditonuevo_2, self.lne_nro_creditonuevo)
-        form_agregar_nuevos_creditos.setTabOrder(self.lne_nro_creditonuevo, self.lne_nro_doc_creditonuevo)
-        form_agregar_nuevos_creditos.setTabOrder(self.lne_nro_doc_creditonuevo, self.boton_buscar_cliente_creditonuevo)
+        form_agregar_nuevos_creditos.setTabOrder(self.lne_nro_creditonuevo, self.lne_nom_ape)
+        form_agregar_nuevos_creditos.setTabOrder(self.lne_nom_ape, self.boton_buscar_cliente_creditonuevo)
         form_agregar_nuevos_creditos.setTabOrder(self.boton_buscar_cliente_creditonuevo, self.dte_fec_creditonuevo)
         form_agregar_nuevos_creditos.setTabOrder(self.dte_fec_creditonuevo, self.lne_importe_prestamo_creditonuevo)
         form_agregar_nuevos_creditos.setTabOrder(self.lne_importe_prestamo_creditonuevo, self.spbx_cantidad_cuotas_creditonuevo)
@@ -695,7 +704,7 @@ class Ui_form_agregar_nuevos_creditos(object):
         form_agregar_nuevos_creditos.setTabOrder(self.tw_garantes_lista_creditonuevo, self.lne_interes_creditonuevo)
         form_agregar_nuevos_creditos.setTabOrder(self.lne_interes_creditonuevo, self.cbx_formula_creditonuevo)
         form_agregar_nuevos_creditos.setTabOrder(self.cbx_formula_creditonuevo, self.tabWidget)
-        form_agregar_nuevos_creditos.setTabOrder(self.tabWidget, self.lne_nom_ape)
+        form_agregar_nuevos_creditos.setTabOrder(self.tabWidget, self.lne_nro_doc_creditonuevo)
 
     def retranslateUi(self, form_agregar_nuevos_creditos):
         _translate = QtCore.QCoreApplication.translate
@@ -717,6 +726,7 @@ class Ui_form_agregar_nuevos_creditos(object):
         self.label_11.setText(_translate("form_agregar_nuevos_creditos", "Interes $:"))
         self.label_12.setText(_translate("form_agregar_nuevos_creditos", "Gastos $:"))
         self.label_15.setText(_translate("form_agregar_nuevos_creditos", "Credito total $:"))
+        self.boton_imprimir.setText(_translate("form_agregar_nuevos_creditos", "Imprimir"))
         self.label_18.setText(_translate("form_agregar_nuevos_creditos", "Observaciones:"))
         self.label_9.setText(_translate("form_agregar_nuevos_creditos", "Lista de cuotas del nuevo credito"))
         self.boton_generar_creditonuevo.setText(_translate("form_agregar_nuevos_creditos", "Generar"))

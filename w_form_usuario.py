@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication,QDialog
+from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox
 from PyQt5 import uic
 from N_usuario import N_usuario
 from form_usuario import Ui_form_usuario
@@ -22,7 +22,12 @@ class usuario(QDialog):
         obj_usu.password = self.obj_form.lne_pass.text()
         obj_usu.password2 = self.obj_form.lne_pass2.text()
         obj_usu.guardar(obj_usu)
-
+        
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle("OK")
+        msgBox.setText('Se creo correctamente el usuario: ' + self.obj_form.lne_nombre.text())
+        msgBox.exec_()
+        return False  
 
 
 #app = QApplication(sys.argv)

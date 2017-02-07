@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /home/soporte/Documentos/credi20161114
-python3 mainwindow.pyw 
+cd /home/soporte/Documentos/credired20170102
+python3 w_form_login.pyw 

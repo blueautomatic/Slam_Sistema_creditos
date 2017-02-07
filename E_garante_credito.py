@@ -1,4 +1,4 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer, ForeignKey,update
 from sqlalchemy import create_engine
@@ -14,8 +14,9 @@ class E_garante_credito(base):
     id_party_garante = Column(Integer)
     nro_credito = Column(Integer)
     tipo_garante = Column(String)
+    write_uid = Column(Integer)
     session = ""
-    
+
 
     def __init__  (self, id_garante):
         a = id_garante
@@ -30,17 +31,18 @@ class E_garante_credito(base):
         for item in lista_garantes_credito:
             new_record = cls(1)
             new_record.id_party_garante = item.id_party_garante
-            new_record.nro_credito = int(nro_credito)      
+            new_record.nro_credito = int(nro_credito)
             new_record.tipo_garante = item.tipo_garante
             try:
                 new_record.session.add(new_record)
                 new_record.session.commit()
-                new_record.session.close()
-                return True
+
             except:
                 new_record.session.rollback()
                 new_record.session.close()
                 return False
+
+        return True
 
     def get_garante_credito(self, id_party):
 
@@ -53,4 +55,4 @@ class E_garante_credito(base):
         self.session.close()
         return obj_party_party
 
- 
+

@@ -1,4 +1,4 @@
-import sys
+import sys,datetime
 from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem
 from PyQt5 import uic
 from form_cuotas_vencidas_30dias import Ui_form_cuotas_vencidas_30dias
@@ -71,18 +71,20 @@ class Cuotas_vencidas_30dias(QDialog):
         story.append(P)
         story.append(Spacer(0,25))
 
-        P=Paragraph("<b>Cuotas vencidas hasta 30 dias</b> ",style_barra)
+        P=Paragraph("<b>Cuotas vencidas hasta 30 dias</b> " + str(datetime.datetime.now()),style_barra)
         story.append(P)
         story.append(Spacer(0,25))
         #nombre apellido dni Nro prestamo nro cuota monto
         integrantes = [[Paragraph('''<font size=12> <b> </b></font>''',styleSheet["BodyText"])],
                 ['Apellido', 'Nombre', 'D.N.I:', 'Nro Crédito:','Nro Cuota','Monto']]
 
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
         for item in  self.listado_cuotas_30_dias:
             monto_adeudado = float(item.importe_primer_venc) + float(item.punitorios)
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
-            obj_N_datos_personales_cliente = N_datos_personales_cliente(1)
+            obj_N_datos_personales_cliente = N_datos_personales_cliente()
             obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
             integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(monto_adeudado)])
             t=Table(integrantes, (150,55, 100, 135, 55,55))
@@ -91,12 +93,11 @@ class Cuotas_vencidas_30dias(QDialog):
                                ('BOX', (0,1), (-1,-1), 0.25, colors.black),
                                ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
                                ]))
-           
-
             story.append(t)
             story.append(Spacer(0,15))
-        
-        doc=SimpleDocTemplate("listado_de_morosos_30dias.pdf")
+
+        nombre_archivo = "listado_de_morosos_30dias" + str(datetime.datetime.now()) + ".pdf"
+        doc=SimpleDocTemplate(nombre_archivo)
         doc.build(story )
     
     def generar_60dias(self):
@@ -141,7 +142,7 @@ class Cuotas_vencidas_30dias(QDialog):
         story.append(P)
         story.append(Spacer(0,25))
 
-        P=Paragraph("<b>Cuotas vencidas hasta 60 dias</b> ",style_barra)
+        P=Paragraph("<b>Cuotas vencidas hasta 60 dias</b> "+ str(datetime.datetime.now()),style_barra)
         story.append(P)
         story.append(Spacer(0,25))
         #nombre apellido dni Nro prestamo nro cuota monto
@@ -152,9 +153,9 @@ class Cuotas_vencidas_30dias(QDialog):
             monto_adeudado = float(item.importe_primer_venc) + float(item.punitorios)
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
-            obj_N_datos_personales_cliente = N_datos_personales_cliente(1)
+            obj_N_datos_personales_cliente = N_datos_personales_cliente()
             obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
-            integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(monto_adeudado)])
+            integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(round(monto_adeudado,2))])
             t=Table(integrantes, (150,55, 100, 135, 55,55))
             t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
@@ -164,8 +165,9 @@ class Cuotas_vencidas_30dias(QDialog):
 
             story.append(t)
             story.append(Spacer(0,15))
-        
-        doc=SimpleDocTemplate("listado_de_morosos_60dias.pdf")
+        nombre_archivo = "listado_de_morosos_60dias" + str(datetime.datetime.now()) + ".pdf"
+       
+        doc=SimpleDocTemplate(nombre_archivo)
         doc.build(story )
 
     def generar_90dias(self):
@@ -210,7 +212,7 @@ class Cuotas_vencidas_30dias(QDialog):
         story.append(P)
         story.append(Spacer(0,25))
 
-        P=Paragraph("<b>Cuotas vencidas hasta 90 dias</b> ",style_barra)
+        P=Paragraph("<b>Cuotas vencidas hasta 90 dias</b> " + str(datetime.datetime.now()),style_barra)
         story.append(P)
         story.append(Spacer(0,25))
         #nombre apellido dni Nro prestamo nro cuota monto
@@ -221,9 +223,9 @@ class Cuotas_vencidas_30dias(QDialog):
             monto_adeudado = float(item.importe_primer_venc) + float(item.punitorios)
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
-            obj_N_datos_personales_cliente = N_datos_personales_cliente(1)
+            obj_N_datos_personales_cliente = N_datos_personales_cliente()
             obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
-            integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(monto_adeudado)])
+            integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(round(monto_adeudado,2))])
             t=Table(integrantes, (150,55, 100, 135, 55,55))
             t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
@@ -233,8 +235,9 @@ class Cuotas_vencidas_30dias(QDialog):
 
             story.append(t)
             story.append(Spacer(0,15))
-        
-        doc=SimpleDocTemplate("listado_de_morosos_90dias.pdf")
+
+        nombre_archivo = "listado_de_morosos_90dias" + str(datetime.datetime.now()) + ".pdf"
+        doc=SimpleDocTemplate(nombre_archivo)
         doc.build(story )
 
 

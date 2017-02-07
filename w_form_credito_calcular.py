@@ -18,72 +18,57 @@ class Calcular_credito(QDialog):
         QDialog.__init__(self)
         self.obj_form = Ui_form_credito_calcular()
         self.obj_form.setupUi(self)
-        self.obj_form.boton_generar_creditonuevo.clicked.connect(self.calcular_credito)
-        self.obj_form.boton_limpiar_creditonuevo.clicked.connect(self.limpiar_nuevo)
+        self.obj_form.boton_calcular.clicked.connect(self.calcular_cuotas)
+        #self.obj_form.boton_limpiar_creditonuevo.clicked.connect(self.limpiar_nuevo)
 
 
     def limpiar_nuevo(self):
-        while (self.obj_form.tw_lista_cuotas_creditonuevo.rowCount() > 0):
-            self.obj_form.tw_lista_cuotas_creditonuevo.removeRow(0)
+        pass
 
-    def calcular_credito(self):
-        self.limpiar_nuevo()
-        
+    def calcular_cuotas(self):
+        capital = self.obj_form.lne_capital.text()
+        nro_cuota = self.obj_form.lne_cant_cta.text()
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        if capital != "" and nro_cuota != "":
+
+            self.obj_form.lne_cta_13.setText(str(self.valor_cuota(13)))
+            self.obj_form.lne_cta_14.setText(str(self.valor_cuota(14)))
+            self.obj_form.lne_cta_15.setText(str(self.valor_cuota(15)))
+            self.obj_form.lne_cta_16.setText(str(self.valor_cuota(16)))
+            self.obj_form.lne_cta_17.setText(str(self.valor_cuota(17)))
+            self.obj_form.lne_cta_18.setText(str(self.valor_cuota(18)))
+            self.obj_form.lne_cta_19.setText(str(self.valor_cuota(19)))
+            self.obj_form.lne_cta_20.setText(str(self.valor_cuota(20)))
+            self.obj_form.lne_cta_21.setText(str(self.valor_cuota(21)))
+            self.obj_form.lne_cta_22.setText(str(self.valor_cuota(22)))
+            self.obj_form.lne_cta_23.setText(str(self.valor_cuota(23)))
+            self.obj_form.lne_cta_24.setText(str(self.valor_cuota(24)))
+
+
+            self.obj_form.lne_valor_cta.setText(str(self.valor_cuota(int(nro_cuota))))
+        else:
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle("Atencion")
+            msgBox.setText('Verificar que el campo Capital y Nro de cuota vacios')
+            msgBox.exec_()
+    
+    def valor_cuota(self, cant_cuotas):
+       
         obj_credito_total=0
-        interes_total=0
-        vencimiento_primer_cuota= self.obj_form.dte_fec_creditonuevo.text()
-        capital = self.obj_form.lne_importe_prestamo_creditonuevo.text()
-        tasa = self.obj_form.lne_interes_creditonuevo.text()
-        cantidad_cuotas = self.obj_form.spbx_cantidad_cuotas_creditonuevo.text()
+        interes_total=0      
+        capital = self.obj_form.lne_capital.text()
+        tasa = 8
 
-        obj_date_venc_1er_cuota = datetime.datetime.strptime(vencimiento_primer_cuota, '%d/%m/%Y')
         interes=self.redondear(str(float(capital) / float(tasa)))
-        obj_capital = self.redondear(str(float(capital) / float(cantidad_cuotas)))
+        #valor cuota
+        obj_capital = self.redondear(str(float(capital) / float(cant_cuotas)))
+        gastos = self.calcular_Gastos(cant_cuotas)
 
-        hoy = obj_date_venc_1er_cuota
-        contador = 0
-        gastos = self.calcular_Gastos(int(cantidad_cuotas))
-        resultado_gatos= gastos * int(cantidad_cuotas)
+        valor_cuota =float(interes) + float(obj_capital) + float(gastos)
 
-        for item in  range(0,int(cantidad_cuotas)):
-            #obj_cuotas= N_cuotas(1)
-            #agrego registros en la grilla
-            rowPosition = self.obj_form.tw_lista_cuotas_creditonuevo.rowCount()
-            self.obj_form.tw_lista_cuotas_creditonuevo.insertRow(rowPosition)
-            valor_cuota =float(interes) + float(obj_capital) + float(gastos)
-            obj_credito_total= obj_credito_total +  float(interes) + float(obj_capital) + float(gastos)
-            interes_total= interes_total + interes
-            nro_cuota = str(item + 1)
-            
-            self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 0, QTableWidgetItem(str(nro_cuota)))
-            self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 1, QTableWidgetItem(str(obj_capital)))
-            self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 2, QTableWidgetItem(str(interes)))
-            self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 3, QTableWidgetItem(str(gastos)))
-
-            if contador == 0 :
-                self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 4, QTableWidgetItem(str(obj_date_venc_1er_cuota)))
-                #obj_cuotas.primer_Vencimiento = vencimiento_primer_cuota
-            else:
-                 nuevo_mes = hoy.month + contador
-                 nuevo_year = hoy.year
-                 nuevo_dia = 5
-                 if nuevo_mes > 12:
-                    nuevo_mes = nuevo_mes % 12
-                    nuevo_year += 1
-                
-                 obj_fecha_cuota= datetime.datetime(nuevo_year, nuevo_mes, nuevo_dia)
-                 self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 4, QTableWidgetItem(str(obj_fecha_cuota)   ))
-                 #obj_cuotas.primer_Vencimiento = obj_fecha_cuota
-           
-            self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 5, QTableWidgetItem(str(valor_cuota)))
-            #self.obj_form.tw_lista_cuotas_creditonuevo.setItem(rowPosition , 4, QTableWidgetItem((str(float(capital) / float(tasa)))))
-            #pyqtRemoveInputHook()
-            #import pdb; pdb.set_trace()
-            contador = contador + 1
-
-        self.obj_form.lne_credito_total.setText(str(obj_credito_total))
-        self.obj_form.lne_interes_total.setText(str(interes_total))
-        self.obj_form.lne_otros_total.setText(str(resultado_gatos))
+        return valor_cuota
+          
 
     def redondear(self,obj_capital):
         pos = obj_capital.find('.') 
@@ -127,8 +112,6 @@ class Calcular_credito(QDialog):
             gastos = 0
 
         return gastos
-     
-
 #app = QApplication(sys.argv)
 #dialogo= Calcular_credito()
 #dialogo.show()

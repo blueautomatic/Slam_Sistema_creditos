@@ -70,11 +70,14 @@ class N_cuotas(object):
         obj_ingreso.nombre = "Cuotas"
         obj_ingreso.id_cuota = N_cuota.id
 
-
-        E_ingresos().guardar_ingresos(obj_ingreso)
-        
-
-
-
+        obj_ingreso.guardar_ingresos(obj_ingreso)
         #obj_E_ingresos.guardar_ingresos(obj_ingreso)
         return True
+
+    def buscar_cta_por_nro_cred_y_nro_cta(self, nro_credito, nro_cuota):
+        obj_e_cuotas = E_cuotas(1)
+        return obj_e_cuotas.buscar_cta_por_nro_cred_y_nro_cta(nro_credito, nro_cuota)
+
+    def actualizar(self):
+        obj_e_cuotas = E_cuotas(1)
+        return obj_e_cuotas.actualizar(self)

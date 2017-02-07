@@ -77,27 +77,23 @@ class N_datos_personales_cliente(object):
             return self      
         else:
             return False
-
-
     
     def buscar_party_party_por_nro_doc(self, dni_cliente):
 
         obj_E_party_party_nro_cliente = E_party_party()
         party_party_por_nro_doc = obj_E_party_party_nro_cliente.get_party_party(dni_cliente)
         if party_party_por_nro_doc != None:
-            self.apellido = party_party_por_nro_doc.apellido
-            self.nombre = party_party_por_nro_doc.nombre
-            self.tipo_doc = party_party_por_nro_doc.tipo_doc
-            self.nro_doc = party_party_por_nro_doc.num_doc
-            self.estado_civil = party_party_por_nro_doc.estado_civil
-            self.fec_nac = party_party_por_nro_doc.fec_nac
-            self.limite_credito = party_party_por_nro_doc.limite_credito
-            self.id_party = party_party_por_nro_doc.id_party
-            self.estado = party_party_por_nro_doc.estado
-            return self      
-        else:
+            return party_party_por_nro_doc
+        else:    
             return False
    
+    def buscar (self, apellido):
+        obj_party_party = E_party_party()
+        return obj_party_party.buscar(apellido)
+
+
+
+
 class N_party_cliente(object):
     nro_cliente = ""
     comment=""
@@ -105,6 +101,12 @@ class N_party_cliente(object):
 
     def __init__(self,id_party):
         a= id_party
+
+    def actualizar_comentario(self,id_party,observaciones):
+        obj_E_party_cliente = E_party_cliente()
+        obj_E_party_cliente.actualizar_comentario(id_party,observaciones)
+        return True
+
 
     def get_party_cliente(self, id_party):
         obj_E_party_cliente = E_party_cliente()

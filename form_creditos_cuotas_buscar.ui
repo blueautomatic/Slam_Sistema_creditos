@@ -474,7 +474,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Buscador de estado prestamo y cuotas</string>
   </property>
   <property name="styleSheet">
    <string notr="true">selection-background-color: rgb(255, 170, 127);
@@ -657,7 +657,7 @@ font:  11pt &quot;KacstOne&quot;;</string>
        <x>10</x>
        <y>0</y>
        <width>981</width>
-       <height>581</height>
+       <height>591</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1254,7 +1254,7 @@ font: 10pt &quot;KacstOne&quot;;</string>
          <string>Nro DNI :</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_nro_dni_cuotas">
+       <widget class="QLineEdit" name="lne_dni">
         <property name="geometry">
          <rect>
           <x>80</x>
@@ -1770,7 +1770,7 @@ background-color: rgb(255, 255, 255);
        <property name="title">
         <string/>
        </property>
-       <widget class="QTableWidget" name="tw_lista_creditos_cuotas_buscar">
+       <widget class="QTableWidget" name="tw_lista_creditos">
         <property name="geometry">
          <rect>
           <x>13</x>
@@ -1782,6 +1782,11 @@ background-color: rgb(255, 255, 255);
         <property name="styleSheet">
          <string notr="true">background-color: rgb(251, 204, 193);</string>
         </property>
+        <column>
+         <property name="text">
+          <string>ESTADO</string>
+         </property>
+        </column>
         <column>
          <property name="text">
           <string>Crédito N°</string>
@@ -1805,21 +1810,6 @@ background-color: rgb(255, 255, 255);
         <column>
          <property name="text">
           <string>Capital</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Finalizado</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Bloqueado</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Formula</string>
          </property>
         </column>
         <column>
@@ -2358,7 +2348,7 @@ background-color: rgb(255, 255, 255);
        <property name="title">
         <string/>
        </property>
-       <widget class="QTableWidget" name="tw_listado_cuotas_cuotas_buscar">
+       <widget class="QTableWidget" name="tw_listado_cuotas">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -2596,11 +2586,11 @@ background-color: rgb(255, 255, 255);
       <zorder>label_7</zorder>
      </widget>
     </widget>
-    <widget class="QPushButton" name="boton_limpiar_cuotas_buscar">
+    <widget class="QPushButton" name="boton_limpiar">
      <property name="geometry">
       <rect>
-       <x>742</x>
-       <y>590</y>
+       <x>890</x>
+       <y>600</y>
        <width>71</width>
        <height>20</height>
       </rect>

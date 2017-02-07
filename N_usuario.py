@@ -8,7 +8,8 @@ class N_usuario(object):
     tipo_usuario = ""
     password = ""
     password2 = ""
-    
+
+
 
     def buscar_usuario(self,nombre,clave):
         obj_E_usuario = E_usuario()

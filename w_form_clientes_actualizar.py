@@ -237,8 +237,8 @@ class clientes_actualizar(QDialog):
             self.obj_form.lne_nombre_actualizar.setText(obj_party_party.nombre)
             index_tipo_doc=self.obj_form.cbx_tipo_doc_actualizar.findText(str(obj_party_party.tipo_doc))
             self.obj_form.cbx_tipo_doc_actualizar.setCurrentIndex(index_tipo_doc)
-            self.obj_form.lne_dni_filtro_actualizar.setText(obj_party_party.nro_doc)
-            self.obj_form.lne_nro_doc_actualizar.setText(obj_party_party.nro_doc)
+            self.obj_form.lne_dni_filtro_actualizar.setText(obj_party_party.num_doc)
+            self.obj_form.lne_nro_doc_actualizar.setText(obj_party_party.num_doc)
             index_estado= self.obj_form.cbx_estado_actualizar.findText(str(obj_party_party.estado))
             self.obj_form.cbx_estado_actualizar.setCurrentIndex(index_estado)   
             self.obj_form.dte_nacimiento_actualizar.setDate(obj_party_party.fec_nac)
@@ -255,8 +255,14 @@ class clientes_actualizar(QDialog):
             self.obj_form.cbx_ciudad_actualizar.setCurrentIndex(index_ciudad)
             self.obj_form.lne_barrio_actualizar.setText(obj_party_address.barrio)
             #tabla contacto 
+            
+            #VER EL OBSERVACIONES
+            
+            obj_n_cliente = N_party_cliente(1)
+            obj_comentario = obj_n_cliente.get_party_cliente(self.id_party)
+            self.obj_form.txte_observaciones_actualizar.setText(obj_comentario.comment)           
+            
             obj_N_party_contacto= N_party_contacto(1)
-            #VER EL OBSERVACIONES self.obj_form.txte_observaciones_actualizar.findText(obj_N_party_contacto.comment)           
             list_party_contacto= obj_N_party_contacto.get_list_party_contacto(self.id_party)
             for item in list_party_contacto:
                 if item.type_contacto == "Telefono":
@@ -332,8 +338,8 @@ class clientes_actualizar(QDialog):
             self.id_party = obj_party_party.id_party
             obj_party_party = N_datos_personales_cliente()
 
-            obj_party_party.apellido = self.obj_form.lne_apellido_actualizar.text()
-            obj_party_party.nombre = self.obj_form.lne_nombre_actualizar.text()
+            obj_party_party.apellido = self.obj_form.lne_apellido_actualizar.text().upper()
+            obj_party_party.nombre = self.obj_form.lne_nombre_actualizar.text().upper()
             
            
             obj_party_party.tipo_doc = self.obj_form.cbx_tipo_doc_actualizar.currentText()
@@ -346,7 +352,11 @@ class clientes_actualizar(QDialog):
             obj_N_datos_personales_cliente.actualizar_party_party(obj_party_party, self.id_party)
             obj_party_cliente = N_party_cliente(self.id_party)
 
-            # VER OBSERVACIONES obj_party_cliente.guardar_N_party_cliente(self.obj_form.txte_observaciones.text(), self.id_party)
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            obj_comentario = obj_party_cliente.actualizar_comentario(self.id_party, self.obj_form.txte_observaciones_actualizar.toPlainText())
+      
+
             self.nro_cliente = obj_party_cliente.get_nro_cliente(self.id_party)
             self.obj_form.lne_nro_cliente.setText(str(self.nro_cliente))
             #pyqtRemoveInputHook()

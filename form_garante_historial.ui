@@ -714,5 +714,37 @@ font: 75 10pt &quot;KacstOne&quot;;</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_doc_nuevo</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>907</x>
+     <y>549</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>791</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_garante_nro_cliente</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>898</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>661</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

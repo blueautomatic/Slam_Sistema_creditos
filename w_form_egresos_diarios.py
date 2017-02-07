@@ -25,6 +25,7 @@ class egresos_diarios(QDialog):
         self.obj_form.setupUi(self)
         self.obj_form.boton_egresos_imprimir.clicked.connect(self.imprimir)
         self.obj_form.boton_egresos_buscar.clicked.connect(self.egresos_diarios)
+        self.obj_form.dte_fecha_egresos_mov.setDate(datetime.datetime.now())
         
 
     def egresos_diarios(self):

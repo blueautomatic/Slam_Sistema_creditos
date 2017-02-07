@@ -1,4 +1,4 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, String, Integer, func,update
 from sqlalchemy import create_engine
@@ -8,9 +8,9 @@ from PyQt5.QtCore import pyqtRemoveInputHook
 
 base = declarative_base()
 class E_usuario(base):
-    __tablename__= "usuarios"   
+    __tablename__= "usuarios"
     id_usuario = Column(Integer, primary_key=True, autoincrement=True)
-    create_date = Column(DateTime, default=func.now())  
+    create_date = Column(DateTime, default=func.now())
     write_date = Column(DateTime, default=func.now())
     nombre = Column(String)
     tipo_usuario = Column(String)
@@ -20,7 +20,7 @@ class E_usuario(base):
 
     def __init__(self):
         engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
+        Session= sessionmaker(bind=engine)
         self.session = Session()
 
     @classmethod
@@ -44,7 +44,7 @@ class E_usuario(base):
             self.session.close()
             return False
 
-    
+
     def buscar_todos_los_usuarios(self):
         obj_party_party = self.session.query(E_usuario).all()
         self.session.close()

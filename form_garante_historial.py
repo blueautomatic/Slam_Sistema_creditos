@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_garante_historial.ui'
 #
-# Created: Thu Oct 20 17:29:30 2016
+# Created: Thu Jan 12 18:37:40 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -93,7 +93,7 @@ class Ui_form_garante_historial(object):
         self.tab_6 = QtWidgets.QWidget()
         self.tab_6.setObjectName("tab_6")
         self.groupBox_3 = QtWidgets.QGroupBox(self.tab_6)
-        self.groupBox_3.setGeometry(QtCore.QRect(20, 10, 940, 410))
+        self.groupBox_3.setGeometry(QtCore.QRect(20, 10, 940, 401))
         self.groupBox_3.setStyleSheet("QGroupBox{\n"
 "background-color: rgb(239, 235, 231);\n"
 "border-style: solid;\n"
@@ -263,6 +263,8 @@ class Ui_form_garante_historial(object):
         self.boton_limpiar.clicked.connect(self.lne_garante_nro_doc.clear)
         self.boton_limpiar.clicked.connect(self.lne_garante_apellido.clear)
         self.boton_limpiar.clicked.connect(self.lne_garante_nombre.clear)
+        self.boton_limpiar.clicked.connect(self.lne_garante_nro_doc_nuevo.clear)
+        self.boton_limpiar.clicked.connect(self.lne_garante_nro_cliente.clear)
         QtCore.QMetaObject.connectSlotsByName(form_garante_historial)
 
     def retranslateUi(self, form_garante_historial):

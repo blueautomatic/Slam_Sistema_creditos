@@ -1,4 +1,4 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, String, Integer,func,Numeric,text
 from sqlalchemy import create_engine
@@ -17,6 +17,7 @@ class E_egresos(base):
     nombre = Column(String)
     costo = Column(Numeric)
     fecha = Column(DateTime, default=func.now())
+    write_uid = Column(Integer)
     orden = 0
     apellido = ""
     nombre_cliente = ""
@@ -26,9 +27,9 @@ class E_egresos(base):
     def __init__(self,id_party):
         a = id_party
         engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
+        Session= sessionmaker(bind=engine)
         self.session=Session()
-    
+
     @classmethod
     def guardar_egresos_creditos(cls , obj_N_creditos,nro_credito):
 
@@ -37,7 +38,7 @@ class E_egresos(base):
         new_record.id_party = obj_N_creditos.id_party
         new_record.nombre = "Creditos Personales"
         new_record.costo = obj_N_creditos.importe_prestamo
-        
+
         try:
             new_record.session.add(new_record)
             new_record.session.commit()
@@ -50,7 +51,7 @@ class E_egresos(base):
 
     def buscar_egresos(self,fecha):
 
-        
+
         sql = text(" select cje.id as orden, pp.nombre, pp.apellido, cje.nro_credito, cje.nombre, c.cantidad_cuotas, cta.importe_primer_venc, cje.costo from caja_egreso as cje INNER JOIN party_party as pp ON cje.id_party = pp.id_party INNER JOIN credito as c ON cje.nro_credito = c.nro_credito INNER JOIN cuotas as cta ON c.nro_credito = cta.nro_credito where cje.fecha = '" + str(fecha) + "' group by cje.id, pp.nombre, pp.apellido,cje.nro_credito, cje.nombre, c.cantidad_cuotas,cta.importe_primer_venc,cje.costo")
         result = self.session.execute(sql)
         lista_egresos = list()

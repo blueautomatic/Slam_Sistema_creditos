@@ -36,7 +36,6 @@ FORMS    += mainwindow.ui \
     form_clientes_actualizar.ui \
     form_clientes_borrar.ui \
     form_clientes_buscar.ui \
-    form_creditos_cuotas_buscar.ui \
     form_descargas_direccion.ui \
     form_usuario_actualizar.ui \
     form_usuario_borrar.ui \
@@ -56,7 +55,11 @@ FORMS    += mainwindow.ui \
     form_credito_calcular.ui \
     form_caja_diaria.ui \
     form_egresos_diarios.ui \
-    form_ingresos_diarios.ui
+    form_ingresos_diarios.ui \
+    ../credired20161201/credired20161201/form_buscar_apellido.ui \
+    form_buscar_apellido.ui \
+    form_cuota_reparar.ui \
+    form_creditos_cuotas_buscar.ui
 
 DISTFILES += \
     logica de pago credired.odt \

@@ -1,4 +1,4 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer, ForeignKey,update
 from sqlalchemy import create_engine
@@ -22,20 +22,21 @@ class E_empresa(base):
     cuit = Column(String)
     nombre_fantasia = Column(String)
     desc_interna=Column(String)
+    write_uid = Column(Integer)
     session=""
 
     def __init__  (self, id_empresa):
         a = id_empresa
         engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
+        Session= sessionmaker(bind=engine)
         self.session=Session()
-        
+
 
     @classmethod
     def guardar(cls, obj_N_datos_empresa):
         new_record = cls(1)
         new_record.nombre =obj_N_datos_empresa.nombre
-        new_record.ciudad =obj_N_datos_empresa.ciudad      
+        new_record.ciudad =obj_N_datos_empresa.ciudad
         new_record.direccion = obj_N_datos_empresa.direccion
         new_record.telefono = obj_N_datos_empresa.telefono
         new_record.email = obj_N_datos_empresa.email
@@ -59,7 +60,7 @@ class E_empresa(base):
 
 
     def actualizar(self, obj_N_datos_empresa):
-        u = update(E_empresa).values(nombre=obj_N_datos_empresa.nombre,ciudad = obj_N_datos_empresa.ciudad,direccion =obj_N_datos_empresa.direccion,telefono= obj_N_datos_empresa.telefono,email = obj_N_datos_empresa.email,website =obj_N_datos_empresa.website,tipo_iva = obj_N_datos_empresa.tipo_iva,ingresos_brutos = obj_N_datos_empresa.ingresos_brutos, cuit = obj_N_datos_empresa.cuit, nombre_fantasia = obj_N_datos_empresa.nombre_fantasia) 
+        u = update(E_empresa).values(nombre=obj_N_datos_empresa.nombre,ciudad = obj_N_datos_empresa.ciudad,direccion =obj_N_datos_empresa.direccion,telefono= obj_N_datos_empresa.telefono,email = obj_N_datos_empresa.email,website =obj_N_datos_empresa.website,tipo_iva = obj_N_datos_empresa.tipo_iva,ingresos_brutos = obj_N_datos_empresa.ingresos_brutos, cuit = obj_N_datos_empresa.cuit, nombre_fantasia = obj_N_datos_empresa.nombre_fantasia)
         self.session.execute(u)
         self.session.commit()
         self.session.close()

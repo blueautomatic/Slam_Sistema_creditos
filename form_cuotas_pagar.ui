@@ -143,26 +143,6 @@ border-radius: 8px;
         <string>Finalizado</string>
        </property>
       </column>
-      <column>
-       <property name="text">
-        <string>Bloqueado</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Formula</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Tipo Vencimiento</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Observaciones</string>
-       </property>
-      </column>
      </widget>
     </widget>
    </widget>
@@ -223,12 +203,12 @@ background-color: rgb(255, 255, 255);
      <string>DNI: </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lne_dni">
+   <widget class="QLineEdit" name="lne_nom_ape">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>270</x>
       <y>10</y>
-      <width>131</width>
+      <width>201</width>
       <height>20</height>
      </rect>
     </property>
@@ -249,12 +229,12 @@ background-color: rgb(255, 255, 255);
      <string>Buscar</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lne_nom_ape">
+   <widget class="QLineEdit" name="lne_dni">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>60</x>
       <y>10</y>
-      <width>251</width>
+      <width>121</width>
       <height>20</height>
      </rect>
     </property>
@@ -430,34 +410,6 @@ border-radius: 8px;
        </property>
       </column>
      </widget>
-     <zorder>tw_listado_cuotas</zorder>
-     <zorder>boton_pagar</zorder>
-    </widget>
-    <widget class="QPushButton" name="boton_pagar">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>360</y>
-       <width>81</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Century Schoolbook L</family>
-       <pointsize>11</pointsize>
-       <weight>9</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(252, 188, 188);
-</string>
-     </property>
-     <property name="text">
-      <string>Pagar</string>
-     </property>
     </widget>
    </widget>
   </widget>
@@ -1123,18 +1075,61 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
     </widget>
    </widget>
   </widget>
-  <zorder>tabWidget_3</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>tabWidget_4</zorder>
-  <zorder>tabWidget_2</zorder>
-  <zorder>lne_capital</zorder>
-  <zorder>lne_interes</zorder>
-  <zorder>lne_gastos</zorder>
-  <zorder>tabWidget_5</zorder>
-  <zorder>boton_pagar</zorder>
+  <widget class="QPushButton" name="boton_pagar">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>310</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Century Schoolbook L</family>
+     <pointsize>11</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(252, 188, 188);
+</string>
+   </property>
+   <property name="text">
+    <string>Pagar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="boton_ticket">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>310</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Century Schoolbook L</family>
+     <pointsize>11</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(252, 188, 188);
+</string>
+   </property>
+   <property name="text">
+    <string>Ticket</string>
+   </property>
+  </widget>
  </widget>
  <tabstops>
-  <tabstop>lne_dni</tabstop>
+  <tabstop>lne_nom_ape</tabstop>
   <tabstop>boton_buscar_creditos</tabstop>
   <tabstop>tw_lista_creditos</tabstop>
   <tabstop>tw_listado_cuotas</tabstop>
@@ -1155,7 +1150,7 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
   <tabstop>boton_limpiar</tabstop>
   <tabstop>tabWidget_5</tabstop>
   <tabstop>tabWidget_3</tabstop>
-  <tabstop>lne_nom_ape</tabstop>
+  <tabstop>lne_dni</tabstop>
   <tabstop>tabWidget_4</tabstop>
   <tabstop>tabWidget_2</tabstop>
  </tabstops>
@@ -1168,8 +1163,8 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>834</x>
-     <y>764</y>
+     <x>979</x>
+     <y>796</y>
     </hint>
     <hint type="destinationlabel">
      <x>886</x>
@@ -1184,8 +1179,8 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>834</x>
-     <y>764</y>
+     <x>979</x>
+     <y>796</y>
     </hint>
     <hint type="destinationlabel">
      <x>861</x>
@@ -1200,8 +1195,8 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>844</x>
-     <y>764</y>
+     <x>979</x>
+     <y>796</y>
     </hint>
     <hint type="destinationlabel">
      <x>861</x>
@@ -1216,12 +1211,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>834</x>
-     <y>764</y>
+     <x>979</x>
+     <y>796</y>
     </hint>
     <hint type="destinationlabel">
-     <x>849</x>
-     <y>685</y>
+     <x>1028</x>
+     <y>717</y>
     </hint>
    </hints>
   </connection>
@@ -1232,12 +1227,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>809</x>
-     <y>756</y>
+     <x>979</x>
+     <y>788</y>
     </hint>
     <hint type="destinationlabel">
-     <x>863</x>
-     <y>474</y>
+     <x>1040</x>
+     <y>579</y>
     </hint>
    </hints>
   </connection>
@@ -1248,12 +1243,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>852</x>
-     <y>749</y>
+     <x>979</x>
+     <y>782</y>
     </hint>
     <hint type="destinationlabel">
-     <x>868</x>
-     <y>447</y>
+     <x>1040</x>
+     <y>549</y>
     </hint>
    </hints>
   </connection>
@@ -1264,12 +1259,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>850</x>
-     <y>757</y>
+     <x>979</x>
+     <y>789</y>
     </hint>
     <hint type="destinationlabel">
-     <x>875</x>
-     <y>417</y>
+     <x>1040</x>
+     <y>519</y>
     </hint>
    </hints>
   </connection>
@@ -1280,12 +1275,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>857</x>
-     <y>754</y>
+     <x>979</x>
+     <y>786</y>
     </hint>
     <hint type="destinationlabel">
-     <x>331</x>
-     <y>757</y>
+     <x>333</x>
+     <y>887</y>
     </hint>
    </hints>
   </connection>
@@ -1296,12 +1291,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>812</x>
-     <y>744</y>
+     <x>979</x>
+     <y>782</y>
     </hint>
     <hint type="destinationlabel">
-     <x>405</x>
-     <y>725</y>
+     <x>407</x>
+     <y>856</y>
     </hint>
    </hints>
   </connection>
@@ -1312,12 +1307,12 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>860</x>
-     <y>764</y>
+     <x>979</x>
+     <y>796</y>
     </hint>
     <hint type="destinationlabel">
-     <x>463</x>
-     <y>698</y>
+     <x>465</x>
+     <y>824</y>
     </hint>
    </hints>
   </connection>
@@ -1328,12 +1323,44 @@ font:  75 11Pt &quot;Century Schoolbook L&quot;;</string>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>845</x>
-     <y>759</y>
+     <x>979</x>
+     <y>791</y>
     </hint>
     <hint type="destinationlabel">
-     <x>900</x>
-     <y>505</y>
+     <x>1040</x>
+     <y>608</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_nom_ape</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1055</x>
+     <y>794</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>28</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>boton_limpiar</sender>
+   <signal>clicked()</signal>
+   <receiver>lne_dni</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1046</x>
+     <y>799</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>751</x>
+     <y>27</y>
     </hint>
    </hints>
   </connection>

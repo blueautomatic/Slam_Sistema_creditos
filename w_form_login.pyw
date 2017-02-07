@@ -20,10 +20,20 @@ class Singleton(object):
             self.tipo_usuario = ""
         return self._instance
 
+class Singleton_idusu(object):
+     _instance = None
+     idusu =""
+
+     def __new__(self):
+
+        if not self._instance:
+            self._instance = super(Singleton_idusu, self).__new__(self)
+            self.idusu = ""
+        return self._instance
 
 class login(QDialog):
     obj_form = Ui_Form_login()
-   
+
     def __init__(self):
         QDialog.__init__(self)
         obj_form= Ui_Form_login()
@@ -36,10 +46,16 @@ class login(QDialog):
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
         obj_N_usuario = N_usuario()
+
         obj_usuario = obj_N_usuario.buscar_usuario(usuario,clave)
         singleton = Singleton()
+
         singleton.tipo_usuario= obj_usuario.tipo_usuario
-        self.form_mainwindow = Mainwindow(singleton)
+
+        singleton_idusu = Singleton_idusu()
+        singleton_idusu.idusu = obj_usuario.id_usuario
+
+        self.form_mainwindow = Mainwindow(singleton,singleton_idusu)
         self.form_mainwindow.show()
         self.close()
 
@@ -51,7 +67,7 @@ app = QApplication(sys.argv)
 dialogo= login()
 dialogo.show()
 
-app.exec_()  
+app.exec_()
 
 
 

@@ -70,6 +70,7 @@ class N_creditos(object):
             obj_creditos.cred_total = item.cred_total
             obj_creditos.observaciones = item.observaciones
             obj_creditos.gastos = item.gastos
+            obj_creditos.estado = item.estado
             list_N_creditos.append(obj_creditos)
         
         return list_N_creditos  
@@ -77,6 +78,13 @@ class N_creditos(object):
     def buscar_credito_por_nro_credito(self, nro_credito):
         obj_E_credito = E_creditos()
         return obj_E_credito.buscar_credito_por_nro_credito(nro_credito)
+
+    def cancelar_credito(self,nro_credito):
+        obj_E_credito = E_creditos()
+        return obj_E_credito.cancelar_credito(nro_credito)
+
+
+
 
 class N_historial_garante(object):
     tipo_garante = ""

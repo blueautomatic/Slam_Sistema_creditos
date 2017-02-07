@@ -624,12 +624,12 @@ background-color: rgb(255, 255, 255);
          <string>DNI: </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_nro_doc_creditonuevo">
+       <widget class="QLineEdit" name="lne_nom_ape">
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>280</x>
           <y>20</y>
-          <width>141</width>
+          <width>261</width>
           <height>20</height>
          </rect>
         </property>
@@ -672,12 +672,12 @@ background-color: rgb(253, 194, 179);
          <string/>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lne_nom_ape">
+       <widget class="QLineEdit" name="lne_nro_doc_creditonuevo">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>50</x>
           <y>20</y>
-          <width>291</width>
+          <width>141</width>
           <height>23</height>
          </rect>
         </property>
@@ -878,6 +878,25 @@ background-color: rgb(255, 255, 255);
         </property>
         <property name="text">
          <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="boton_imprimir">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>240</y>
+          <width>71</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-color: rgb(253, 194, 179);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Imprimir</string>
         </property>
        </widget>
       </widget>
@@ -1612,6 +1631,16 @@ font: 10pt &quot;KacstOne&quot;;
       <string>Limpiar</string>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lne_party_party">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>610</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
@@ -1619,7 +1648,7 @@ font: 10pt &quot;KacstOne&quot;;
   <tabstop>tabWidget_2</tabstop>
   <tabstop>lne_nro_creditonuevo_2</tabstop>
   <tabstop>lne_nro_creditonuevo</tabstop>
-  <tabstop>lne_nro_doc_creditonuevo</tabstop>
+  <tabstop>lne_nom_ape</tabstop>
   <tabstop>boton_buscar_cliente_creditonuevo</tabstop>
   <tabstop>dte_fec_creditonuevo</tabstop>
   <tabstop>lne_importe_prestamo_creditonuevo</tabstop>
@@ -1640,7 +1669,7 @@ font: 10pt &quot;KacstOne&quot;;
   <tabstop>lne_interes_creditonuevo</tabstop>
   <tabstop>cbx_formula_creditonuevo</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>lne_nom_ape</tabstop>
+  <tabstop>lne_nro_doc_creditonuevo</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -1679,7 +1708,7 @@ font: 10pt &quot;KacstOne&quot;;
   <connection>
    <sender>boton_limpiar_creditonuevo</sender>
    <signal>clicked()</signal>
-   <receiver>lne_nro_doc_creditonuevo</receiver>
+   <receiver>lne_nom_ape</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -1759,7 +1788,7 @@ font: 10pt &quot;KacstOne&quot;;
   <connection>
    <sender>boton_limpiar_creditonuevo</sender>
    <signal>clicked()</signal>
-   <receiver>lne_nom_ape</receiver>
+   <receiver>lne_nro_doc_creditonuevo</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">

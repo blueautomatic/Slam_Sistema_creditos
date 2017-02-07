@@ -1,4 +1,4 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer, ForeignKey, update
 from sqlalchemy import create_engine
@@ -14,16 +14,17 @@ class E_party_address(Base):
     ciudad = Column(String)
     domicilio = Column(String)
     barrio = Column(String)
+    write_uid = Column(Integer)
     session = ""
 
     def __init__(self):
         engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
+        Session= sessionmaker(bind=engine)
         self.session=Session()
-         
-    
 
-    @classmethod   
+
+
+    @classmethod
     def guardar(cls,obj_N_party_address,id_party):
         new_record = cls()
         new_record.ciudad = obj_N_party_address.ciudad
@@ -43,7 +44,7 @@ class E_party_address(Base):
 
     def actualizar(self,obj_N_party_address,id_party):
 
-        u = update(E_party_address).where(E_party_address.id_party == id_party).values(ciudad=obj_N_party_address.ciudad,domicilio = obj_N_party_address.domicilio, barrio = obj_N_party_address.barrio) 
+        u = update(E_party_address).where(E_party_address.id_party == id_party).values(ciudad=obj_N_party_address.ciudad,domicilio = obj_N_party_address.domicilio, barrio = obj_N_party_address.barrio)
         self.session.execute(u)
         self.session.commit()
         self.session.close()

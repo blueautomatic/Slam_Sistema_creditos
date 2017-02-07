@@ -57,7 +57,7 @@ class buscar_clientes(QDialog):
                 self.obj_form.lne_apellido_buscar.setText(obj_party_party.apellido)  
                 self.obj_form.lne_nombre_buscar.setText(obj_party_party.nombre)
                 self.obj_form.lne_tipo_doc_buscar.setText(obj_party_party.tipo_doc)
-                self.obj_form.lne_nro_doc_cliente.setText(obj_party_party.nro_doc)
+                self.obj_form.lne_nro_doc_cliente.setText(obj_party_party.num_doc)
                 self.obj_form.lne_estado.setText(obj_party_party.estado)        
                 self.obj_form.lne_fecha_nac.setText(str(obj_party_party.fec_nac))
                 self.obj_form.lne_estado_civil.setText(obj_party_party.estado_civil) 
@@ -88,7 +88,10 @@ class buscar_clientes(QDialog):
                 obj_N_party_cliente= N_party_cliente(1)
                 obj_party_cliente=obj_N_party_cliente.get_party_cliente(self.id_party)
                 self.obj_form.lne_nro_cliente_buscar.setText(str(obj_party_cliente.nro_cliente))
+                self.obj_form.txte_observaciones_buscar.setText(obj_party_cliente.comment) 
                 
+
+
                 #terminar buscar propiedad para seteart cliente
                 #self.obj_form.txte_observaciones_buscar.setText(obj_party_cliente.comment)
                 #toPlainText

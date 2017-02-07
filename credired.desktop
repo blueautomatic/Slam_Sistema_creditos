@@ -2,8 +2,8 @@
 Version=x.y
 Name=credired
 Comment=This is my comment
-Exec=/home/slam2016/Documentos/CrediRed/credi20161114/credired.sh
-Icon=/home/slam2016/Documentos/CrediRed/credi20161109/Íconos/boton-actualizar.png
+Exec=/home/soporte/Documentos/credired20170102/credired.sh
+Icon=/home/soporte/Documentos/credired20170102/Íconos/boton-actualizar.png
 Terminal=false
 Type=Application
 Categories=Utility;Application

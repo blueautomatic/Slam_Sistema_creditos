@@ -102,8 +102,8 @@ class Cliente_nuevo(QDialog):
                 return False
 
             obj_N_datos_personales_cliente = N_datos_personales_cliente() 
-            obj_N_datos_personales_cliente.nombre =  nombre
-            obj_N_datos_personales_cliente.apellido = self.obj_form_cliente.lne_apellido.text()
+            obj_N_datos_personales_cliente.nombre =  nombre.upper()
+            obj_N_datos_personales_cliente.apellido = self.obj_form_cliente.lne_apellido.text().upper()
             obj_N_datos_personales_cliente.fec_nac = self.obj_form_cliente.dte_nacimiento.text()
             obj_N_datos_personales_cliente.tipo_doc = self.obj_form_cliente.cbx_tipo_doc.currentText()
             obj_N_datos_personales_cliente.nro_doc = numero_documento
@@ -126,8 +126,6 @@ class Cliente_nuevo(QDialog):
             if self.id_party != "False" :
                 obj_party_cliente = N_party_cliente(self.id_party)
 
-               # pyqtRemoveInputHook()
-               # import pdb; pdb.set_trace()
                 obj_party_cliente.guardar_N_party_cliente(self.obj_form_cliente.txte_observaciones.toPlainText(), self.id_party)
                 
                 self.nro_cliente = obj_party_cliente.get_nro_cliente(self.id_party)

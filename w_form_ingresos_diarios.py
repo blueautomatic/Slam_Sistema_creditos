@@ -30,7 +30,7 @@ class ingresos_diarios(QDialog):
         self.obj_form.setupUi(self)
         self.obj_form.boton_ingresos_imprimir.clicked.connect(self.imprimir)
         self.obj_form.boton_ingresos_buscar.clicked.connect(self.buscar_ingresos)
-
+        self.obj_form.dte_fecha_ingresos_mov.setDate(datetime.datetime.now())
 
     def buscar_ingresos(self):
         self.limpiar()
@@ -40,20 +40,20 @@ class ingresos_diarios(QDialog):
         ingreso_total = 0
 
         for item in self.lista_ingresos :
-            ingreso_total = ingreso_total + item.importe_cobrado             
+            ingreso_total = ingreso_total + item.monto_cobrado             
             rowPosition = self.obj_form.tw_ingresos_registros.rowCount()
             self.obj_form.tw_ingresos_registros.insertRow(rowPosition)
             self.obj_form.tw_ingresos_registros.setItem(rowPosition , 0, QTableWidgetItem(str(item.nombre + ", " + item.apellido)))
             self.obj_form.tw_ingresos_registros.setItem(rowPosition , 1, QTableWidgetItem(str("Cuota Credito")))
             self.obj_form.tw_ingresos_registros.setItem(rowPosition , 2, QTableWidgetItem(str(item.nro_cuota)))
-            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 3, QTableWidgetItem(str(item.importe_cobrado)))
-            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 4, QTableWidgetItem(str(item.punitorios)))
-            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 5, QTableWidgetItem(str(item.descuento)))
+            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 3, QTableWidgetItem(str(round(item.monto_cobrado,2))))
+            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 4, QTableWidgetItem(str(round(item.punitorios,2))))
+            self.obj_form.tw_ingresos_registros.setItem(rowPosition , 5, QTableWidgetItem(str(round(item.descuento,2))))
             self.obj_form.tw_ingresos_registros.setItem(rowPosition , 6, QTableWidgetItem(str(item.estado_cuota)))
 
             self.lst_ord.append(item)
 
-        self.obj_form.lne_ingresos_total.setText(str(ingreso_total))
+        self.obj_form.lne_ingresos_total.setText(str(round(ingreso_total,2)))
 
     def imprimir(self):
         styleSheet=getSampleStyleSheet()
@@ -62,7 +62,7 @@ class ingresos_diarios(QDialog):
         style_barra= ParagraphStyle('',fontSize = 13,textColor = '#000',backColor='#f5f5f5',borderColor ='#a3a3a3',borderWidth = 1,borderPadding = (1, 2, 5))
         texto_principal = ""
         estilo_texto = ParagraphStyle('',
-                fontSize = 22,
+                fontSize = 12,
                         alignment = 0,
                         spaceBefore = 0,
                         spaceAfter = 0,
@@ -94,7 +94,7 @@ class ingresos_diarios(QDialog):
         #import pdb; pdb.set_trace()
         
         for item in self.lst_ord:           
-            integrantes.append([str(item.nombre + ", " + item.apellido),str("cuota credito"),str(item.nro_cuota),str(item.importe_cobrado),str(item.punitorios), str(item.descuento), str(item.estado_cuota)])
+            integrantes.append([str(item.nombre + ", " + item.apellido),str("cuota credito"),str(item.nro_cuota),str(round(item.monto_cobrado,2)),str(round(item.punitorios,2)), str(round(item.descuento,2)), str(item.estado_cuota)])
             t=Table(integrantes, (120,80, 60, 60,53,50,40))
             t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),

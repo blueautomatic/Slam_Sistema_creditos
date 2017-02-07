@@ -20,11 +20,15 @@ from w_form_ingresos_diarios import ingresos_diarios
 from w_form_usuario_actualizar import usuario_actualizar
 from w_form_usuario import usuario
 from w_form_clientes_buscar import buscar_clientes
+from w_form_punitorios import punitorios
+from w_form_buscar_apellido import buscar_apellido
+from w_form_cuota_reparar import cuotas_reparar
 
 
 class Mainwindow(QMainWindow):
     singleton =""
-    def __init__(self,singleton):
+    singleton_idusu=""
+    def __init__(self,singleton,singleton_idusu):
         #Iniciar el objeto QMainWindow
         QMainWindow.__init__(self)
         self.obj_form_main = Ui_MainWindow()
@@ -41,12 +45,31 @@ class Mainwindow(QMainWindow):
         self.obj_form_main.actionEgresos.triggered.connect(self.egresos)
         self.obj_form_main.actionIngresos.triggered.connect(self.ingresos_diarios)
         self.obj_form_main.actionCALCULADOR.triggered.connect(self.CALCULADOR)
-        #self.obj_form_main.actionHist_cred_y_ctas
         self.obj_form_main.actionHISTORIAL_GARANTE.triggered.connect(self.garante_historial12)
         self.obj_form_main.actionUsu.triggered.connect(self.usuario)
         self.obj_form_main.actionUsu_Act.triggered.connect(self.usuario_actualizar)
-        self.singleton =singleton
+        self.obj_form_main.actionGenerador_punitorios.triggered.connect(self.Punitorios)
+        #self.obj_form_main.actionGenerador_punitorios.triggered.connect(self.Buscar_apellido)
 
+        self.obj_form_main.actionBuscar_apellido.triggered.connect(self.Buscar_apellido)
+        self.obj_form_main.actionReparar_Cuotas.triggered.connect(self.reparar_cta)
+        self.obj_form_main.actionHist_cred_y_ctas.triggered.connect(self.credito_buscar_estado)
+        self.singleton =singleton
+        self.singleton_idusu =singleton_idusu
+
+
+    def credito_buscar_estado(self):
+        self.form_profesionales = creditos_cuotas_buscar()
+        self.form_profesionales.show()
+
+
+    def reparar_cta(self):
+        self.form_profesionales = cuotas_reparar(singleton_idusu)
+        self.form_profesionales.show()
+
+    def Buscar_apellido(self):
+        self.form_profesionales = buscar_apellido()
+        self.form_profesionales.show()
 
     def usuario_actualizar(self):
         self.form_profesionales = usuario_actualizar()
@@ -55,8 +78,6 @@ class Mainwindow(QMainWindow):
     def usuario(self):
         self.form_profesionales = usuario()
         self.form_profesionales.show()
-        
-
 
     def garante_historial12(self):
         self.form_profesionales = Garante_historial()
@@ -69,7 +90,7 @@ class Mainwindow(QMainWindow):
     def ingresos_diarios(self):
         self.form_profesionales=ingresos_diarios()
         self.form_profesionales.show()
-    
+
     def egresos(self):
         self.form_profesionales=egresos_diarios()
         self.form_profesionales.show()
@@ -103,6 +124,11 @@ class Mainwindow(QMainWindow):
     def Cuotas(self):
         self.form_cobradores_registrar=Cuotas_pagar(self.singleton)
         self.form_cobradores_registrar.show()
+
+    def Punitorios(self):
+        self.form_cobradores_registrar=punitorios(self.singleton)
+        self.form_cobradores_registrar.show()
+
 
 #app = QApplication(sys.argv)
 #_ventana = Mainwindow()

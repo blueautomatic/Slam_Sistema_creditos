@@ -21,6 +21,7 @@ class E_party_party(base):
       estado_civil = Column(String)
       limite_credito = Column(Numeric)
       estado= Column(String)
+      write_uid = Column(Integer)
       session=""
 
       # def __init__(self,id_party,create_date,write_uid,write_date,nombre,apellido,tipo,num_doc,estado_civil,num_cliente):
@@ -34,7 +35,7 @@ class E_party_party(base):
 
       @classmethod
       def guardar(cls, obj_N_datos_personales_cliente ):
-            
+
             obj_party = cls()
             obj_party.write_uid = obj_N_datos_personales_cliente.id_party
             obj_party.nombre = obj_N_datos_personales_cliente.nombre
@@ -80,11 +81,14 @@ class E_party_party(base):
             return obj_party_party
 
 
-
-
       def actualizar(self,obj_N_datos_personales_cliente,id_party):
 
             u = update(E_party_party).where(E_party_party.id_party == id_party).values(nombre=obj_N_datos_personales_cliente.nombre, apellido = obj_N_datos_personales_cliente.apellido,tipo_doc = obj_N_datos_personales_cliente.tipo_doc, num_doc = obj_N_datos_personales_cliente.nro_doc, estado_civil = obj_N_datos_personales_cliente.estado_civil, limite_credito = obj_N_datos_personales_cliente.limite_credito, estado = obj_N_datos_personales_cliente.estado)
             self.session.execute(u)
             self.session.commit()
             self.session.close()
+
+      def buscar(self, apellido):
+            list_party_party = self.session.query(E_party_party).filter_by(apellido = str(apellido)).all()
+            self.session.close()
+            return list_party_party

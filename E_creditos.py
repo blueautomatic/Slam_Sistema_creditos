@@ -1,6 +1,6 @@
-import sys 
+import sys
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, DateTime, String, Integer,func
+from sqlalchemy import Column, DateTime, String, Integer,func,update
 from sqlalchemy import create_engine
 
 from sqlalchemy.orm import sessionmaker
@@ -25,6 +25,7 @@ class E_creditos(base):
     cred_total = Column(Integer)
     observaciones = Column(String)
     estado = Column(String)
+    write_uid = Column(Integer)
     session =""
 
     def __init__(self):
@@ -33,17 +34,15 @@ class E_creditos(base):
         self.session = Session()
 
     def get_creditos(self,id_party):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
-        session=Session()
+
         obj_creditos = self.session.query(E_creditos).filter_by(id_party=id_party).all()
         try:
             self.session.close()
             return obj_creditos
         except :
             self.session.close()
-            return False    
-    
+            return False
+
     @classmethod
     def guardar(cls, obj_N_credito):
 
@@ -63,6 +62,7 @@ class E_creditos(base):
         new_record.cred_total = obj_N_credito.cred_total
         new_record.observaciones = obj_N_credito.observaciones
         new_record.estado = obj_N_credito.estado
+        new_record.write_uid=0
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
         try:
@@ -84,36 +84,40 @@ class E_creditos(base):
         self.session.close()
         return 0
     def buscar_creditos_por_cliente(self,nro_cliente):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
-        session=Session()
+        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        #Session= sessionmaker(bind=engine)
+        #session=Session()
         obj_creditos_cliente = self.session.query(E_creditos).filter_by(nro_cliente=str(nro_cliente)).all()
         self.session.close()
-        return obj_creditos_cliente   
-             
+        return obj_creditos_cliente
     def buscar_nro_credito_por_party(self,id_party):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
-        session=Session()
+        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        #Session= sessionmaker(bind=engine)
+        #session=Session()
         nro_credito = self.session.query(func.max(E_creditos.nro_credito)).filter_by(id_party= id_party).scalar()
         if nro_credito != None :
             self.session.close()
             return nro_credito
         return False
-
     def buscar_credito_por_nro_credito(self, nro_credito):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
-        session=Session()
+        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        #Session= sessionmaker(bind=engine)
+        #session=Session()
         obj_credito = self.session.query(E_creditos).filter_by(nro_credito=nro_credito).first()
         self.session.close()
         return obj_credito
-
+    def cancelar_credito(self,nro_credito):
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        u = update(E_creditos).where(E_creditos.nro_credito == nro_credito).values(estado="Cancelado")
+        self.session.execute(u)
+        self.session.commit()
+        self.session.close()
 
     def buscar_historial_garante(self,id_party):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine) 
-        session=Session()
+        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        #Session= sessionmaker(bind=engine)
+        #session=Session()
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
         sql = text("select  gc.tipo_garante, gc.nro_credito, c.importe_prestamo, pc.nro_cliente, pp.num_doc, pp.apellido, pp.nombre, c.estado from garante_credito as gc INNER JOIN credito as c ON gc.nro_credito  = c.nro_credito INNER JOIN party_party as pp ON c.id_party = pp.id_party INNER JOIN party_cliente as pc ON c.id_party = pc.id_party INNER JOIN party_garante as pg ON gc.id_party_garante = pg.id_party_garante where pg.id_party_garante =" + str(id_party) + "group by gc.tipo_garante, gc.nro_credito, c.importe_prestamo, pc.nro_cliente, pp.num_doc, pp.apellido, pp.nombre, c.estado")

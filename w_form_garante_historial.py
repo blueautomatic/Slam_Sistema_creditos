@@ -17,6 +17,7 @@ class Garante_historial(QDialog):
         self.obj_form.boton_limpiar.clicked.connect(self.limpiar)
 
     def buscar_garante(self):
+        self.limpiar()
         number= self.obj_form.lne_garante_nro_doc_nuevo.text()
         obj_N_datos_garante= N_datos_personales_cliente()
         if number != "":
@@ -32,6 +33,7 @@ class Garante_historial(QDialog):
                 self.obj_form.lne_garante_apellido.setText(obj_datos_garante.apellido)
                 self.obj_form.lne_garante_nombre.setText(obj_datos_garante.nombre)
                 self.obj_form.lne_garante_estado.setText(obj_datos_garante.estado)
+                self.obj_form.lne_garante_nro_doc.setText(obj_datos_garante.num_doc)
                 obj_N_party_cliente = N_party_cliente(obj_datos_garante.id_party)
                 nro_cliente_garante = obj_N_party_cliente.get_nro_cliente(obj_datos_garante.id_party)
                 self.obj_form.lne_garante_nro_cliente_2.setText(str(nro_cliente_garante))
@@ -59,8 +61,10 @@ class Garante_historial(QDialog):
                 msg = 'Advertencia , Numero de documento inexistente'
                 msgBox.setText(msg)
                 msgBox.exec_()
+                return False
 
         else :
+            
             if self.obj_form.lne_garante_nro_cliente.text() != "":
                 try:
                     garante_nro_cliente = int(self.obj_form.lne_garante_nro_cliente.text())
@@ -73,6 +77,7 @@ class Garante_historial(QDialog):
                         self.obj_form.lne_garante_apellido.setText(obj_datos_garante.apellido)
                         self.obj_form.lne_garante_nombre.setText(obj_datos_garante.nombre)
                         self.obj_form.lne_garante_estado.setText(obj_datos_garante.estado)
+                        self.obj_form.lne_garante_nro_doc.setText(obj_datos_garante.num_doc)
                         obj_N_party_cliente = N_party_cliente(obj_datos_garante.id_party)
                         nro_cliente_garante = obj_N_party_cliente.get_nro_cliente(obj_datos_garante.id_party)
                         self.obj_form.lne_garante_nro_cliente_2.setText(str(nro_cliente_garante))
@@ -97,6 +102,7 @@ class Garante_historial(QDialog):
                     msgBox.setWindowTitle("Atencion")
                     msgBox.setText('Error, Verificar Numero de cliente garante sin espacios y sin puntos ')
                     msgBox.exec_()
+                    return False
 
     def limpiar(self):
         while (self.obj_form.tw_garantes_lista.rowCount() > 0):
