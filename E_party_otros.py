@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 #from N_cliente import N_datos_datos_laborales
 from sqlalchemy.orm import sessionmaker
 from PyQt5.QtCore import pyqtRemoveInputHook
+from E_configuracion import configuracion
 
 base = declarative_base()
 class E_party_otros(base):
@@ -19,27 +20,24 @@ class E_party_otros(base):
     figura_veraz=Column(Boolean)
     es_jubilado_pensionado=Column(Boolean)
     write_uid = Column(Integer)
+    session = ""
 
 
     def __init__(self,id):
         a = id
+        obj_conexion =  configuracion()
+        engine=create_engine(obj_conexion.config())
+        Session= sessionmaker(bind=engine)
+        self.session=Session()
 
     def get_party_otros(self, id_party):
 
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine)
-        session=Session()
-        obj_party_otros = session.query(E_party_otros).filter_by(id_party=id_party).first()
-        session.close()
+        obj_party_otros = self.session.query(E_party_otros).filter_by(id_party=id_party).first()
+        self.session.close()
         return obj_party_otros
 
 
     def guardar(self,obj_N_party_otros,id_party):
-
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine)
-        session=Session()
-
         new_record = E_party_otros(1)
         new_record.id_party= id_party
         new_record.cuit = obj_N_party_otros.cuit
@@ -49,15 +47,12 @@ class E_party_otros(base):
         new_record.presento_factura = obj_N_party_otros.presento_factura
         new_record.figura_veraz = obj_N_party_otros.figura_veraz
         new_record.es_jubilado_pensionado = obj_N_party_otros.es_jubilado_pensionado
-        session.add(new_record)
-        session.commit()
-        session.close()
+        self.session.add(new_record)
+        self.session.commit()
+        self.session.close()
 
     def actualizar(self,obj_N_party_otros,id_party):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        Session= sessionmaker(bind=engine)
-        session=Session()
-        u = update(E_party_otros).where(E_party_otros.id_party == id_party).        values(cuit=obj_N_party_otros.cuit,            tipo_iva = obj_N_party_otros.tipo_iva,            cbu = obj_N_party_otros.cbu,            num_beneficio = obj_N_party_otros.num_beneficio,            presento_factura = obj_N_party_otros.presento_factura,        figura_veraz= obj_N_party_otros.figura_veraz,        es_jubilado_pensionado = obj_N_party_otros.es_jubilado_pensionado)
-        session.execute(u)
-        session.commit()
-        session.close()
+        u = update(E_party_otros).where(E_party_otros.id_party == id_party).values(cuit=obj_N_party_otros.cuit,            tipo_iva = obj_N_party_otros.tipo_iva,            cbu = obj_N_party_otros.cbu,            num_beneficio = obj_N_party_otros.num_beneficio,            presento_factura = obj_N_party_otros.presento_factura,        figura_veraz= obj_N_party_otros.figura_veraz,        es_jubilado_pensionado = obj_N_party_otros.es_jubilado_pensionado)
+        self.session.execute(u)
+        self.session.commit()
+        self.session.close()

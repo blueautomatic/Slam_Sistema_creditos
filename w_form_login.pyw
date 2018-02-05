@@ -48,16 +48,22 @@ class login(QDialog):
         obj_N_usuario = N_usuario()
 
         obj_usuario = obj_N_usuario.buscar_usuario(usuario,clave)
-        singleton = Singleton()
+        try:
+            singleton = Singleton()
 
-        singleton.tipo_usuario= obj_usuario.tipo_usuario
+            singleton.tipo_usuario= obj_usuario.tipo_usuario
 
-        singleton_idusu = Singleton_idusu()
-        singleton_idusu.idusu = obj_usuario.id_usuario
+            singleton_idusu = Singleton_idusu()
+            singleton_idusu.idusu = obj_usuario.id_usuario
 
-        self.form_mainwindow = Mainwindow(singleton,singleton_idusu)
-        self.form_mainwindow.show()
-        self.close()
+            self.form_mainwindow = Mainwindow(singleton,singleton_idusu)
+            self.form_mainwindow.show()
+            self.close()
+        except:
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle("Ingrese nuevamente Usuario o clave")
+            msgBox.setText("Ingrese nuevamente Usuario o clave")
+            msgBox.exec_()
 
 
 

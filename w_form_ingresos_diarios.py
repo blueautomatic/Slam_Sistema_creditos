@@ -1,4 +1,4 @@
-import sys, datetime
+import sys, datetime, os
 from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem
 from PyQt5 import uic
 from form_ingresos_diarios import Ui_form_ingresos_diarios
@@ -15,15 +15,15 @@ from reportlab.platypus import Paragraph, Image
 from reportlab.lib import colors
 from PyQt5.QtWidgets import QFileDialog
 from N_ingresos import N_ingresos
+import subprocess
 
-       
 
 class ingresos_diarios(QDialog):
     obj_form = Ui_form_ingresos_diarios()
     lst_ord = list()
     lista_ingresos= list()
     lst_ord = list()
-    
+
     def __init__(self):
         QDialog.__init__(self)
         self.obj_form = Ui_form_ingresos_diarios()
@@ -40,7 +40,7 @@ class ingresos_diarios(QDialog):
         ingreso_total = 0
 
         for item in self.lista_ingresos :
-            ingreso_total = ingreso_total + item.monto_cobrado             
+            ingreso_total = ingreso_total + item.monto_cobrado
             rowPosition = self.obj_form.tw_ingresos_registros.rowCount()
             self.obj_form.tw_ingresos_registros.insertRow(rowPosition)
             self.obj_form.tw_ingresos_registros.setItem(rowPosition , 0, QTableWidgetItem(str(item.nombre + ", " + item.apellido)))
@@ -56,10 +56,16 @@ class ingresos_diarios(QDialog):
         self.obj_form.lne_ingresos_total.setText(str(round(ingreso_total,2)))
 
     def imprimir(self):
+
+        fec_hoy= datetime.date.today()
+        hoy = fec_hoy.strftime("%d/%m/%Y")
+
         styleSheet=getSampleStyleSheet()
-        img=Image("credi1.png",504,145)
+        img=Image("cabezalcaida.png",225,50)
         otro_estilo= ParagraphStyle('',fontSize = 20,textColor = '#000',leftIndent = 200,rightIndent = 50)
-        style_barra= ParagraphStyle('',fontSize = 13,textColor = '#000',backColor='#f5f5f5',borderColor ='#a3a3a3',borderWidth = 1,borderPadding = (1, 2, 5))
+        style_barra= ParagraphStyle('',fontSize = 13,textColor = '#000',leftIndent = 300, rightIndent = 0)
+        estilo_cabezal= ParagraphStyle('',fontSize = 15,textColor = '#000',leftIndent = 100,rightIndent = 0)
+
         texto_principal = ""
         estilo_texto = ParagraphStyle('',
                 fontSize = 12,
@@ -74,45 +80,58 @@ class ingresos_diarios(QDialog):
         banner = [ [ img,h ] ]
         options = QFileDialog.Options()
         story=[]
-        ban = Table( banner, colWidths=300 )
-        ban.setStyle([ ('ALIGN',(0,0),(0,0),'LEFT'),('ALIGN',(0,0),(1,0),'LEFT'), ('VALIGN',(0,0),(1,0),'TOP'),
-                    ('TEXTCOLOR',(0,1),(0,-1), colors.blue) ])
+        ban = Table( banner, colWidths=0, rowHeights=10)
+
         story.append(ban)
-        story.append(Spacer(0,10))
+        story.append(Spacer(0,15))
 
-        P= Paragraph("<b>Reportes</b> ",otro_estilo)
+        P=Paragraph("<u>Registro de ingresos diarios </u> ",estilo_cabezal)
         story.append(P)
         story.append(Spacer(0,25))
 
-        P=Paragraph("<b>Registro de ingresos diarios "+ str(datetime.datetime.now()) +"</b> ",style_barra)
+        P=Paragraph("<b>Fecha:  " + str (hoy)+ " </b> ",style_barra)
         story.append(P)
-        story.append(Spacer(0,25))
-        #nombre apellido dni Nro prestamo nro cuota monto
+        story.append(Spacer(0,5))
+
         integrantes = [[Paragraph('''<font size=12> <b> </b></font>''',styleSheet["BodyText"])],
-                ['Nombre y Apellido', 'Cuota', 'Número','Nro Importe', 'Punitorios','Descuento', 'Estado']]
+                ['Nombre y Apellido', 'Cuota', 'N° Cuota','Importe', 'Punitorios','Descuento', 'Estado']]
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-        
-        for item in self.lst_ord:           
+
+        for item in self.lst_ord:
             integrantes.append([str(item.nombre + ", " + item.apellido),str("cuota credito"),str(item.nro_cuota),str(round(item.monto_cobrado,2)),str(round(item.punitorios,2)), str(round(item.descuento,2)), str(item.estado_cuota)])
-            t=Table(integrantes, (120,80, 60, 60,53,50,40))
+            t=Table(integrantes, (120,65, 60, 60,75,75,50))
             t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
                                ('BOX', (0,1), (-1,-1), 0.25, colors.black),
                                ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
                                ]))
-        
+
         story.append(t)
         story.append(Spacer(0,15))
-        nombre_archivo = "Reg_ing_diarios" + str(datetime.datetime.now()) + ".pdf"
-        doc=SimpleDocTemplate(nombre_archivo)
+
+
+        nombre_archivo = "Reg_ing_diarios" + str(datetime.date.today().year)+"_"+str(datetime.date.today().month) + "_" + str(datetime.date.today().day) + ".pdf"
+
+        #---------------------------------------CAMBIAR RUTA (LA PALABRA slam2016 POR LA RUTA DESEADA DE LA PC)------------------------------------------------#
+        file_path ="/home/slam2016/Documentos/credired/credired20170306/pdf/ingresos/ingresos"+str(datetime.date.today().year)+"_"+str(datetime.date.today().month)
+
+
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+
+        doc=SimpleDocTemplate(file_path +"/" + nombre_archivo)
         doc.build(story)
-        if doc:            
+        if doc:
             msgBox = QMessageBox()
             msgBox.setWindowTitle("Correcto")
             msgBox.setText( 'Se genero el informe correctamente : ' + nombre_archivo)
             msgBox.exec_()
-            return False 
+
+        if sys.platform == 'linux':
+            subprocess.call(["xdg-open", file_path +"/" + nombre_archivo])
+        else:
+            os.startfile( file_path +"/" + nombre_archivo)
 
     def limpiar(self):
         while (self.obj_form.tw_ingresos_registros.rowCount() > 0):

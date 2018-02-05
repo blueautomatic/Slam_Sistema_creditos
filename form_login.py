@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_login.ui'
 #
-# Created: Mon Jan  2 10:35:09 2017
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,13 +11,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form_login(object):
     def setupUi(self, Form_login):
         Form_login.setObjectName("Form_login")
-        Form_login.resize(406, 225)
+        Form_login.resize(402, 224)
         Form_login.setStyleSheet("selection-background-color: rgb(255, 170, 127);\n"
 "color: rgb(0, 0, 0);\n"
 "font:  11pt \"KacstOne\";\n"
 "background-color: qlineargradient(spread:pad, x1:0.46, y1:0, x2:0.487, y2:0.977273, stop:0.188482 rgba(132, 0, 0, 255), stop:1 rgba(235, 0, 4, 255));")
+        self.gridLayout = QtWidgets.QGridLayout(Form_login)
+        self.gridLayout.setObjectName("gridLayout")
         self.tabWidget_2 = QtWidgets.QTabWidget(Form_login)
-        self.tabWidget_2.setGeometry(QtCore.QRect(10, 10, 381, 201))
         self.tabWidget_2.setStyleSheet("background-color: rgb(239, 235, 231);\n"
 "font:  10pt \"KacstOne\";\n"
 "QLabel{\n"
@@ -46,7 +46,7 @@ class Ui_Form_login(object):
         self.label = QtWidgets.QLabel(self.tab_2)
         self.label.setGeometry(QtCore.QRect(6, 6, 361, 161))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("Íconos/credi1.png"))
+        self.label.setPixmap(QtGui.QPixmap("credi1.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.groupBox = QtWidgets.QGroupBox(self.tab_2)
@@ -100,13 +100,22 @@ class Ui_Form_login(object):
         self.boton_aceptar.setGeometry(QtCore.QRect(209, 70, 80, 23))
         self.boton_aceptar.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.46, y1:0, x2:0.487, y2:0.977273, stop:0.188482 rgba(132, 0, 0, 132), stop:1 rgba(235, 0, 4, 255));")
         self.boton_aceptar.setObjectName("boton_aceptar")
+        self.label_2.raise_()
+        self.lne_nombre.raise_()
+        self.lne_pass.raise_()
+        self.label_3.raise_()
+        self.boton_aceptar.raise_()
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Íconos/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget_2.addTab(self.tab_2, icon, "")
+        self.gridLayout.addWidget(self.tabWidget_2, 0, 0, 1, 1)
 
         self.retranslateUi(Form_login)
         self.tabWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form_login)
+        Form_login.setTabOrder(self.lne_nombre, self.lne_pass)
+        Form_login.setTabOrder(self.lne_pass, self.boton_aceptar)
+        Form_login.setTabOrder(self.boton_aceptar, self.tabWidget_2)
 
     def retranslateUi(self, Form_login):
         _translate = QtCore.QCoreApplication.translate

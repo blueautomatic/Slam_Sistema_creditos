@@ -4,6 +4,7 @@ from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func,Boole
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from PyQt5.QtCore import pyqtRemoveInputHook
+from E_configuracion import configuracion
 
 Base = declarative_base()
 class E_party_contacto(Base):
@@ -23,7 +24,8 @@ class E_party_contacto(Base):
 
 
     def guardar(self,obj_N_party_contacto,id_party):
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        obj_conexion =  configuracion()
+        engine=create_engine(obj_conexion.config())
         Session= sessionmaker(bind=engine)
         session=Session()
         #pyqtRemoveInputHook()

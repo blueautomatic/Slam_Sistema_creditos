@@ -1,4 +1,4 @@
-import sys,datetime
+import sys,datetime,os
 from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem
 from PyQt5 import uic
 from form_cuotas_vencidas_30dias import Ui_form_cuotas_vencidas_30dias
@@ -14,7 +14,8 @@ from reportlab.platypus import Spacer, SimpleDocTemplate, Table, TableStyle
 from reportlab.platypus import Paragraph, Image
 from reportlab.lib import colors
 from PyQt5.QtWidgets import QFileDialog
-
+from E_configuracion import configuracion
+import subprocess
 class Cuotas_vencidas_30dias(QDialog):
     obj_form = Ui_form_cuotas_vencidas_30dias()
     listado_cuotas_30_dias = list()
@@ -30,18 +31,18 @@ class Cuotas_vencidas_30dias(QDialog):
         self.obj_form.boton_generar_90_dias.clicked.connect(self.generar_90dias)
 
     def generar_30dias(self):
-        obj_N_nuotas = N_cuotas(1)
-        self.listado_cuotas_30_dias = obj_N_nuotas.lista_cuotas_venc_30_dias("slam")
+        obj_N_cuotas = N_cuotas(1)
+        self.listado_cuotas_30_dias = obj_N_cuotas.lista_cuotas_venc_30_dias()
 
         styleSheet=getSampleStyleSheet()
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-        
-        img=Image("credi1.png",504,145)
-        #img.hAlign = "LEFT"
+
+        img=Image("cabezal.png",250,75)
+        img.hAlign = "LEFT"
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-       
+
 
         otro_estilo= ParagraphStyle('',fontSize = 20,textColor = '#000',leftIndent = 200,rightIndent = 50)
 
@@ -60,11 +61,11 @@ class Cuotas_vencidas_30dias(QDialog):
         banner = [ [ img,h ] ]
         options = QFileDialog.Options()
         story=[]
-        ban = Table( banner, colWidths=300 )
+        ban = Table( banner, colWidths=300, rowHeights=10)
         ban.setStyle([ ('ALIGN',(0,0),(0,0),'LEFT'),('ALIGN',(0,0),(1,0),'LEFT'), ('VALIGN',(0,0),(1,0),'TOP'),
                     ('TEXTCOLOR',(0,1),(0,-1), colors.blue) ])
         story.append(ban)
-        story.append(Spacer(0,10))
+        story.append(Spacer(0,-17))
 
 
         P= Paragraph("<b>Reportes</b> ",otro_estilo)
@@ -85,21 +86,41 @@ class Cuotas_vencidas_30dias(QDialog):
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
             obj_N_datos_personales_cliente = N_datos_personales_cliente()
-            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
+            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party)
             integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(monto_adeudado)])
-            t=Table(integrantes, (150,55, 100, 135, 55,55))
-            t.setStyle(TableStyle([
+
+        t=Table(integrantes, (150,135, 100, 55, 55,55))
+        t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
                                ('BOX', (0,1), (-1,-1), 0.25, colors.black),
                                ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
                                ]))
-            story.append(t)
-            story.append(Spacer(0,15))
+        story.append(t)
+        story.append(Spacer(0,15))
 
-        nombre_archivo = "listado_de_morosos_30dias" + str(datetime.datetime.now()) + ".pdf"
-        doc=SimpleDocTemplate(nombre_archivo)
+
+        obj_config = configuracion()
+        cadena = obj_config.ruta()
+
+        file_path = cadena + "/pdf/listados/list_morosos_30dias"+str(datetime.date.today().year)+"_"+str(datetime.date.today().month)
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+
+        doc=SimpleDocTemplate(file_path +"/listado_de_morosos_30dias.pdf")
         doc.build(story )
-    
+
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle("Estado de Listado")
+        msgBox.setText("El Listado se ha generado correctamente : ticket listado_de_morosos_30dias.pdf")
+        msgBox.exec_()
+
+        if sys.platform == 'linux':
+            subprocess.call(["xdg-open", file_path +"/listado_de_morosos_30dias.pdf"])
+        else:
+            os.startfile( file_path +"/listado_de_morosos_30dias.pdf")
+
+
+
     def generar_60dias(self):
         obj_N_cuotas = N_cuotas(1)
         self.listado_cuotas_60_dias = obj_N_cuotas.lista_cuotas_venc_60_dias("slam")
@@ -107,12 +128,12 @@ class Cuotas_vencidas_30dias(QDialog):
         styleSheet=getSampleStyleSheet()
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-        
-        img=Image("credi1.png",504,145)
-        #img.hAlign = "LEFT"
+
+        img=Image("cabezal.png",250,75)
+        img.hAlign = "LEFT"
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-       
+
 
         otro_estilo= ParagraphStyle('',fontSize = 20,textColor = '#000',leftIndent = 200,rightIndent = 50)
 
@@ -131,7 +152,7 @@ class Cuotas_vencidas_30dias(QDialog):
         banner = [ [ img,h ] ]
         options = QFileDialog.Options()
         story=[]
-        ban = Table( banner, colWidths=300 )
+        ban = Table( banner, colWidths=300, rowHeights=10)
         ban.setStyle([ ('ALIGN',(0,0),(0,0),'LEFT'),('ALIGN',(0,0),(1,0),'LEFT'), ('VALIGN',(0,0),(1,0),'TOP'),
                     ('TEXTCOLOR',(0,1),(0,-1), colors.blue) ])
         story.append(ban)
@@ -154,21 +175,42 @@ class Cuotas_vencidas_30dias(QDialog):
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
             obj_N_datos_personales_cliente = N_datos_personales_cliente()
-            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
+            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party)
             integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(round(monto_adeudado,2))])
-            t=Table(integrantes, (150,55, 100, 135, 55,55))
-            t.setStyle(TableStyle([
+
+        t=Table(integrantes, (150,135, 100, 55, 55,55))
+        t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
                                ('BOX', (0,1), (-1,-1), 0.25, colors.black),
                                ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
                                ]))
 
-            story.append(t)
-            story.append(Spacer(0,15))
-        nombre_archivo = "listado_de_morosos_60dias" + str(datetime.datetime.now()) + ".pdf"
-       
-        doc=SimpleDocTemplate(nombre_archivo)
+        story.append(t)
+        story.append(Spacer(0,15))
+
+
+        obj_config = configuracion()
+        cadena = obj_config.ruta()
+
+        file_path = cadena + "/pdf/listados/list_morosos_60dias"+str(datetime.date.today().year)+"_"+str(datetime.date.today().month)
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+
+        doc=SimpleDocTemplate(file_path +"/listado_de_morosos_60dias.pdf")
         doc.build(story )
+
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle("Estado de Listado")
+        msgBox.setText("El Listado se ha generado correctamente : Listado listado_de_morosos_60dias.pdf")
+        msgBox.exec_()
+
+        if sys.platform == 'linux':
+            subprocess.call(["xdg-open", file_path +"/listado_de_morosos_60dias.pdf"])
+        else:
+            os.startfile( file_path +"/listado_de_morosos_60dias.pdf")
+
+
+
 
     def generar_90dias(self):
         obj_N_cuotas = N_cuotas(1)
@@ -177,12 +219,12 @@ class Cuotas_vencidas_30dias(QDialog):
         styleSheet=getSampleStyleSheet()
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-        
-        img=Image("credi1.png",504,145)
-        #img.hAlign = "LEFT"
+
+        img=Image("cabezal.png",250,75)
+        img.hAlign = "LEFT"
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
-       
+
 
         otro_estilo= ParagraphStyle('',fontSize = 20,textColor = '#000',leftIndent = 200,rightIndent = 50)
 
@@ -201,11 +243,11 @@ class Cuotas_vencidas_30dias(QDialog):
         banner = [ [ img,h ] ]
         options = QFileDialog.Options()
         story=[]
-        ban = Table( banner, colWidths=300 )
+        ban = Table( banner, colWidths=300, rowHeights=10)
         ban.setStyle([ ('ALIGN',(0,0),(0,0),'LEFT'),('ALIGN',(0,0),(1,0),'LEFT'), ('VALIGN',(0,0),(1,0),'TOP'),
                     ('TEXTCOLOR',(0,1),(0,-1), colors.blue) ])
         story.append(ban)
-        story.append(Spacer(0,10))
+        story.append(Spacer(0,-17))
 
 
         P= Paragraph("<b>Reportes</b> ",otro_estilo)
@@ -224,21 +266,38 @@ class Cuotas_vencidas_30dias(QDialog):
             obj_N_credito = N_creditos(1)
             obj_credito = obj_N_credito.buscar_credito_por_nro_credito(item.nro_credito)
             obj_N_datos_personales_cliente = N_datos_personales_cliente()
-            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party) 
+            obj_party = obj_N_datos_personales_cliente.buscar_party_party_por_id(obj_credito.id_party)
             integrantes.append([str(obj_party.apellido), str(obj_party.nombre), str(obj_party.nro_doc) ,str(item.nro_credito),str(item.nro_cuota), str(round(monto_adeudado,2))])
-            t=Table(integrantes, (150,55, 100, 135, 55,55))
-            t.setStyle(TableStyle([
+        t=Table(integrantes, (150,155, 100, 55, 55,55))
+        t.setStyle(TableStyle([
                                ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
                                ('BOX', (0,1), (-1,-1), 0.25, colors.black),
                                ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
                                ]))
 
-            story.append(t)
-            story.append(Spacer(0,15))
+        story.append(t)
+        story.append(Spacer(0,15))
 
-        nombre_archivo = "listado_de_morosos_90dias" + str(datetime.datetime.now()) + ".pdf"
-        doc=SimpleDocTemplate(nombre_archivo)
+        obj_config = configuracion()
+        cadena = obj_config.ruta()
+
+        file_path = cadena + "/pdf/listados/listado_de_morosos_90dias"+str(datetime.date.today().year)+"_"+str(datetime.date.today().month)
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+
+        doc=SimpleDocTemplate(file_path +"/listado_de_morosos_90dias.pdf")
         doc.build(story )
+
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle("Estado de Listado")
+        msgBox.setText("El Listado se ha generado correctamente : Listado listado_de_morosos_90dias.pdf")
+        msgBox.exec_()
+
+        if sys.platform == 'linux':
+            subprocess.call(["xdg-open", file_path +"/listado_de_morosos_90dias.pdf"])
+        else:
+            os.startfile( file_path +"/listado_de_morosos_90dias.pdf")
+
 
 
 

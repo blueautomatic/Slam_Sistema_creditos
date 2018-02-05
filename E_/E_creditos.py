@@ -54,7 +54,7 @@ base = declarative_base()
 
 	   def guardar(self):
 
-	        engine=create_engine('postgresql://postgres:121212@localhost:5432/credired')
+	    	engine=create_engine('postgresql://postgres:121212@localhost:5432/credired')
 	        Session= sessionmaker(bind=engine) 
 	        session=Session()
 	        new_record = E_creditos

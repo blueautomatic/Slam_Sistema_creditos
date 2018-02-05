@@ -4,6 +4,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey,update
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from PyQt5.QtCore import pyqtRemoveInputHook
+from E_configuracion import configuracion
 
 
 
@@ -27,7 +28,8 @@ class E_empresa(base):
 
     def __init__  (self, id_empresa):
         a = id_empresa
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        obj_conexion =  configuracion()
+        engine=create_engine(obj_conexion.config())
         Session= sessionmaker(bind=engine)
         self.session=Session()
 

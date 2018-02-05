@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import IntegrityError
 from PyQt5.QtCore import pyqtRemoveInputHook
+from E_configuracion import configuracion
 
 base = declarative_base()
 class E_party_party(base):
@@ -29,7 +30,8 @@ class E_party_party(base):
             self.create_date =func.now()
             self.write_date = func.now()
             self.write_uid = 1
-            engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+            obj_conexion =  configuracion()
+            engine=create_engine(obj_conexion.config())
             Session= sessionmaker(bind=engine)
             self.session=Session()
 

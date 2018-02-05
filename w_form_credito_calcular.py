@@ -27,11 +27,21 @@ class Calcular_credito(QDialog):
 
     def calcular_cuotas(self):
         capital = self.obj_form.lne_capital.text()
-        nro_cuota = self.obj_form.lne_cant_cta.text()
-        #pyqtRemoveInputHook()
-        #import pdb; pdb.set_trace()
-        if capital != "" and nro_cuota != "":
+        pyqtRemoveInputHook()
+        import pdb; pdb.set_trace()
 
+        if capital != "":
+
+            self.obj_form.lne_cta_3.setText(str(self.valor_cuota(3)))
+            self.obj_form.lne_cta_4.setText(str(self.valor_cuota(4)))
+            self.obj_form.lne_cta_5.setText(str(self.valor_cuota(5)))
+            self.obj_form.lne_cta_6.setText(str(self.valor_cuota(6)))
+            self.obj_form.lne_cta_7.setText(str(self.valor_cuota(7)))
+            self.obj_form.lne_cta_8.setText(str(self.valor_cuota(8)))
+            self.obj_form.lne_cta_9.setText(str(self.valor_cuota(9)))
+            self.obj_form.lne_cta_10.setText(str(self.valor_cuota(10)))
+            self.obj_form.lne_cta_11.setText(str(self.valor_cuota(11)))
+            self.obj_form.lne_cta_12.setText(str(self.valor_cuota(12)))
             self.obj_form.lne_cta_13.setText(str(self.valor_cuota(13)))
             self.obj_form.lne_cta_14.setText(str(self.valor_cuota(14)))
             self.obj_form.lne_cta_15.setText(str(self.valor_cuota(15)))
@@ -46,32 +56,31 @@ class Calcular_credito(QDialog):
             self.obj_form.lne_cta_24.setText(str(self.valor_cuota(24)))
 
 
-            self.obj_form.lne_valor_cta.setText(str(self.valor_cuota(int(nro_cuota))))
         else:
             msgBox = QMessageBox()
             msgBox.setWindowTitle("Atencion")
             msgBox.setText('Verificar que el campo Capital y Nro de cuota vacios')
             msgBox.exec_()
-    
+
     def valor_cuota(self, cant_cuotas):
-       
-        obj_credito_total=0
-        interes_total=0      
+
+
+        tasa=8
         capital = self.obj_form.lne_capital.text()
-        tasa = 8
+        if  cant_cuotas >1 and cant_cuotas < 6:
+            tasa=11
 
-        interes=self.redondear(str(float(capital) / float(tasa)))
-        #valor cuota
-        obj_capital = self.redondear(str(float(capital) / float(cant_cuotas)))
-        gastos = self.calcular_Gastos(cant_cuotas)
-
-        valor_cuota =float(interes) + float(obj_capital) + float(gastos)
+        interes=(float(capital) * tasa)/100
+        obj_capital = str(float(capital) / float(cant_cuotas))
+        obj_capital=self.redondear(obj_capital)
+        gastos = self.calcular_Gastos(int(cant_cuotas))
+        valor_cuota = float(interes) + float(obj_capital) + float(gastos)
 
         return valor_cuota
-          
 
-    def redondear(self,obj_capital):
-        pos = obj_capital.find('.') 
+
+    def redondear1(self,obj_capital):
+        pos = obj_capital.find('.')
         unidad = obj_capital[(pos-1)]
         lista = list(obj_capital)
         result = ""
@@ -83,18 +92,41 @@ class Calcular_credito(QDialog):
         elif (int(unidad) > 3) and (int(unidad) < 8):
             lista[(pos-1)] = '5'
         elif (int(unidad) > 8):
-            result2 = capital/10 
+            result2 = capital/10
             result3 = math.ceil(result2)
             result = result3 * 10
             return int(result)
-            
+
         for item in lista:
             if item != '.' :
                 result = result + str(item)
             elif item == '.':
                 break
         return int(result)
-    
+
+
+    def redondear(self,obj_capital):
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        pos = obj_capital.find('.')
+
+        unidad = obj_capital[(pos-1)]
+        lista = list(obj_capital)
+        result = ""
+        if (int(unidad) <= 3):
+            lista[(pos-1)] = '0'
+        elif (int(unidad) >= 4) :
+            lista[(pos-1)] = '5'
+
+
+        for item in lista:
+            if item != '.' :
+                result = result + str(item)
+            elif item == '.':
+                break
+
+        return int(result)
+
     def calcular_Gastos(self, cant_cuotas):
         if (cant_cuotas >= 3) and (cant_cuotas <= 5):
             gastos =80

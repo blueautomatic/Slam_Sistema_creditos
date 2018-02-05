@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import IntegrityError 
 from sqlalchemy import text
+from E_configuracion import configuracion
 
 class E_historial_garante(object):
     tipo_garante="" 
@@ -22,7 +23,8 @@ class E_historial_garante(object):
 
     def __init__(self, slam):
         slam1 = slam
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        obj_conexion =  configuracion()
+        engine=create_engine(obj_conexion.config())
         Session= sessionmaker(bind=engine) 
         self.session=Session()
     

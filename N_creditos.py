@@ -71,6 +71,8 @@ class N_creditos(object):
             obj_creditos.observaciones = item.observaciones
             obj_creditos.gastos = item.gastos
             obj_creditos.estado = item.estado
+            obj_creditos.importe_prestamo = item.importe_prestamo
+
             list_N_creditos.append(obj_creditos)
         
         return list_N_creditos  

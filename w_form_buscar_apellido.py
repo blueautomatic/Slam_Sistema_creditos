@@ -15,22 +15,31 @@ class buscar_apellido(QDialog):
         self.obj_form= Ui_Form_buscar_apellido()
         self.obj_form.setupUi(self)
         self.obj_form.boton_apellido_buscar.clicked.connect(self.buscar)
+        self.obj_form.lne_apellido.setFocus()
 
     def buscar(self):
         self.limpiar()
         apellido = self.obj_form.lne_apellido.text()
         obj_N_cliente = N_datos_personales_cliente()
-        list_clientes= list()  
+        list_clientes= list()
         list_clientes = obj_N_cliente.buscar(apellido.upper())
+        if len(list_clientes) !=0:
+            for item in list_clientes:
+                rowPosition = self.obj_form.tw_resultado.rowCount()
+                self.obj_form.tw_resultado.insertRow(rowPosition)
+                self.obj_form.tw_resultado.setItem(rowPosition, 0, QTableWidgetItem(str(item.apellido)))
+                self.obj_form.tw_resultado.setItem(rowPosition, 1, QTableWidgetItem(str(item.nombre)))
+                self.obj_form.tw_resultado.setItem(rowPosition, 2 , QTableWidgetItem(str(item.num_doc)))
+        else:
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle("Atención")
+            msgBox.setText("No se encontró ningún cliente")
+            msgBox.exec_()
 
-        for item in list_clientes:
-            rowPosition = self.obj_form.tw_resultado.rowCount()
-            self.obj_form.tw_resultado.insertRow(rowPosition)
-            self.obj_form.tw_resultado.setItem(rowPosition, 0, QTableWidgetItem(str(item.apellido)))
-            self.obj_form.tw_resultado.setItem(rowPosition, 1, QTableWidgetItem(str(item.nombre)))
-            self.obj_form.tw_resultado.setItem(rowPosition, 2 , QTableWidgetItem(str(item.num_doc)))
 
-        
+
+
+
     def limpiar(self):
 
         while (self.obj_form.tw_resultado.rowCount() > 0):
@@ -41,4 +50,4 @@ class buscar_apellido(QDialog):
 #app = QApplication(sys.argv)
 #dialogo= buscar_apellido()
 #dialogo.show()
-#app.exec_()  
+#app.exec_()

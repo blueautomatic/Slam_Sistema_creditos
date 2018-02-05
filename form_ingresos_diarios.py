@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_ingresos_diarios.ui'
 #
-# Created: Sun Nov 20 17:20:19 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,120 +11,85 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_form_ingresos_diarios(object):
     def setupUi(self, form_ingresos_diarios):
         form_ingresos_diarios.setObjectName("form_ingresos_diarios")
-        form_ingresos_diarios.resize(856, 825)
-        form_ingresos_diarios.setStyleSheet("selection-background-color: rgb(255, 170, 127);\n"
+        form_ingresos_diarios.resize(888, 519)
+        form_ingresos_diarios.setStyleSheet("font: 75 10pt \"KacstOne\";\n"
+"selection-background-color: rgb(255, 170, 127);\n"
 "color: rgb(0, 0, 0);\n"
-"font: 10pt \"KacstOne\";\n"
-"background-color: rgb(172, 55, 26);\n"
-"\n"
+"background-color: rgb(81, 1, 1);\n"
+"selection-color: rgb(0, 0, 0);\n"
 "")
+        self.gridLayout_5 = QtWidgets.QGridLayout(form_ingresos_diarios)
+        self.gridLayout_5.setObjectName("gridLayout_5")
         self.tabWidget_2 = QtWidgets.QTabWidget(form_ingresos_diarios)
-        self.tabWidget_2.setGeometry(QtCore.QRect(10, 10, 831, 801))
         self.tabWidget_2.setStyleSheet("background-color: rgb(239, 235, 231);\n"
-"font: 11pt \"Century Schoolbook L\";")
+"")
         self.tabWidget_2.setObjectName("tabWidget_2")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.tab_2)
+        self.gridLayout_4.setObjectName("gridLayout_4")
         self.groupBox = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox.setGeometry(QtCore.QRect(110, 10, 621, 81))
         self.groupBox.setStyleSheet("QGroupBox{\n"
-"background-color: rgb(239, 235, 231);\n"
-"border-style: solid;\n"
-"border-width: 5px;\n"
-"border-color: rgb(172, 55, 26);\n"
-"border-radius: 8px;\n"
-"}\n"
-"QLineEdit{\n"
-"background-color: rgb(239, 235, 231);\n"
-"}\n"
-"QLabel{\n"
-"background-color: rgb(239, 235, 231);\n"
-"font: 10pt \"KacstOne\";\n"
-"}\n"
-"QDateEdit{\n"
 "background-color: rgb(239, 235, 231);\n"
 "}")
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
+        self.gridLayout = QtWidgets.QGridLayout(self.groupBox)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(self.groupBox)
-        self.label.setGeometry(QtCore.QRect(36, 32, 231, 16))
-        self.label.setStyleSheet("font: 75 11pt \"Century Schoolbook L\";")
+        self.label.setStyleSheet("")
         self.label.setObjectName("label")
-        self.boton_ingresos_buscar = QtWidgets.QPushButton(self.groupBox)
-        self.boton_ingresos_buscar.setGeometry(QtCore.QRect(490, 20, 111, 41))
-        font = QtGui.QFont()
-        font.setFamily("Century Schoolbook L")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.boton_ingresos_buscar.setFont(font)
-        self.boton_ingresos_buscar.setStyleSheet("font:  12pt \"Century Schoolbook L\";\n"
-"background-color: rgb(251, 204, 193);\n"
-"border-color: rgb(170, 0, 0);\n"
-"border-style: solid;\n"
-"border-width:2px;")
-        self.boton_ingresos_buscar.setObjectName("boton_ingresos_buscar")
+        self.horizontalLayout.addWidget(self.label)
         self.dte_fecha_ingresos_mov = QtWidgets.QDateEdit(self.groupBox)
-        self.dte_fecha_ingresos_mov.setGeometry(QtCore.QRect(300, 20, 151, 41))
+        self.dte_fecha_ingresos_mov.setMinimumSize(QtCore.QSize(100, 0))
+        self.dte_fecha_ingresos_mov.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Century Schoolbook L")
-        font.setPointSize(12)
+        font.setFamily("KacstOne")
+        font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(9)
         self.dte_fecha_ingresos_mov.setFont(font)
-        self.dte_fecha_ingresos_mov.setStyleSheet("font: 75 12pt \"Century Schoolbook L\";\n"
-"border-color: rgb(170, 0, 0);\n"
-"border-style: solid;\n"
-"border-width:2px;")
+        self.dte_fecha_ingresos_mov.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.dte_fecha_ingresos_mov.setCalendarPopup(True)
         self.dte_fecha_ingresos_mov.setObjectName("dte_fecha_ingresos_mov")
+        self.horizontalLayout.addWidget(self.dte_fecha_ingresos_mov)
+        self.boton_ingresos_buscar = QtWidgets.QPushButton(self.groupBox)
+        font = QtGui.QFont()
+        font.setFamily("KacstOne")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
+        self.boton_ingresos_buscar.setFont(font)
+        self.boton_ingresos_buscar.setStyleSheet("background-color: rgb(251, 204, 193);\n"
+"")
+        self.boton_ingresos_buscar.setObjectName("boton_ingresos_buscar")
+        self.horizontalLayout.addWidget(self.boton_ingresos_buscar)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.groupBox, 0, 0, 1, 1)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
         self.label_2 = QtWidgets.QLabel(self.tab_2)
-        self.label_2.setGeometry(QtCore.QRect(13, 98, 241, 31))
         self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
         self.groupBox_2 = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox_2.setGeometry(QtCore.QRect(10, 130, 801, 561))
         self.groupBox_2.setStyleSheet("QGroupBox{\n"
 "background-color: rgb(239, 235, 231);\n"
-"border-style: solid;\n"
-"border-width: 5px;\n"
-"border-color: rgb(172, 55, 26);\n"
-"border-radius: 8px;\n"
-"font: 10pt \"KacstOne\";\n"
+"\n"
 "}\n"
-"QLineEdit{\n"
-"background-color: rgb(239, 235, 231);\n"
-"}\n"
-"QLabel{\n"
-"background-color: rgb(239, 235, 231);\n"
-"font: 10pt \"KacstOne\";\n"
-"}\n"
-"QDateEdit{\n"
-"background-color: rgb(239, 235, 231);\n"
-"}")
+"")
         self.groupBox_2.setTitle("")
         self.groupBox_2.setObjectName("groupBox_2")
-        self.label_3 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_3.setGeometry(QtCore.QRect(450, 480, 171, 31))
-        self.label_3.setObjectName("label_3")
-        self.lne_ingresos_total = QtWidgets.QLineEdit(self.groupBox_2)
-        self.lne_ingresos_total.setGeometry(QtCore.QRect(630, 470, 151, 51))
-        self.lne_ingresos_total.setStyleSheet("border-color: rgb(170, 0, 0);\n"
-"border-style: solid;\n"
-"border-width:2px;")
-        self.lne_ingresos_total.setObjectName("lne_ingresos_total")
-        self.label_4 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_4.setGeometry(QtCore.QRect(20, 480, 81, 31))
-        self.label_4.setObjectName("label_4")
-        self.lne_ingresos_nro_planilla = QtWidgets.QLineEdit(self.groupBox_2)
-        self.lne_ingresos_nro_planilla.setGeometry(QtCore.QRect(110, 480, 61, 31))
-        self.lne_ingresos_nro_planilla.setStyleSheet("border-color: rgb(170, 0, 0);\n"
-"border-style: solid;\n"
-"border-width:2px;")
-        self.lne_ingresos_nro_planilla.setObjectName("lne_ingresos_nro_planilla")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.groupBox_2)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.gridLayout_2 = QtWidgets.QGridLayout()
+        self.gridLayout_2.setObjectName("gridLayout_2")
         self.tw_ingresos_registros = QtWidgets.QTableWidget(self.groupBox_2)
-        self.tw_ingresos_registros.setGeometry(QtCore.QRect(20, 20, 761, 331))
         self.tw_ingresos_registros.setStyleSheet("background-color: rgb(251, 204, 193);")
         self.tw_ingresos_registros.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.tw_ingresos_registros.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
@@ -147,30 +111,54 @@ class Ui_form_ingresos_diarios(object):
         item = QtWidgets.QTableWidgetItem()
         self.tw_ingresos_registros.setHorizontalHeaderItem(6, item)
         self.tw_ingresos_registros.horizontalHeader().setDefaultSectionSize(150)
+        self.gridLayout_2.addWidget(self.tw_ingresos_registros, 0, 0, 1, 1)
         self.boton_ingresos_imprimir = QtWidgets.QPushButton(self.groupBox_2)
-        self.boton_ingresos_imprimir.setGeometry(QtCore.QRect(280, 360, 151, 51))
         self.boton_ingresos_imprimir.setStyleSheet("background-color: rgb(251, 204, 193);\n"
-"border-color: rgb(170, 0, 0);\n"
-"border-style: solid;\n"
-"border-width:2px;")
+"")
         self.boton_ingresos_imprimir.setObjectName("boton_ingresos_imprimir")
+        self.gridLayout_2.addWidget(self.boton_ingresos_imprimir, 1, 0, 1, 1, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label_4 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_2.addWidget(self.label_4)
+        self.lne_ingresos_nro_planilla = QtWidgets.QLineEdit(self.groupBox_2)
+        self.lne_ingresos_nro_planilla.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lne_ingresos_nro_planilla.setObjectName("lne_ingresos_nro_planilla")
+        self.horizontalLayout_2.addWidget(self.lne_ingresos_nro_planilla)
+        self.label_3 = QtWidgets.QLabel(self.groupBox_2)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_2.addWidget(self.label_3)
+        self.lne_ingresos_total = QtWidgets.QLineEdit(self.groupBox_2)
+        self.lne_ingresos_total.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lne_ingresos_total.setObjectName("lne_ingresos_total")
+        self.horizontalLayout_2.addWidget(self.lne_ingresos_total)
+        self.gridLayout_2.addLayout(self.horizontalLayout_2, 2, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_2, 0, 0, 1, 1)
+        self.verticalLayout.addWidget(self.groupBox_2)
+        self.gridLayout_4.addLayout(self.verticalLayout, 1, 0, 1, 1)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Íconos/documento-financiero.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget_2.addTab(self.tab_2, icon, "")
+        self.gridLayout_5.addWidget(self.tabWidget_2, 0, 0, 1, 1)
 
         self.retranslateUi(form_ingresos_diarios)
         self.tabWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(form_ingresos_diarios)
+        form_ingresos_diarios.setTabOrder(self.dte_fecha_ingresos_mov, self.boton_ingresos_buscar)
+        form_ingresos_diarios.setTabOrder(self.boton_ingresos_buscar, self.tw_ingresos_registros)
+        form_ingresos_diarios.setTabOrder(self.tw_ingresos_registros, self.boton_ingresos_imprimir)
+        form_ingresos_diarios.setTabOrder(self.boton_ingresos_imprimir, self.lne_ingresos_nro_planilla)
+        form_ingresos_diarios.setTabOrder(self.lne_ingresos_nro_planilla, self.lne_ingresos_total)
+        form_ingresos_diarios.setTabOrder(self.lne_ingresos_total, self.tabWidget_2)
 
     def retranslateUi(self, form_ingresos_diarios):
         _translate = QtCore.QCoreApplication.translate
         form_ingresos_diarios.setWindowTitle(_translate("form_ingresos_diarios", "Ingresos Diarios"))
         self.label.setText(_translate("form_ingresos_diarios", "Fecha de movimientos a buscar :"))
-        self.boton_ingresos_buscar.setText(_translate("form_ingresos_diarios", "Buscar"))
         self.dte_fecha_ingresos_mov.setDisplayFormat(_translate("form_ingresos_diarios", "dd/M/yyyy"))
+        self.boton_ingresos_buscar.setText(_translate("form_ingresos_diarios", "Buscar"))
         self.label_2.setText(_translate("form_ingresos_diarios", "Registro de Ingresos diarios"))
-        self.label_3.setText(_translate("form_ingresos_diarios", "Total de Ingresos del Día: "))
-        self.label_4.setText(_translate("form_ingresos_diarios", "N° Planilla :"))
         item = self.tw_ingresos_registros.horizontalHeaderItem(0)
         item.setText(_translate("form_ingresos_diarios", "Nombre y Apellido"))
         item = self.tw_ingresos_registros.horizontalHeaderItem(1)
@@ -186,5 +174,7 @@ class Ui_form_ingresos_diarios(object):
         item = self.tw_ingresos_registros.horizontalHeaderItem(6)
         item.setText(_translate("form_ingresos_diarios", "Estado"))
         self.boton_ingresos_imprimir.setText(_translate("form_ingresos_diarios", "Imprimir"))
+        self.label_4.setText(_translate("form_ingresos_diarios", "N° Planilla :"))
+        self.label_3.setText(_translate("form_ingresos_diarios", "Total de Ingresos del Día: "))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), _translate("form_ingresos_diarios", "Ingresos Diarios"))
 

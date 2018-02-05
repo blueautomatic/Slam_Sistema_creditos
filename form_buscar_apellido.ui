@@ -6,186 +6,202 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>643</width>
-    <height>483</height>
+    <width>800</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1600</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Buscar por Apellido</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(211, 211, 186);
-</string>
+   <string notr="true">font: 75 10pt &quot;KacstOne&quot;;
+background-color: rgb(81, 1, 1);</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>621</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">selection-background-color: rgb(255, 170, 127);
-color: rgb(0, 0, 0);
-font: 10pt &quot;KacstOne&quot;;
-background-color: rgb(172, 55, 26);
-
-</string>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="icon">
-     <iconset>
-      <normaloff>Íconos/prismaticos.png</normaloff>Íconos/prismaticos.png</iconset>
-    </attribute>
-    <attribute name="title">
-     <string>Buscar por Apellido</string>
-    </attribute>
-    <widget class="QTabWidget" name="tabWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>8</x>
-       <y>70</y>
-       <width>601</width>
-       <height>351</height>
-      </rect>
-     </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(211, 211, 186);
+      <string notr="true">selection-background-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);
+background-color: rgb(239, 235, 231);
+
+
 </string>
      </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Resultado de Búsqueda</string>
+     <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>Íconos/prismaticos.png</normaloff>Íconos/prismaticos.png</iconset>
       </attribute>
-      <widget class="QTableWidget" name="tw_resultado">
+      <attribute name="title">
+       <string>Buscar por Apellido</string>
+      </attribute>
+      <widget class="QTabWidget" name="tabWidget_2">
        <property name="geometry">
         <rect>
-         <x>8</x>
-         <y>10</y>
-         <width>581</width>
-         <height>301</height>
+         <x>9</x>
+         <y>60</y>
+         <width>751</width>
+         <height>235</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(211, 203, 184);
+        <string notr="true">background-color: rgb(239, 235, 231);
 </string>
        </property>
-       <property name="selectionBehavior">
-        <enum>QAbstractItemView::SelectRows</enum>
+       <property name="currentIndex">
+        <number>0</number>
        </property>
-       <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>150</number>
-       </attribute>
-       <column>
-        <property name="text">
-         <string>Apellido</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Nombre</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>DNI</string>
-        </property>
-       </column>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Resultado de Búsqueda</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QTableWidget" name="tw_resultado">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>451</width>
+             <height>181</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>1000</width>
+             <height>181</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(247, 200, 193);</string>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>150</number>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Apellido</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Nombre</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>DNI</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="boton_apellido_buscar">
+       <property name="geometry">
+        <rect>
+         <x>690</x>
+         <y>10</y>
+         <width>80</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(235, 160, 143);
+font: 75 10pt &quot;KacstOne&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Buscar</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>408</x>
+         <y>12</y>
+         <width>64</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Apellido : </string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lne_apellido">
+       <property name="geometry">
+        <rect>
+         <x>478</x>
+         <y>12</y>
+         <width>200</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+       </property>
       </widget>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="geometry">
-      <rect>
-       <x>2</x>
-       <y>10</y>
-       <width>431</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QGroupBox{
-background-color: rgb(211, 211, 186);
-border-style: solid;
-border-width: 3px;
-border-color: rgb(172, 55, 26);
-border-radius: 8px;
-}
-
-QLabel{
-background-color: rgb(239, 235, 231);
-}
-
-QLineEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QTextEdit{
-background-color: rgb(255, 255, 255);
-}
-
-QComboBox{
-background-color: rgb(255, 255, 255);
-}
-
-QDateEdit{
-background-color: rgb(255, 255, 255);
-}</string>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>15</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(211, 211, 186);
-</string>
-      </property>
-      <property name="text">
-       <string>Apellido : </string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lne_apellido">
-      <property name="geometry">
-       <rect>
-        <x>89</x>
-        <y>16</y>
-        <width>211</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_apellido_buscar">
-      <property name="geometry">
-       <rect>
-        <x>309</x>
-        <y>16</y>
-        <width>80</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Buscar</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <tabstops>
   <tabstop>lne_apellido</tabstop>

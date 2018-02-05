@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>form_creditos_refinanciar</class>
+ <widget class="QWidget" name="form_creditos_refinanciar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>737</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1600</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>KacstOne</family>
+    <pointsize>10</pointsize>
+    <weight>9</weight>
+    <italic>false</italic>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Cuotas Pagar</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 10pt &quot;KacstOne&quot;;
+selection-background-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);
+background-color: rgb(81, 1, 1);
+selection-color: rgb(0, 0, 0);</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>961</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(239, 235, 231);
+</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="icon">
+     <iconset>
+      <normaloff>Íconos/herramientas-de-papel-y-lapiz.png</normaloff>Íconos/herramientas-de-papel-y-lapiz.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Cuotas del Crédito</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 3px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="3" column="0">
+         <widget class="QTableWidget" name="tw_listado_cuotas">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(252, 188, 188);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>100</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Estado</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>N° Cuota</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Vencimiento</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Importe Cuota</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Punitorio</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Descuento</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Cuota pagar</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Importe Cobrado</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Saldo</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Fecha de Cobro</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Capital</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Interes</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Gastos</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Descripcion</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>id</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="boton_historial_cuota">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(252, 188, 188);</string>
+          </property>
+          <property name="text">
+           <string>Historial de Cuota</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>50</y>
+     <width>321</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(239, 235, 231);
+</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_5">
+    <attribute name="icon">
+     <iconset>
+      <normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</normaloff>Íconos/maquina-de-facturacion-electronica-con-escaner.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Pago de Cuota</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_8">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>300</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Información a editar por el Usuario : </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 3px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+font:  75 10Pt &quot;Century Schoolbook L&quot;;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QPushButton" name="boton_agregar">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>130</y>
+          <width>141</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Refinanciar</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="cant_cuotas">
+        <property name="geometry">
+         <rect>
+          <x>185</x>
+          <y>33</y>
+          <width>38</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dte_primer_venc">
+        <property name="geometry">
+         <rect>
+          <x>185</x>
+          <y>89</y>
+          <width>68</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lne_monto">
+        <property name="geometry">
+         <rect>
+          <x>185</x>
+          <y>60</y>
+          <width>81</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>38</y>
+          <width>130</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cantiodad de cuotas :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>60</y>
+          <width>45</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Monto :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>12</x>
+          <y>90</y>
+          <width>165</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Fecha primer Vencimiento :</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="boton_imprimir">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>160</y>
+          <width>80</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Imprimir</string>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>961</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(252, 249, 247);</string>
+   </property>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="icon">
+     <iconset>
+      <normaloff>Íconos/documento-financiero.png</normaloff>Íconos/documento-financiero.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>Historial de Cŕeditos</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 3px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tw_lista_creditos">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(252, 188, 188);</string>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideMiddle</enum>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>125</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Crédito N°</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Cliente</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Fecha Crédito</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>N° Cuotas</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Capital</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Finalizado</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Bloqueado</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Formula</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tipo Vencimiento</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Observaciones</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>120</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLineEdit" name="lne_capital">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>2</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lne_interes">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lne_gastos">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>10</y>
+     <width>29</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DNI: </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lne_dni">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>10</y>
+     <width>125</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="boton_buscar_creditos">
+   <property name="geometry">
+    <rect>
+     <x>970</x>
+     <y>10</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(252, 188, 188);</string>
+   </property>
+   <property name="text">
+    <string>Buscar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lne_nom_ape">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>521</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>15</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 15pt &quot;Ubuntu&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>lne_dni</zorder>
+  <zorder>boton_buscar_creditos</zorder>
+  <zorder>lne_nom_ape</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>tabWidget_4</zorder>
+  <zorder>tabWidget_5</zorder>
+  <zorder>tabWidget_3</zorder>
+ </widget>
+ <tabstops>
+  <tabstop>lne_dni</tabstop>
+  <tabstop>boton_buscar_creditos</tabstop>
+  <tabstop>lne_nom_ape</tabstop>
+  <tabstop>tabWidget_3</tabstop>
+  <tabstop>tw_lista_creditos</tabstop>
+  <tabstop>lne_capital</tabstop>
+  <tabstop>tabWidget_4</tabstop>
+  <tabstop>tw_listado_cuotas</tabstop>
+  <tabstop>tabWidget_5</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

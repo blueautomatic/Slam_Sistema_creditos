@@ -21,6 +21,7 @@ class buscar_clientes(QDialog):
         self.obj_form.setupUi(self)
         self.obj_form.boton_buscar_buscar.clicked.connect(self.buscar_cliente)
         self.obj_form.boton_limpiar.clicked.connect(self.limpiar)
+        self.obj_form.lne_dni_filtro_buscar.setFocus()
 
 
     def limpiar(self):
@@ -54,14 +55,14 @@ class buscar_clientes(QDialog):
             if obj_party_party != False:
                 #tabla party party
                 self.id_party = obj_party_party.id_party
-                self.obj_form.lne_apellido_buscar.setText(obj_party_party.apellido)  
+                self.obj_form.lne_apellido_buscar.setText(obj_party_party.apellido)
                 self.obj_form.lne_nombre_buscar.setText(obj_party_party.nombre)
                 self.obj_form.lne_tipo_doc_buscar.setText(obj_party_party.tipo_doc)
                 self.obj_form.lne_nro_doc_cliente.setText(obj_party_party.num_doc)
-                self.obj_form.lne_estado.setText(obj_party_party.estado)        
+                self.obj_form.lne_estado.setText(obj_party_party.estado)
                 self.obj_form.lne_fecha_nac.setText(str(obj_party_party.fec_nac))
-                self.obj_form.lne_estado_civil.setText(obj_party_party.estado_civil) 
-                self.obj_form.lne_limite_credito_buscar.setText(str(obj_party_party.limite_credito))      
+                self.obj_form.lne_estado_civil.setText(obj_party_party.estado_civil)
+                self.obj_form.lne_limite_credito_buscar.setText(str(obj_party_party.limite_credito))
 
                 #talba address
                 obj_N_party_address= N_party_address(1)
@@ -83,13 +84,13 @@ class buscar_clientes(QDialog):
 
 
 
-            
-                #party cliente        
+
+                #party cliente
                 obj_N_party_cliente= N_party_cliente(1)
                 obj_party_cliente=obj_N_party_cliente.get_party_cliente(self.id_party)
                 self.obj_form.lne_nro_cliente_buscar.setText(str(obj_party_cliente.nro_cliente))
-                self.obj_form.txte_observaciones_buscar.setText(obj_party_cliente.comment) 
-                
+                self.obj_form.txte_observaciones_buscar.setText(obj_party_cliente.comment)
+
 
 
                 #terminar buscar propiedad para seteart cliente
@@ -110,7 +111,7 @@ class buscar_clientes(QDialog):
                 self.obj_form.ckbx_posee_sueldo_buscar.setChecked(obj_datos_laborales.posee_recibo_sueldo)
 
 
-                obj_N_garante= N_party_garante(1)   
+                obj_N_garante= N_party_garante(1)
                 self.list_garante = obj_N_garante.get_list_party_garante(obj_party_cliente.nro_cliente)
                 for item in self.list_garante :
                     nro_cliente = item.nro_cliente
@@ -130,7 +131,7 @@ class buscar_clientes(QDialog):
                     self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(obj_datos_personales_cliente.apellido))
                     self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(obj_datos_personales_cliente.nombre))
                     self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(obj_datos_personales_cliente.nro_doc))
-                    self.obj_form.tw_garantes_lista.setItem(rowPosition , 6, QTableWidgetItem(comment))  
+                    self.obj_form.tw_garantes_lista.setItem(rowPosition , 6, QTableWidgetItem(comment))
 
 
                 #tabla party otros buscar/gonzalo
@@ -143,7 +144,7 @@ class buscar_clientes(QDialog):
                 self.obj_form.lne_cuit_buscar.setText(obj_party_otros.cuit)
                 self.obj_form.lne_cbu_buscar.setText(obj_party_otros.cbu)
                 self.obj_form.lne_nro_beneficio_buscar.setText(obj_party_otros.num_beneficio)
-                
+
                 self.obj_form.ckbx_facturas_buscar.setChecked(obj_party_otros.presento_factura)
                 self.obj_form.ckbx_veraz_buscar.setChecked(obj_party_otros.figura_veraz)
                 self.obj_form.ckbx_jub_pens_buscar.setChecked(obj_party_otros.es_jubilado_pensionado)

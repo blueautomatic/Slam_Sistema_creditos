@@ -1,10 +1,15 @@
-import sys, datetime
-from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem
+import sys, datetime,os
+from PyQt5.QtWidgets import QApplication,QDialog,QMessageBox, QTableWidgetItem,QFileDialog
 from PyQt5 import uic
 from form_clientes_actualizar import Ui_Form_clientes_actualizar
 from N_cliente import N_datos_personales_cliente, N_party_address, N_party_otros, N_datos_laborales, N_party_garante,N_party_cliente,N_party_contacto
 from N_creditos import N_creditos
 from PyQt5.QtCore import pyqtRemoveInputHook
+import pysftp
+from E_archivos import E_archivo
+from E_usuario import E_usuario
+from E_configuracion import configuracion
+
 
 class clientes_actualizar(QDialog):
 
@@ -13,8 +18,9 @@ class clientes_actualizar(QDialog):
     id_party =""
     list_garante = list()
     nro_cliente = ""
+    descripcion_archivo=""
 
-    def __init__(self):
+    def __init__(self,idusu2):
         QDialog.__init__(self)
         obj_form= Ui_Form_clientes_actualizar()
         self.obj_form.setupUi(self)
@@ -23,12 +29,21 @@ class clientes_actualizar(QDialog):
         self.obj_form.boton_buscar_garante_actualizar.clicked.connect(self.buscar_garante)
         self.obj_form.boton_agregar_actualizar.clicked.connect(self.agregar_garante)
         self.obj_form.boton_limpiar_actualizar_cliente.clicked.connect(self.limpiar)
-
-        
-
+        self.obj_form.boton_archivo.clicked.connect(self.buscar_archivo)
         self.obj_form.tw_garantes_lista.cellClicked.connect(self.seleccion_item_tabla)
+        self.obj_form.boton_descargar.clicked.connect(self.descargar_archivo)
+        self.id_usu = idusu2.idusu
+
+    def buscar_archivo(self):
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        fname = QFileDialog.getOpenFileName(self, 'Open file', 'c:\\',"")
+        wer = str(fname[0])
+        self.obj_form.lne_archivo.setText(wer)
 
     def limpiar(self):
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
         self.obj_form.ckbx_facturas_actualizar.setChecked(False)
         self.obj_form.ckbx_veraz_actualizar.setChecked(False)
         self.obj_form.ckbx_jub_pens_actualizar.setChecked(False)
@@ -38,7 +53,6 @@ class clientes_actualizar(QDialog):
 
         for item in self.list_garante:
             self.list_garante.remove(item)
-
 
     def agregar_garante(self):
         number= self.obj_form.lne_garante_nro_doc_actualizar.text()
@@ -55,13 +69,13 @@ class clientes_actualizar(QDialog):
         existe_garante=False
 
         existe_garante = obj_Cliente_garante.es_garante_de_otro_cliente(nro_doc_garante)
-        
+
         obj_party_party_garante = N_datos_personales_cliente()
         id_party_party_garante = obj_party_party_garante.get_id_party_party_garante(nro_doc_garante)
 
         obj_N_creditos = N_creditos(1)
         tiene_prestamo =  obj_N_creditos.get_tiene_prestamos_activo(self.obj_form.lne_garante_nro_doc_actualizar.text())
-        
+
         if (existe_garante == True ) or (tiene_prestamo == True) :
             msgBox = QMessageBox.question(self, 'Validar Clientes y Garantes ', 'Desea agregarlo igualmente?',QMessageBox.Yes | QMessageBox.No)
             if msgBox == QMessageBox.Yes :
@@ -72,7 +86,7 @@ class clientes_actualizar(QDialog):
                 garante_nombre = self.obj_form.lne_garante_nombre_actualizar.text()
                 garante_estado = self.obj_form.lne_garante_estado_actualizar.text()
                 tipo_garante = self.obj_form.cbx_tipo_garante_actualizar.currentText()
-                
+
                 obj_N_party_garante = N_party_garante("A")
                 obj_party_garante = N_party_garante("A")
                 obj_party_garante.comment = self.obj_form.txte_garante_observaciones_actualizar.toPlainText()
@@ -96,7 +110,7 @@ class clientes_actualizar(QDialog):
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(garante_apellido))
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(garante_nombre))
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(garante_nro_doc))
-        else: 
+        else:
             garante_nro_doc = self.obj_form.lne_garante_nro_doc_actualizar.text()
 
             cliente_nro_del_garante = int(self.obj_form.lne_garante_nro_cliente_actualizar.text())
@@ -104,7 +118,7 @@ class clientes_actualizar(QDialog):
             garante_nombre = self.obj_form.lne_garante_nombre_actualizar.text()
             garante_estado = self.obj_form.lne_garante_estado_actualizar.text()
             tipo_garante = self.obj_form.cbx_tipo_garante_actualizar.currentText()
-            
+
             #pyqtRemoveInputHook()
             #import pdb; pdb.set_trace()
             obj_N_party_garante = N_party_garante("A")
@@ -129,13 +143,10 @@ class clientes_actualizar(QDialog):
             self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(garante_apellido))
             self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(garante_nombre))
             self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(garante_nro_doc))
-    
-    def buscar_garante(self):
-      
-        number= self.obj_form.lne_garante_nro_doc_actualizar.text()
-        
 
-       
+    def buscar_garante(self):
+
+        number= self.obj_form.lne_garante_nro_doc_actualizar.text()
         obj_N_datos_garante= N_datos_personales_cliente()
         if number != "":
             try:
@@ -150,40 +161,29 @@ class clientes_actualizar(QDialog):
                 self.obj_form.lne_garante_apellido_actualizar.setText(obj_datos_garante.apellido)
                 self.obj_form.lne_garante_nombre_actualizar.setText(obj_datos_garante.nombre)
                 self.obj_form.lne_garante_estado_actualizar.setText(obj_datos_garante.estado)
-                
                 obj_N_party_cliente = N_party_cliente(obj_datos_garante.id_party)
                 nro_cliente_garante = obj_N_party_cliente.get_nro_cliente(obj_datos_garante.id_party)
                 self.obj_form.lne_garante_nro_cliente_actualizar.setText(str(nro_cliente_garante))
-
-                
             else:
-
                 msgBox = QMessageBox()
                 msgBox.setText('Numero de documento inexistente')
                 msgBox.exec_()
-                
-
-
 
         else :
             if self.obj_form.lne_garante_nro_cliente_actualizar.text() != "":
                 try:
                     garante_nro_cliente_nuevo = int(self.obj_form.lne_garante_nro_cliente_actualizar.text())
-                    
+
                     obj_datos_garante = obj_N_datos_garante.get_garante_habilitado_buscar_nrocliente(garante_nro_cliente_nuevo)
                     self.obj_form.lne_garante_apellido_actualizar.setText(obj_datos_garante.apellido)
                     self.obj_form.lne_garante_nombre_actualizar.setText(obj_datos_garante.nombre)
                     self.obj_form.lne_garante_estado_actualizar.setText(obj_datos_garante.estado)
                     self.obj_form.lne_garante_nro_doc_actualizar.setText(obj_datos_garante.num_doc)
-                    
-
                 except:
                     msgBox = QMessageBox()
                     msgBox.setWindowTitle("Atencion")
                     msgBox.setText('Verificar Numero de cliente garante sin espacios y sin puntos ')
                     msgBox.exec_()
-
-
                     return False
     def seleccion_item_tabla(self, clickedIndex):
         #pyqtRemoveInputHook()
@@ -194,12 +194,12 @@ class clientes_actualizar(QDialog):
         twi3 = self.obj_form.tw_garantes_lista.item(clickedIndex,3)
         twi4 = self.obj_form.tw_garantes_lista.item(clickedIndex,4)
         twi5 = self.obj_form.tw_garantes_lista.item(clickedIndex,5)
-            
+
         self.obj_form.lne_garante_estado_actualizar.setText(twi0.text())
         self.obj_form.lne_garante_nro_cliente_actualizar.setText(twi2.text())
         self.obj_form.lne_garante_apellido_actualizar.setText(twi3.text())
         self.obj_form.lne_garante_nombre_actualizar.setText(twi4.text())
-        self.obj_form.lne_garante_nro_doc_actualizar.setText(twi5.text())            
+        self.obj_form.lne_garante_nro_doc_actualizar.setText(twi5.text())
         self.obj_form.tw_garantes_lista.removeRow(clickedIndex)
 
         obj_N_datos_personales_cliente= N_datos_personales_cliente()
@@ -224,23 +224,21 @@ class clientes_actualizar(QDialog):
             msgBox.setText('Ingresar nuevamente el numero de documento sin espacios y sin puntos')
             msgBox.exec_()
 
-
         obj_N_datos_personales_cliente = N_datos_personales_cliente()
         obj_party_party=obj_N_datos_personales_cliente.buscar_party_party_por_nro_doc(self.obj_form.lne_dni_filtro_actualizar.text())
-
 
         if obj_party_party != False:
             self.obj_form.tab_widget_actualizar_cliente.setEnabled(True)
             self.obj_form.lne_id_party_actualizar.setText(str(obj_party_party.id_party))
             self.id_party = obj_party_party.id_party
-            self.obj_form.lne_apellido_actualizar.setText(obj_party_party.apellido)  
+            self.obj_form.lne_apellido_actualizar.setText(obj_party_party.apellido)
             self.obj_form.lne_nombre_actualizar.setText(obj_party_party.nombre)
             index_tipo_doc=self.obj_form.cbx_tipo_doc_actualizar.findText(str(obj_party_party.tipo_doc))
             self.obj_form.cbx_tipo_doc_actualizar.setCurrentIndex(index_tipo_doc)
             self.obj_form.lne_dni_filtro_actualizar.setText(obj_party_party.num_doc)
             self.obj_form.lne_nro_doc_actualizar.setText(obj_party_party.num_doc)
             index_estado= self.obj_form.cbx_estado_actualizar.findText(str(obj_party_party.estado))
-            self.obj_form.cbx_estado_actualizar.setCurrentIndex(index_estado)   
+            self.obj_form.cbx_estado_actualizar.setCurrentIndex(index_estado)
             self.obj_form.dte_nacimiento_actualizar.setDate(obj_party_party.fec_nac)
             index_estado_civil= self.obj_form.cbx_estado_civil_actualizar.findText(obj_party_party.estado_civil)
             self.obj_form.cbx_estado_civil_actualizar.setCurrentIndex(index_estado_civil)
@@ -254,14 +252,14 @@ class clientes_actualizar(QDialog):
             index_ciudad=self.obj_form.cbx_ciudad_actualizar.findText(str(obj_party_address.ciudad))
             self.obj_form.cbx_ciudad_actualizar.setCurrentIndex(index_ciudad)
             self.obj_form.lne_barrio_actualizar.setText(obj_party_address.barrio)
-            #tabla contacto 
-            
+            #tabla contacto
+
             #VER EL OBSERVACIONES
-            
+
             obj_n_cliente = N_party_cliente(1)
             obj_comentario = obj_n_cliente.get_party_cliente(self.id_party)
-            self.obj_form.txte_observaciones_actualizar.setText(obj_comentario.comment)           
-            
+            self.obj_form.txte_observaciones_actualizar.setText(obj_comentario.comment)
+
             obj_N_party_contacto= N_party_contacto(1)
             list_party_contacto= obj_N_party_contacto.get_list_party_contacto(self.id_party)
             for item in list_party_contacto:
@@ -270,11 +268,11 @@ class clientes_actualizar(QDialog):
                 if item.type_contacto=="Email":
                     self.obj_form.lne_email_actualizar.setText(item.value)
 
-            #party cliente         
+            #party cliente
             obj_N_party_cliente= N_party_cliente(1)
             obj_party_cliente=obj_N_party_cliente.get_party_cliente(self.id_party)
             self.obj_form.lne_nro_cliente.setText(str(obj_party_cliente.nro_cliente))
-            #datos laborales  
+            #datos laborales
             obj_N_datos_laborales=N_datos_laborales()
             obj_datos_laborales= obj_N_datos_laborales.get_datos_laborales(self.id_party)
             self.obj_form.lne_ocupacion_actualizar.setText(obj_datos_laborales.ocupacion)
@@ -287,7 +285,7 @@ class clientes_actualizar(QDialog):
             self.obj_form.lne_antiguedad_actualizar.setText(obj_datos_laborales.anti_laboral)
             self.obj_form.lne_categoria_actualizar.setText(obj_datos_laborales.categoria)
             self.obj_form.ckbx_recibo_sueldo_actualizar.setChecked(obj_datos_laborales.posee_recibo_sueldo)
-            #party otros  
+            #party otros
             obj_N_otros_datos_actualizar= N_party_otros(1)
             obj_party_otros=obj_N_otros_datos_actualizar.get_party_otros(self.id_party)
             index_tipo_iva=self.obj_form.cbx_tipo_iva_actualizar.findText(str(obj_party_otros.tipo_iva))
@@ -300,7 +298,22 @@ class clientes_actualizar(QDialog):
             #self.obj_form.ckbx_monotributista_actualizar.setChecked(obj_party_otros.monotributista)
             #self.obj_form.ckbx_cliente_bloqueado_actualizar.setChecked(obj_party_otros.cliente_bloqueado)
             self.obj_form.ckbx_jub_pens_actualizar.setChecked(obj_party_otros.es_jubilado_pensionado)
-            obj_N_garante= N_party_garante(1)   
+
+
+            #busca ruta de archivo
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            obj_e_archivo = E_archivo()
+            obj_archivo = obj_e_archivo.get_nombre_archivo(self.id_party)
+            try:
+                self.obj_form.lne_archivo.setText(obj_archivo.descripcion)
+                self.descripcion_archivo = obj_archivo.descripcion
+            except:
+                self.obj_form.lne_archivo.setText("")
+
+
+            #busca garantes y carga la grilla
+            obj_N_garante= N_party_garante(1)
             self.list_garante = obj_N_garante.get_list_party_garante(obj_party_cliente.nro_cliente)
             for item in self.list_garante :
                 nro_cliente = item.nro_cliente
@@ -320,7 +333,7 @@ class clientes_actualizar(QDialog):
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 3, QTableWidgetItem(obj_datos_personales_cliente.apellido))
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 4, QTableWidgetItem(obj_datos_personales_cliente.nombre))
                 self.obj_form.tw_garantes_lista.setItem(rowPosition , 5, QTableWidgetItem(obj_datos_personales_cliente.nro_doc))
-                self.obj_form.tw_garantes_lista.setItem(rowPosition , 6, QTableWidgetItem(comment))         
+                self.obj_form.tw_garantes_lista.setItem(rowPosition , 6, QTableWidgetItem(comment))
         else:
             msgBox = QMessageBox()
             msgBox.setText('Error numero de DNI inexistente')
@@ -340,8 +353,8 @@ class clientes_actualizar(QDialog):
 
             obj_party_party.apellido = self.obj_form.lne_apellido_actualizar.text().upper()
             obj_party_party.nombre = self.obj_form.lne_nombre_actualizar.text().upper()
-            
-           
+
+
             obj_party_party.tipo_doc = self.obj_form.cbx_tipo_doc_actualizar.currentText()
             obj_party_party.nro_doc = self.obj_form.lne_nro_doc_actualizar.text()
             obj_party_party.estado_civil = self.obj_form.cbx_estado_civil_actualizar.currentText()
@@ -355,7 +368,7 @@ class clientes_actualizar(QDialog):
             #pyqtRemoveInputHook()
             #import pdb; pdb.set_trace()
             obj_comentario = obj_party_cliente.actualizar_comentario(self.id_party, self.obj_form.txte_observaciones_actualizar.toPlainText())
-      
+
 
             self.nro_cliente = obj_party_cliente.get_nro_cliente(self.id_party)
             self.obj_form.lne_nro_cliente.setText(str(self.nro_cliente))
@@ -370,7 +383,7 @@ class clientes_actualizar(QDialog):
             obj_N_party_address.ciudad = self.obj_form.cbx_ciudad_actualizar.currentText()
             #boton guardar
             obj_party_address= N_party_address(ciudad)
-            obj_party_address.actualizar_party_address(obj_N_party_address, self.id_party) 
+            obj_party_address.actualizar_party_address(obj_N_party_address, self.id_party)
 
             # actualizo tabla contact
 
@@ -383,7 +396,7 @@ class clientes_actualizar(QDialog):
             obj_party_contacto_email.type_contacto="Email"
             obj_party_contacto_email.value= self.obj_form.lne_email_actualizar.text()
 
-            
+
             obj_N_party_contacto=N_party_contacto(1)
             #obj_N_party_contacto.domicilio = self.obj_form.txte_observaciones_actualizar.text()
             obj_N_party_contacto.actualizar_party_contact(obj_party_contacto3, self.id_party)
@@ -393,7 +406,7 @@ class clientes_actualizar(QDialog):
 
             #actualizo party datos laborales
 
-            
+
 
             organismo = self.obj_form.lne_organismo_actualizar.text()
             obj_N_datos_laborales = N_datos_laborales()
@@ -409,7 +422,7 @@ class clientes_actualizar(QDialog):
                 obj_N_datos_laborales.posee_recibo_sueldo = True
             else:
                 obj_N_datos_laborales.posee_recibo_sueldo = False
-            
+
 
             #boton guardar
             obj_datos_laborales= N_datos_laborales()
@@ -439,17 +452,53 @@ class clientes_actualizar(QDialog):
 
             #if self.obj_form.ckbx_cliente_bloqueado_actualizar.isChecked():
              #   obj_N_party_otros.cliente_bloqueado = True
-        
 
             #boton guardar
             obj_party_otros= N_party_otros(cuit)
             obj_party_otros.actualizar_party_otros(obj_N_party_otros,self.id_party)
 
-            #grilla actualizar           
-            #pyqtRemoveInputHook()
-            #import pdb; pdb.set_trace()
+            #grilla actualizar
+
             obj_N_garante = N_party_garante(1)
             obj_N_garante.actualizar_lista_garante(self.list_garante, self.nro_cliente)
+
+            #lne_archivo
+            if self.obj_form.lne_archivo.text() != self.descripcion_archivo:
+
+                nom_archivo = self.get_nom_archivo()
+                #Actualizar archivo
+
+
+                obj_config = configuracion()
+
+
+                file_path = obj_config.ruta_server()+"/comprobantes"
+                if not os.path.exists(file_path):
+                   os.makedirs(file_path)
+
+                obj_archivo= E_archivo()
+                obj_archivo.id_party= self.id_party
+                obj_archivo.descripcion = file_path + nom_archivo
+                obj_archivo.tipo_doc = "Comprobante creditos pre-existentes"
+                obj_archivo.fec_create = datetime.date.today()
+
+                obj_E_archivo = E_archivo()
+                obj_E_archivo.actualizar(obj_archivo)
+
+                cnopts = pysftp.CnOpts()
+                cnopts.hostkeys = None
+
+                try:
+                    with pysftp.Connection(host=obj_config.host_server(), username=obj_config.usu_server(), password=obj_config.pass_server(),cnopts=cnopts) as sftp:
+                        #sftp.put('/home/user/Documentos/credired/vencimientos/prueba.txt', '/home/user/Documentos/prueba.txt', confirm=True, preserve_mtime=False)  # upload file to public/ on remote
+                        #sftp.put_r('/home/user/Documentos/credired/vencimientos', '/home/user/Documentos/', confirm=True, preserve_mtime=False)
+                        sftp.put(self.obj_form.lne_archivo.text(), obj_archivo.descripcion, confirm=True, preserve_mtime=False)  # upload file to public/ on remote
+                except:
+                    msgBox = QMessageBox()
+                    msgBox.setWindowTitle("Aviso")
+                    msgBox.setText("No se pudo actulizar el archivo")
+                    msgBox.exec_()
+
 
             msgBox = QMessageBox()
             msgBox.setWindowTitle("Aviso")
@@ -461,7 +510,30 @@ class clientes_actualizar(QDialog):
             msgBox.setText("Revisar campos obligatorios: Nombre, Apellido y Dni.")
             msgBox.exec_()
 
+    def descargar_archivo(self):
+        obj_E_configuracion = configuracion()
+        cnopts = pysftp.CnOpts()
+        cnopts.hostkeys = None
+        nom_archivo= self.obj_form.lne_archivo.text()
+        with pysftp.Connection(host=obj_E_configuracion.host_server(), username=obj_E_configuracion.usu_server(), password=obj_E_configuracion.pass_server(),cnopts=cnopts) as sftp:
+            #ert= sftp.get('/home/user/Documentos/prueba.txt')
+            #ert= sftp.get('nom_archivo')
+            destino =(obj_E_configuracion.ruta() + '/comprobante' +self.get_nom_archivo())
+            ert= sftp.get(self.obj_form.lne_archivo.text(),destino, preserve_mtime=False)
 
+    def get_nom_archivo(self):
+        nom_archvio= self.obj_form.lne_archivo.text()
+        nom_archvio[0:len(nom_archvio)]
+        nombre_archivo=""
+        directorio=self.obj_form.lne_archivo.text()
+        cant= directorio.count('/')
+        buscabarra=0
+        for i in range(0, len(directorio)):
+            if(directorio[i] =="/"):
+                buscabarra= buscabarra + 1
+            if(cant == buscabarra):
+                nombre_archivo=nombre_archivo + directorio[i]
+        return nombre_archivo
 
 #   app = QApplication(sys.argv)
 #    dialogo= clientes_actualizar()

@@ -1,5 +1,6 @@
 import sys
 from E_usuario import E_usuario
+from PyQt5.QtCore import pyqtRemoveInputHook
 
 
 class N_usuario(object):
@@ -8,11 +9,14 @@ class N_usuario(object):
     tipo_usuario = ""
     password = ""
     password2 = ""
+    descarga = ""
 
 
 
     def buscar_usuario(self,nombre,clave):
         obj_E_usuario = E_usuario()
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
         return obj_E_usuario.buscar_usuario(nombre,clave)
 
     def guardar(self, obj_usu):

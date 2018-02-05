@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 
 from sqlalchemy.orm import sessionmaker
 from PyQt5.QtCore import pyqtRemoveInputHook
+from E_configuracion import configuracion
 
 
 base = declarative_base()
@@ -26,7 +27,8 @@ class E_egresos(base):
     session = ""
     def __init__(self,id_party):
         a = id_party
-        engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
+        obj_conexion =  configuracion()
+        engine=create_engine(obj_conexion.config())
         Session= sessionmaker(bind=engine)
         self.session=Session()
 
@@ -38,6 +40,7 @@ class E_egresos(base):
         new_record.id_party = obj_N_creditos.id_party
         new_record.nombre = "Creditos Personales"
         new_record.costo = obj_N_creditos.importe_prestamo
+        new_record.fecha = obj_N_creditos.fecha_credito
 
         try:
             new_record.session.add(new_record)

@@ -23,6 +23,8 @@ from w_form_clientes_buscar import buscar_clientes
 from w_form_punitorios import punitorios
 from w_form_buscar_apellido import buscar_apellido
 from w_form_cuota_reparar import cuotas_reparar
+from w_form_creditos_refinanciar import creditos_refinanciar
+from w_form_reporte_deuda_cliente import Reporte_deuda_cliente
 
 
 class Mainwindow(QMainWindow):
@@ -54,9 +56,21 @@ class Mainwindow(QMainWindow):
         self.obj_form_main.actionBuscar_apellido.triggered.connect(self.Buscar_apellido)
         self.obj_form_main.actionReparar_Cuotas.triggered.connect(self.reparar_cta)
         self.obj_form_main.actionHist_cred_y_ctas.triggered.connect(self.credito_buscar_estado)
+        self.obj_form_main.actionRefinanciar.triggered.connect(self.refinanciar)
+        self.obj_form_main.actionCalcular_Creditos.triggered.connect(self.CALCULADOR)
+        self.obj_form_main.actionReporte_deuda_cliente.triggered.connect(self.Reporte_deuda_cliente)
+
+
         self.singleton =singleton
         self.singleton_idusu =singleton_idusu
 
+    def Reporte_deuda_cliente(self):
+        self.form_reporte_deuda_cliente = Reporte_deuda_cliente()
+        self.form_reporte_deuda_cliente.show()
+
+    def refinanciar(self):
+        self.form_creditos_refinanciar = creditos_refinanciar()
+        self.form_creditos_refinanciar.show()
 
     def credito_buscar_estado(self):
         self.form_profesionales = creditos_cuotas_buscar()
@@ -64,7 +78,7 @@ class Mainwindow(QMainWindow):
 
 
     def reparar_cta(self):
-        self.form_profesionales = cuotas_reparar(singleton_idusu)
+        self.form_profesionales = cuotas_reparar(self.singleton_idusu)
         self.form_profesionales.show()
 
     def Buscar_apellido(self):
@@ -99,30 +113,37 @@ class Mainwindow(QMainWindow):
 
         self.form_profesionales=Cliente_nuevo()
         self.form_profesionales.show()
+
     def Actualizar_cliente(self):
-        self.form_clientes_actualizar=clientes_actualizar()
+        self.form_clientes_actualizar=clientes_actualizar(self.singleton_idusu)
         self.form_clientes_actualizar.show()
+
     def buscar_clientes(self):
         self.form_clientes_buscar=buscar_clientes()
         self.form_clientes_buscar.show()
+
     def credito_nuevo(self):
         self.form_creditos_agregar_nuevos=credito_nuevo()
         self.form_creditos_agregar_nuevos.show()
+
     def empresanuevo12(self):
         self.form_empresa_datos=empresanuevo()
         self.form_empresa_datos.show()
+
     def empresa_actualizar12(self):
         self.form_empresa_datos_actualizar=Empresa_actualizar()
         self.form_empresa_datos_actualizar.show()
+
     def cobradores(self):
         self.form_cobradores_registrar=cobradores()
         self.form_cobradores_registrar.show()
+
     def REPORTE_DE_CUOTAS(self):
         self.form_cobradores_registrar=Cuotas_vencidas_30dias()
         self.form_cobradores_registrar.show()
 
     def Cuotas(self):
-        self.form_cobradores_registrar=Cuotas_pagar(self.singleton)
+        self.form_cobradores_registrar=Cuotas_pagar(self.singleton,self.singleton_idusu)
         self.form_cobradores_registrar.show()
 
     def Punitorios(self):

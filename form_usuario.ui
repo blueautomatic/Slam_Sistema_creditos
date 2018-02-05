@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>687</width>
-    <height>208</height>
+    <width>735</width>
+    <height>261</height>
    </rect>
   </property>
   <property name="palette">
@@ -25,9 +25,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -97,18 +97,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -171,9 +171,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -243,18 +243,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -317,9 +317,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -389,18 +389,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>172</red>
-        <green>55</green>
-        <blue>26</blue>
+        <red>136</red>
+        <green>3</green>
+        <blue>3</blue>
        </color>
       </brush>
      </colorrole>
@@ -458,22 +458,22 @@
   <property name="styleSheet">
    <string notr="true">selection-background-color: rgb(255, 170, 127);
 color: rgb(0, 0, 0);
-font:  11pt &quot;KacstOne&quot;;
-background-color: rgb(172, 55, 26);
+background-color: rgba(136, 3, 3);
+font: 75 11pt &quot;KacstOne&quot;;
 </string>
   </property>
   <widget class="QTabWidget" name="tabWidget_2">
    <property name="geometry">
     <rect>
-     <x>11</x>
-     <y>10</y>
-     <width>661</width>
-     <height>181</height>
+     <x>163</x>
+     <y>7</y>
+     <width>551</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(239, 235, 231);
-font: 10pt &quot;KacstOne&quot;;</string>
+</string>
    </property>
    <property name="currentIndex">
     <number>0</number>
@@ -489,10 +489,10 @@ font: 10pt &quot;KacstOne&quot;;</string>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>611</width>
-       <height>101</height>
+       <x>7</x>
+       <y>7</y>
+       <width>530</width>
+       <height>148</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -526,150 +526,148 @@ background-color: rgb(239, 235, 231);
      <property name="title">
       <string/>
      </property>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>14</x>
-        <y>50</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Contraseña:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lne_nombre">
-      <property name="geometry">
-       <rect>
-        <x>153</x>
-        <y>18</y>
-        <width>161</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>administrador</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>53</y>
-        <width>161</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Re ingrese Contraseña:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>141</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nombre de Usuario:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lne_pass">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>50</y>
-        <width>171</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cbx_tipo_usu">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>18</y>
-        <width>161</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Administrador</string>
-       </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Nombre de Usuario:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lne_nombre">
+            <property name="minimumSize">
+             <size>
+              <width>125</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>125</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>administrador</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Tipo Usuario:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cbx_tipo_usu">
+            <item>
+             <property name="text">
+              <string>Administrador</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ventas</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Contraseña:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lne_pass">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Reingrese Contraseña:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lne_pass2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
-      <item>
-       <property name="text">
-        <string>Ventas</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>20</y>
-        <width>91</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Tipo Usuario:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lne_pass2">
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>50</y>
-        <width>141</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
+     </layout>
     </widget>
-    <widget class="QPushButton" name="boton_guardar">
+    <widget class="QLineEdit" name="lne_descarga">
      <property name="geometry">
       <rect>
-       <x>563</x>
-       <y>120</y>
-       <width>80</width>
-       <height>23</height>
+       <x>77</x>
+       <y>161</y>
+       <width>142</width>
+       <height>25</height>
       </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(250, 217, 211);</string>
-     </property>
-     <property name="text">
-      <string>Guardar</string>
      </property>
     </widget>
     <widget class="QPushButton" name="boton_limpiar">
      <property name="geometry">
       <rect>
-       <x>473</x>
-       <y>120</y>
+       <x>269</x>
+       <y>161</y>
        <width>80</width>
-       <height>23</height>
+       <height>24</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -679,15 +677,44 @@ background-color: rgb(239, 235, 231);
       <string>Limpiar</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="boton_guardar">
+     <property name="geometry">
+      <rect>
+       <x>354</x>
+       <y>161</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(250, 217, 211);</string>
+     </property>
+     <property name="text">
+      <string>Guardar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>161</y>
+       <width>64</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>descarga</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
-     <x>500</x>
-     <y>470</y>
-     <width>20</width>
-     <height>121</height>
+     <x>163</x>
+     <y>356</y>
+     <width>16</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="orientation">
@@ -697,10 +724,10 @@ background-color: rgb(239, 235, 231);
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>470</y>
-     <width>20</width>
-     <height>121</height>
+     <x>401</x>
+     <y>356</y>
+     <width>16</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="orientation">

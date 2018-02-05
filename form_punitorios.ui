@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>678</width>
-    <height>356</height>
+    <width>589</width>
+    <height>387</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,194 +16,160 @@
   <property name="styleSheet">
    <string notr="true">selection-background-color: rgb(255, 170, 127);
 color: rgb(0, 0, 0);
-font: 10pt &quot;KacstOne&quot;;
-background-color: rgb(172, 55, 26);
+background-color: rgba(136, 3, 3);
+font: 75 10pt &quot;KacstOne&quot;;
 
 </string>
   </property>
-  <widget class="QTabWidget" name="tabWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>651</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(239, 235, 231);
-font:  11pt &quot;Century Schoolbook L&quot;;</string>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="icon">
-     <iconset>
-      <normaloff>Íconos/documento-financiero.png</normaloff>Íconos/documento-financiero.png</iconset>
-    </attribute>
-    <attribute name="title">
-     <string>Generar Punitorios</string>
-    </attribute>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>621</width>
-       <height>81</height>
-      </rect>
-     </property>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget_2">
      <property name="styleSheet">
-      <string notr="true">QGroupBox{
-background-color: rgb(239, 235, 231);
-border-style: solid;
-border-width: 5px;
-border-color: rgb(172, 55, 26);
-border-radius: 8px;
-font: 10pt &quot;KacstOne&quot;;
-}
-QLineEdit{
-background-color: rgb(239, 235, 231);
-}
-QLabel{
-background-color: rgb(239, 235, 231);
-font: 10pt &quot;KacstOne&quot;;
-}
-QDateEdit{
-background-color: rgb(239, 235, 231);
-}</string>
+      <string notr="true">background-color: rgb(239, 235, 231);
+</string>
      </property>
-     <property name="title">
-      <string/>
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>36</x>
-        <y>32</y>
-        <width>221</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Generar Punitorios  hasta Fecha:</string>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dte_fecha_consumos_generados">
-      <property name="geometry">
-       <rect>
-        <x>266</x>
-        <y>29</y>
-        <width>110</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="displayFormat">
-       <string>dd/MM/yyyy</string>
-      </property>
-      <property name="calendarPopup">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_limpiar">
-      <property name="geometry">
-       <rect>
-        <x>517</x>
-        <y>29</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Limpiar</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="boton_generar">
-      <property name="geometry">
-       <rect>
-        <x>441</x>
-        <y>29</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Generar</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>13</x>
-       <y>98</y>
-       <width>241</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Historial de punitorios generados : </string>
-     </property>
-    </widget>
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>130</y>
-       <width>621</width>
-       <height>161</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QGroupBox{
-background-color: rgb(239, 235, 231);
-border-style: solid;
-border-width: 5px;
-border-color: rgb(172, 55, 26);
-border-radius: 8px;
-font: 10pt &quot;KacstOne&quot;;
-}
-QLineEdit{
-background-color: rgb(239, 235, 231);
-}
-QLabel{
-background-color: rgb(239, 235, 231);
-font: 10pt &quot;KacstOne&quot;;
-}
-QDateEdit{
-background-color: rgb(239, 235, 231);
-}</string>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>581</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>200</number>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="icon">
+       <iconset>
+        <normaloff>Íconos/documento-financiero.png</normaloff>Íconos/documento-financiero.png</iconset>
       </attribute>
-      <column>
-       <property name="text">
-        <string>Fecha</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Descripción</string>
-       </property>
-      </column>
+      <attribute name="title">
+       <string>Generar Punitorios</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="styleSheet">
+          <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+}
+</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Generar Punitorios  hasta Fecha:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dte_fecha_consumos_generados">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="displayFormat">
+               <string>dd/MM/yyyy</string>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="boton_generar">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(251, 204, 193);
+</string>
+              </property>
+              <property name="text">
+               <string>Generar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="boton_limpiar">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(251, 204, 193);
+</string>
+              </property>
+              <property name="text">
+               <string>Limpiar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Historial de punitorios generados : </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="styleSheet">
+            <string notr="true">QGroupBox{
+background-color: rgb(239, 235, 231);
+border-style: solid;
+border-width: 5px;
+border-color: rgb(172, 55, 26);
+border-radius: 8px;
+font: 10pt &quot;KacstOne&quot;;
+}
+QLineEdit{
+background-color: rgb(239, 235, 231);
+}
+QLabel{
+background-color: rgb(239, 235, 231);
+font: 10pt &quot;KacstOne&quot;;
+}
+QDateEdit{
+background-color: rgb(239, 235, 231);
+}</string>
+           </property>
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <widget class="QTableWidget" name="tableWidget">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(247, 200, 193);</string>
+              </property>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>200</number>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Fecha</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Descripción</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </widget>
-   </widget>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

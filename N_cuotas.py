@@ -7,8 +7,8 @@ from PyQt5.QtCore import pyqtRemoveInputHook
 class N_cuotas(object):
     id = ""
     nro_credito= 0
-    nro_cuota= 0 
-    primer_Vencimiento= datetime
+    nro_cuota= 0
+    primer_vencimiento= datetime
     importe_primer_venc= 0
     estado_cuota = ""
     fecha_cobro = ""
@@ -39,25 +39,24 @@ class N_cuotas(object):
         obj_e_cuotas = E_cuotas(1)
         return obj_e_cuotas.pagar_cuota(obj_cuotas)
 
-    def lista_cuotas_venc_30_dias(self,slam):
-        ejezeta = slam
+    def lista_cuotas_venc_30_dias(self):
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_30_dias(ejezeta)     
+        return obj_e_cuotas.lista_cuotas_venc_30_dias()
 
     def lista_cuotas_venc_60_dias(self,slam):
         ejezeta = slam
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_60_dias(ejezeta)     
-    
+        return obj_e_cuotas.lista_cuotas_venc_60_dias(ejezeta)
+
     def lista_cuotas_venc_90_dias(self,slam):
         ejezeta = slam
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_90_dias(ejezeta)     
+        return obj_e_cuotas.lista_cuotas_venc_90_dias(ejezeta)
 
     def buscar_cuota_por_id_cuota(self, id_cuota):
         obj_e_cuotas = E_cuotas(1)
         return obj_e_cuotas.buscar_cuota_por_id_cuota(id_cuota)
-    
+
     def generar_punitorios(self,id):
         slam = id
         obj_e_cuotas = E_cuotas(1)

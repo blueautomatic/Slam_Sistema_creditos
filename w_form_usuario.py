@@ -17,17 +17,18 @@ class usuario(QDialog):
 
     def guardar(self):
         obj_usu = N_usuario()
-        obj_usu.nombre =self.obj_form.lne_nombre.text() 
+        obj_usu.nombre =self.obj_form.lne_nombre.text()
         obj_usu.tipo_usuario = self.obj_form.cbx_tipo_usu.currentText()
         obj_usu.password = self.obj_form.lne_pass.text()
         obj_usu.password2 = self.obj_form.lne_pass2.text()
+        obj_usu.descarga = self.obj_form.lne_descarga.text()
         obj_usu.guardar(obj_usu)
-        
+
         msgBox = QMessageBox()
         msgBox.setWindowTitle("OK")
         msgBox.setText('Se creo correctamente el usuario: ' + self.obj_form.lne_nombre.text())
         msgBox.exec_()
-        return False  
+        return False
 
 
 #app = QApplication(sys.argv)
