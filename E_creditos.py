@@ -1,6 +1,6 @@
 import sys
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, DateTime, String, Integer,func,update
+from sqlalchemy import Column, DateTime, String, Integer,func,update, text
 from sqlalchemy import create_engine
 
 from sqlalchemy.orm import sessionmaker
@@ -13,6 +13,7 @@ base = declarative_base()
 class E_creditos(base):
     __tablename__= "credito"
     nro_credito = Column(Integer, primary_key=True, autoincrement=True)
+    nro_credito2 = Column(Integer)
     nro_cliente = Column(Integer)
     id_party = Column(Integer)
     fecha_credito = Column(DateTime, default=func.now())
@@ -47,7 +48,8 @@ class E_creditos(base):
 
     @classmethod
     def guardar(cls, obj_N_credito):
-
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
         new_record = cls()
         new_record.id_party = obj_N_credito.id_party
         new_record.nro_cliente = obj_N_credito.nro_cliente
@@ -64,9 +66,9 @@ class E_creditos(base):
         new_record.cred_total = obj_N_credito.cred_total
         new_record.observaciones = obj_N_credito.observaciones
         new_record.estado = obj_N_credito.estado
+        new_record.nro_credito2 = obj_N_credito.nro_credito2
         new_record.write_uid=0
-        #pyqtRemoveInputHook()
-        #import pdb; pdb.set_trace()
+
         try:
             new_record.session.add(new_record)
             new_record.session.commit()
@@ -76,8 +78,8 @@ class E_creditos(base):
             new_record.session.rollback()
             new_record.session.close()
             return False
-    def get_tiene_prestamos_activo(self, nro_cliente):
 
+    def get_tiene_prestamos_activo(self, nro_cliente):
 
         obj_E_creditos = self.session.query(E_creditos).filter_by(nro_cliente= nro_cliente).first()
 
@@ -85,29 +87,26 @@ class E_creditos(base):
             return obj_E_creditos.nro_credito
         self.session.close()
         return 0
+
     def buscar_creditos_por_cliente(self,nro_cliente):
-        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        #Session= sessionmaker(bind=engine)
-        #session=Session()
+
         obj_creditos_cliente = self.session.query(E_creditos).filter_by(nro_cliente=str(nro_cliente)).all()
         self.session.close()
         return obj_creditos_cliente
+
     def buscar_nro_credito_por_party(self,id_party):
-        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        #Session= sessionmaker(bind=engine)
-        #session=Session()
         nro_credito = self.session.query(func.max(E_creditos.nro_credito)).filter_by(id_party= id_party).scalar()
         if nro_credito != None :
             self.session.close()
             return nro_credito
         return False
+
     def buscar_credito_por_nro_credito(self, nro_credito):
-        #engine=create_engine('postgresql://postgres:slam2016@localhost:5432/credired')
-        #Session= sessionmaker(bind=engine)
-        #session=Session()
+
         obj_credito = self.session.query(E_creditos).filter_by(nro_credito=nro_credito).first()
         self.session.close()
         return obj_credito
+
     def cancelar_credito(self,nro_credito):
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
@@ -138,3 +137,30 @@ class E_creditos(base):
             lista_historial_garante.append(obj_E_historial_garante)
         self.session.close()
         return lista_historial_garante
+
+    def buscar_ultimo_credito(self):
+        nro_credito = self.session.query(func.max(E_creditos.nro_credito)).scalar()
+        if nro_credito != None :
+            self.session.close()
+            return nro_credito
+        return False
+
+    def buscar_ultimo_credito2(self):
+        #pyqtRemoveInputHook()
+        #import pdb; pdb.set_trace()
+        nro_credito = self.session.query(func.max(E_creditos.nro_credito2)).scalar()
+        if nro_credito != None :
+            self.session.close()
+            return nro_credito
+        return False
+
+    def actualizar_estado_credito(self, nro_credito, estado):
+        query = update(E_creditos).where(E_creditos.nro_credito == nro_credito).values(estado=estado)
+        try:
+            self.session.execute(query)
+            self.session.commit()
+            self.session.close()
+            return True
+        except:
+            self.session.close()
+            return False
