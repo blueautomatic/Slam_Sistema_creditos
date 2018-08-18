@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'form_cuotas_pagar.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,18 +20,17 @@ class Ui_form_cuotas_pagar(object):
         form_cuotas_pagar.setMinimumSize(QtCore.QSize(800, 450))
         form_cuotas_pagar.setMaximumSize(QtCore.QSize(1600, 900))
         font = QtGui.QFont()
-        font.setFamily("KacstOne")
-        font.setPointSize(10)
+        font.setFamily("Sans Serif")
+        font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(50)
         form_cuotas_pagar.setFont(font)
-        form_cuotas_pagar.setStyleSheet("font: 75 10pt \"KacstOne\";\n"
-"selection-background-color: rgb(255, 170, 127);\n"
+        form_cuotas_pagar.setStyleSheet("background-color: rgb(77, 103, 188);\n"
+"font: 11pt \"Sans Serif\";\n"
 "color: rgb(0, 0, 0);\n"
-"background-color: rgb(81, 1, 1);\n"
-"\n"
-"")
+"selection-background-color: rgb(149, 148, 142);\n"
+"selection-color: rgb(4, 4, 4);")
         self.tabWidget_4 = QtWidgets.QTabWidget(form_cuotas_pagar)
         self.tabWidget_4.setGeometry(QtCore.QRect(20, 340, 1081, 431))
         self.tabWidget_4.setStyleSheet("background-color: rgb(239, 235, 231);\n"
@@ -47,7 +46,7 @@ class Ui_form_cuotas_pagar(object):
 "background-color: rgb(239, 235, 231);\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
-"border-color: rgb(172, 55, 26);\n"
+"border-color: rgb(77, 103, 188);\n"
 "border-radius: 8px;\n"
 "}")
         self.groupBox_3.setTitle("")
@@ -56,12 +55,12 @@ class Ui_form_cuotas_pagar(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.tw_listado_cuotas = QtWidgets.QTableWidget(self.groupBox_3)
         self.tw_listado_cuotas.setEnabled(False)
-        self.tw_listado_cuotas.setStyleSheet("background-color: rgb(252, 188, 188);")
+        self.tw_listado_cuotas.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.tw_listado_cuotas.setEditTriggers(QtWidgets.QAbstractItemView.AnyKeyPressed|QtWidgets.QAbstractItemView.EditKeyPressed|QtWidgets.QAbstractItemView.SelectedClicked)
         self.tw_listado_cuotas.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         self.tw_listado_cuotas.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tw_listado_cuotas.setObjectName("tw_listado_cuotas")
-        self.tw_listado_cuotas.setColumnCount(15)
+        self.tw_listado_cuotas.setColumnCount(16)
         self.tw_listado_cuotas.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tw_listado_cuotas.setHorizontalHeaderItem(0, item)
@@ -93,12 +92,14 @@ class Ui_form_cuotas_pagar(object):
         self.tw_listado_cuotas.setHorizontalHeaderItem(13, item)
         item = QtWidgets.QTableWidgetItem()
         self.tw_listado_cuotas.setHorizontalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tw_listado_cuotas.setHorizontalHeaderItem(15, item)
         self.tw_listado_cuotas.horizontalHeader().setDefaultSectionSize(100)
         self.gridLayout_3.addWidget(self.tw_listado_cuotas, 3, 0, 1, 1)
         self.boton_historial_cuota = QtWidgets.QPushButton(self.groupBox_3)
         self.boton_historial_cuota.setMinimumSize(QtCore.QSize(0, 25))
         self.boton_historial_cuota.setMaximumSize(QtCore.QSize(16777215, 25))
-        self.boton_historial_cuota.setStyleSheet("background-color: rgb(252, 188, 188);")
+        self.boton_historial_cuota.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.boton_historial_cuota.setObjectName("boton_historial_cuota")
         self.gridLayout_3.addWidget(self.boton_historial_cuota, 2, 0, 1, 1)
         self.gridLayout_4.addWidget(self.groupBox_3, 0, 0, 1, 1)
@@ -134,7 +135,7 @@ class Ui_form_cuotas_pagar(object):
         self.horizontalLayout_3.addWidget(self.label_11)
         self.dte_fecha_cobro = QtWidgets.QDateEdit(self.tab_5)
         self.dte_fecha_cobro.setEnabled(False)
-        self.dte_fecha_cobro.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.dte_fecha_cobro.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.dte_fecha_cobro.setCalendarPopup(True)
         self.dte_fecha_cobro.setObjectName("dte_fecha_cobro")
         self.horizontalLayout_3.addWidget(self.dte_fecha_cobro)
@@ -146,7 +147,7 @@ class Ui_form_cuotas_pagar(object):
         self.horizontalLayout_4.addWidget(self.label_12)
         self.cbx_estado = QtWidgets.QComboBox(self.tab_5)
         self.cbx_estado.setEnabled(False)
-        self.cbx_estado.setStyleSheet("background-color: rgb(252, 188, 188);")
+        self.cbx_estado.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.cbx_estado.setObjectName("cbx_estado")
         self.cbx_estado.addItem("")
         self.cbx_estado.addItem("")
@@ -166,7 +167,7 @@ class Ui_form_cuotas_pagar(object):
 "background-color: rgb(239, 235, 231);\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
-"border-color: rgb(172, 55, 26);\n"
+"border-color: rgb(77, 103, 188);\n"
 "border-radius: 8px;\n"
 "font:  75 10Pt \"Century Schoolbook L\";\n"
 "}")
@@ -252,11 +253,11 @@ class Ui_form_cuotas_pagar(object):
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.label_6 = QtWidgets.QLabel(self.groupBox_4)
         font = QtGui.QFont()
-        font.setFamily("KacstOne")
-        font.setPointSize(10)
+        font.setFamily("Sans Serif")
+        font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(50)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("")
         self.label_6.setObjectName("label_6")
@@ -265,7 +266,7 @@ class Ui_form_cuotas_pagar(object):
         self.lne_importe_cobrar.setEnabled(False)
         self.lne_importe_cobrar.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "font: 16pt \"Sans Serif\";\n"
-"border-color: rgb(170, 0, 0);\n"
+"border-color: rgb(77, 103, 188);\n"
 "border-style: solid;\n"
 "border-width:2px;\n"
 "font:  75 12Pt \"Century Schoolbook L\";")
@@ -281,36 +282,30 @@ class Ui_form_cuotas_pagar(object):
         self.horizontalLayout_11.addItem(spacerItem)
         self.boton_pagar = QtWidgets.QPushButton(self.tab_5)
         font = QtGui.QFont()
-        font.setFamily("KacstOne")
-        font.setPointSize(10)
+        font.setFamily("Sans Serif")
+        font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(50)
         self.boton_pagar.setFont(font)
-        self.boton_pagar.setStyleSheet("background-color: rgb(252, 188, 188);\n"
-"")
+        self.boton_pagar.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.boton_pagar.setObjectName("boton_pagar")
         self.horizontalLayout_11.addWidget(self.boton_pagar)
         self.boton_limpiar = QtWidgets.QPushButton(self.tab_5)
         font = QtGui.QFont()
-        font.setFamily("KacstOne")
-        font.setPointSize(10)
+        font.setFamily("Sans Serif")
+        font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(50)
         self.boton_limpiar.setFont(font)
-        self.boton_limpiar.setStyleSheet("background-color: rgb(252, 188, 188);\n"
-"")
+        self.boton_limpiar.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.boton_limpiar.setObjectName("boton_limpiar")
         self.horizontalLayout_11.addWidget(self.boton_limpiar, 0, QtCore.Qt.AlignRight)
         self.boton_ticket = QtWidgets.QPushButton(self.tab_5)
-        self.boton_ticket.setStyleSheet("background-color: rgb(251, 209, 209);")
+        self.boton_ticket.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.boton_ticket.setObjectName("boton_ticket")
         self.horizontalLayout_11.addWidget(self.boton_ticket)
-        self.boton_re_ticket = QtWidgets.QPushButton(self.tab_5)
-        self.boton_re_ticket.setStyleSheet("background-color: rgb(251, 209, 209);")
-        self.boton_re_ticket.setObjectName("boton_re_ticket")
-        self.horizontalLayout_11.addWidget(self.boton_re_ticket)
         self.gridLayout_8.addLayout(self.horizontalLayout_11, 4, 0, 1, 1)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Íconos/maquina-de-facturacion-electronica-con-escaner.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -329,7 +324,7 @@ class Ui_form_cuotas_pagar(object):
 "background-color: rgb(239, 235, 231);\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
-"border-color: rgb(172, 55, 26);\n"
+"border-color: rgb(77, 103, 188);\n"
 "border-radius: 8px;\n"
 "}")
         self.groupBox_2.setTitle("")
@@ -338,13 +333,12 @@ class Ui_form_cuotas_pagar(object):
         self.gridLayout.setObjectName("gridLayout")
         self.tw_lista_creditos = QtWidgets.QTableWidget(self.groupBox_2)
         self.tw_lista_creditos.setEnabled(False)
-        self.tw_lista_creditos.setStyleSheet("background-color: rgb(239, 235, 231);\n"
-"")
+        self.tw_lista_creditos.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.tw_lista_creditos.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
         self.tw_lista_creditos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tw_lista_creditos.setTextElideMode(QtCore.Qt.ElideMiddle)
         self.tw_lista_creditos.setObjectName("tw_lista_creditos")
-        self.tw_lista_creditos.setColumnCount(10)
+        self.tw_lista_creditos.setColumnCount(11)
         self.tw_lista_creditos.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tw_lista_creditos.setHorizontalHeaderItem(0, item)
@@ -366,6 +360,8 @@ class Ui_form_cuotas_pagar(object):
         self.tw_lista_creditos.setHorizontalHeaderItem(8, item)
         item = QtWidgets.QTableWidgetItem()
         self.tw_lista_creditos.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tw_lista_creditos.setHorizontalHeaderItem(10, item)
         self.tw_lista_creditos.horizontalHeader().setDefaultSectionSize(125)
         self.gridLayout.addWidget(self.tw_lista_creditos, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.groupBox_2, 0, 0, 1, 1)
@@ -386,7 +382,7 @@ class Ui_form_cuotas_pagar(object):
 "background-color: rgb(239, 235, 231);\n"
 "border-style: solid;\n"
 "border-width: 3px;\n"
-"border-color: rgb(172, 55, 26);\n"
+"border-color: rgb(77, 103, 188);\n"
 "border-radius: 8px;\n"
 "font:  75 10Pt \"Century Schoolbook L\";\n"
 "}")
@@ -433,6 +429,7 @@ class Ui_form_cuotas_pagar(object):
         self.layoutWidget.setGeometry(QtCore.QRect(20, 50, 120, 22))
         self.layoutWidget.setObjectName("layoutWidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.lne_capital = QtWidgets.QLineEdit(self.layoutWidget)
         self.lne_capital.setEnabled(False)
@@ -467,7 +464,7 @@ class Ui_form_cuotas_pagar(object):
         self.lne_dni.setObjectName("lne_dni")
         self.boton_buscar_creditos = QtWidgets.QPushButton(form_cuotas_pagar)
         self.boton_buscar_creditos.setGeometry(QtCore.QRect(970, 10, 80, 23))
-        self.boton_buscar_creditos.setStyleSheet("background-color: rgb(252, 188, 188);")
+        self.boton_buscar_creditos.setStyleSheet("background-color: rgb(126, 151, 226);")
         self.boton_buscar_creditos.setObjectName("boton_buscar_creditos")
         self.lne_nom_ape = QtWidgets.QLineEdit(form_cuotas_pagar)
         self.lne_nom_ape.setGeometry(QtCore.QRect(40, 10, 521, 31))
@@ -512,8 +509,7 @@ class Ui_form_cuotas_pagar(object):
         form_cuotas_pagar.setTabOrder(self.lne_dni, self.boton_buscar_creditos)
         form_cuotas_pagar.setTabOrder(self.boton_buscar_creditos, self.lne_nom_ape)
         form_cuotas_pagar.setTabOrder(self.lne_nom_ape, self.tabWidget_3)
-        form_cuotas_pagar.setTabOrder(self.tabWidget_3, self.tw_lista_creditos)
-        form_cuotas_pagar.setTabOrder(self.tw_lista_creditos, self.lne_capital)
+        form_cuotas_pagar.setTabOrder(self.tabWidget_3, self.lne_capital)
         form_cuotas_pagar.setTabOrder(self.lne_capital, self.tabWidget_4)
         form_cuotas_pagar.setTabOrder(self.tabWidget_4, self.tw_listado_cuotas)
         form_cuotas_pagar.setTabOrder(self.tw_listado_cuotas, self.tabWidget_5)
@@ -529,6 +525,7 @@ class Ui_form_cuotas_pagar(object):
         form_cuotas_pagar.setTabOrder(self.boton_pagar, self.boton_limpiar)
         form_cuotas_pagar.setTabOrder(self.boton_limpiar, self.tabWidget_2)
         form_cuotas_pagar.setTabOrder(self.tabWidget_2, self.lne_descripcion)
+        self.lne_dni.setFocus()
 
     def retranslateUi(self, form_cuotas_pagar):
         _translate = QtCore.QCoreApplication.translate
@@ -562,7 +559,9 @@ class Ui_form_cuotas_pagar(object):
         item = self.tw_listado_cuotas.horizontalHeaderItem(13)
         item.setText(_translate("form_cuotas_pagar", "Descripcion"))
         item = self.tw_listado_cuotas.horizontalHeaderItem(14)
-        item.setText(_translate("form_cuotas_pagar", "id"))
+        item.setText(_translate("form_cuotas_pagar", "ID cuota"))
+        item = self.tw_listado_cuotas.horizontalHeaderItem(15)
+        item.setText(_translate("form_cuotas_pagar", "ID crédito"))
         self.boton_historial_cuota.setText(_translate("form_cuotas_pagar", "Historial de Cuota"))
         self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_3), _translate("form_cuotas_pagar", "Cuotas del Crédito"))
         self.label_3.setText(_translate("form_cuotas_pagar", "Información a editar por el Usuario : "))
@@ -588,7 +587,6 @@ class Ui_form_cuotas_pagar(object):
         self.boton_pagar.setText(_translate("form_cuotas_pagar", "Pagar"))
         self.boton_limpiar.setText(_translate("form_cuotas_pagar", "Limpiar"))
         self.boton_ticket.setText(_translate("form_cuotas_pagar", "TICKET"))
-        self.boton_re_ticket.setText(_translate("form_cuotas_pagar", "Re-Tickect"))
         self.tabWidget_5.setTabText(self.tabWidget_5.indexOf(self.tab_5), _translate("form_cuotas_pagar", "Pago de Cuota"))
         item = self.tw_lista_creditos.horizontalHeaderItem(0)
         item.setText(_translate("form_cuotas_pagar", "Crédito N°"))
@@ -603,13 +601,15 @@ class Ui_form_cuotas_pagar(object):
         item = self.tw_lista_creditos.horizontalHeaderItem(5)
         item.setText(_translate("form_cuotas_pagar", "Finalizado"))
         item = self.tw_lista_creditos.horizontalHeaderItem(6)
-        item.setText(_translate("form_cuotas_pagar", "Bloqueado"))
-        item = self.tw_lista_creditos.horizontalHeaderItem(7)
         item.setText(_translate("form_cuotas_pagar", "Formula"))
+        item = self.tw_lista_creditos.horizontalHeaderItem(7)
+        item.setText(_translate("form_cuotas_pagar", "Bloqueado"))
         item = self.tw_lista_creditos.horizontalHeaderItem(8)
         item.setText(_translate("form_cuotas_pagar", "Tipo Vencimiento"))
         item = self.tw_lista_creditos.horizontalHeaderItem(9)
         item.setText(_translate("form_cuotas_pagar", "Observaciones"))
+        item = self.tw_lista_creditos.horizontalHeaderItem(10)
+        item.setText(_translate("form_cuotas_pagar", "N° control"))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_4), _translate("form_cuotas_pagar", "Historial de Cŕeditos"))
         self.label_2.setText(_translate("form_cuotas_pagar", "Descripción: "))
         self.label_14.setText(_translate("form_cuotas_pagar", "Cantidad de Cuotas Seleccionadas : "))
