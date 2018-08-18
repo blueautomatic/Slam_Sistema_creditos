@@ -7,8 +7,8 @@ from PyQt5.QtCore import pyqtRemoveInputHook
 class N_cuotas(object):
     id = ""
     nro_credito= 0
-    nro_cuota= 0
-    primer_vencimiento= datetime
+    nro_cuota= 0 
+    primer_Vencimiento= datetime
     importe_primer_venc= 0
     estado_cuota = ""
     fecha_cobro = ""
@@ -32,31 +32,32 @@ class N_cuotas(object):
 
     def get_cuotas_por_nro_credito(self, nro_credito):
         obj_e_cuotas = E_cuotas(1)
-
+        obj_e_cuotas.actualizar_punitorio_de_cta(nro_credito)
         return obj_e_cuotas.get_cuotas_por_nro_credito(nro_credito)
 
     def pagar_cuota(self, obj_cuotas):
         obj_e_cuotas = E_cuotas(1)
         return obj_e_cuotas.pagar_cuota(obj_cuotas)
 
-    def lista_cuotas_venc_30_dias(self):
+    def lista_cuotas_venc_30_dias(self,slam):
+        ejezeta = slam
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_30_dias()
+        return obj_e_cuotas.lista_cuotas_venc_30_dias(ejezeta)     
 
     def lista_cuotas_venc_60_dias(self,slam):
         ejezeta = slam
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_60_dias(ejezeta)
-
+        return obj_e_cuotas.lista_cuotas_venc_60_dias(ejezeta)     
+    
     def lista_cuotas_venc_90_dias(self,slam):
         ejezeta = slam
         obj_e_cuotas = E_cuotas(1)
-        return obj_e_cuotas.lista_cuotas_venc_90_dias(ejezeta)
+        return obj_e_cuotas.lista_cuotas_venc_90_dias(ejezeta)     
 
     def buscar_cuota_por_id_cuota(self, id_cuota):
         obj_e_cuotas = E_cuotas(1)
         return obj_e_cuotas.buscar_cuota_por_id_cuota(id_cuota)
-
+    
     def generar_punitorios(self,id):
         slam = id
         obj_e_cuotas = E_cuotas(1)
