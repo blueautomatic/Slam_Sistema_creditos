@@ -8,14 +8,10 @@ from PyQt5.QtCore import pyqtRemoveInputHook
 from PyQt5.QtCore import QDate
 from N_cuotas import N_cuotas
 from form_cuotas_pagar import Ui_form_cuotas_pagar
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
-from reportlab.platypus import Spacer, SimpleDocTemplate, Table, TableStyle
-from reportlab.platypus import Paragraph, Image,Flowable
-from reportlab.graphics.shapes import Drawing
-from reportlab.graphics.shapes import String, Line
+from reportlab.platypus import Spacer, SimpleDocTemplate, Table, TableStyle, Frame
+from reportlab.platypus import Paragraph, Image
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.lib.units import inch
 from reportlab.lib import colors
@@ -27,6 +23,9 @@ from E_historial_cuota import E_historial_cuota
 from w_form_cuota_historial import Cuota_historial
 import subprocess
 from E_configuracion import configuracion
+from reportlab.lib.units import mm
+from E_party_cliente import E_party_cliente
+from convert_nro_letra import hundreds_word, __convert_group, to_word
 
 
 class Cuotas_pagar(QDialog):
@@ -46,7 +45,9 @@ class Cuotas_pagar(QDialog):
     id_cuota_historial=0
     nro_credito_historial=0
     vencimiento_historial=""
-    credito_cancelado = False
+    cant_cta=0
+    vencimiento_cta=""
+    nro_credito_historial2 = 0
 
     def __init__(self,singleton,singleton_idusu):
         QDialog.__init__(self)
@@ -57,63 +58,23 @@ class Cuotas_pagar(QDialog):
         self.obj_form.tw_lista_creditos.cellClicked.connect(self.seleccion_item_tabla_creditos)
         self.obj_form.tw_listado_cuotas.cellClicked.connect(self.seleccion_item_tabla)
         self.obj_form.boton_pagar.clicked.connect(self.pagar_cuota)
-        self.obj_form.boton_re_ticket.clicked.connect(self.re_ticket)
         self.obj_form.boton_limpiar.clicked.connect(self.limpiar)
         self.singleton= singleton
         self.singleton_idusu = singleton_idusu
         self.obj_form.boton_ticket.clicked.connect(self.ticket)
         self.obj_form.boton_historial_cuota.clicked.connect(self.historial_cuota)
 
-
-    #def seleccion_item_tabla_listado_cuotas(self,clickedIndex):
-     #   twi0 = self.obj_form.tw_listado_cuotas.item(clickedIndex,0)
-      #  twi1 = self.obj_form.tw_listado_cuotas.item(clickedIndex,1)
-      #  nro_credito = twi0.text()
-      #  nro_cuota = twi1.text()
-      #  obj_cuotas = N_cuotas(1)
-      #  lista_cuotas = list()
-
-        #lista_cuotas = obj_cuotas.get_cuotas_por_nro_credito(int(nro_credito))
-
-    def re_ticket(self):
+    def historial_cuota(self):
         #pyqtRemoveInputHook()
         #import pdb; pdb.set_trace()
 
-        obj_N_cuotas = N_cuotas(1)
-        obj_cuotas = N_cuotas(1)
-        try:
-            obj_cuotas.id = int(self.id_cuota.text())
-            obj_cuotas.nro_cuota = self.nro_cuota.text()
-        except:
-            msgBox = QMessageBox()
-            msgBox.setWindowTitle("Error")
-            msgBox.setText( 'Seleccione la cuota nuevamente')
-            msgBox.exec_()
-            return False
-        obj_cuota_nro_credito = obj_N_cuotas.buscar_cuota_por_id_cuota(obj_cuotas.id)
-        nro_credito = obj_cuota_nro_credito.nro_credito
-        self.nro_credito_ticket = nro_credito
-
-        obj_cuotas.estado_cuota = self.obj_form.cbx_estado.currentText()
-        obj_cuotas.fecha_cobro = self.obj_form.dte_fecha_cobro.text()
-        obj_cuotas.importe_cobrado =  float (self.obj_form.lne_importe_cobrar.text()) +  self.importe_cobrado
-        obj_cuotas.interes = float (self.obj_form.lne_interes.text())
-        obj_cuotas.punitorios = float (self.obj_form.lne_punitorios.text())
-        obj_cuotas.gastos = float (self.obj_form.lne_gastos.text())
-        obj_cuotas.descripcion = self.obj_form.lne_descripcion.text()
-        obj_cuotas.descuento = self.obj_form.lne_descuento.text()
-        self.lista_ticket.append(obj_cuotas)
-        self.ticket()
-
-    def historial_cuota(self):
         self.obj_form_cta_hist = Cuota_historial(self.id_cuota_historial)
         #obj_form_cta_hist.show()
         self.obj_form_cta_hist.show()
 
-
     def ticket(self):
 
-        monto_ticket=0
+        monto_ticket = 0
         for item in self.lista_ticket:
             monto_ticket = monto_ticket + item.importe_cobrado
 
@@ -130,262 +91,173 @@ class Cuotas_pagar(QDialog):
         obj_asoc = obj_E_party.get_party_party(self.obj_form.lne_dni.text())
         obj_E_address = E_party_address()
         obj_address = obj_E_address.get_party_address(obj_asoc.id_party)
-        fec_hoy= datetime.date.today()
+        fec_hoy = datetime.date.today()
         hoy = fec_hoy.strftime("%d/%m/%Y")
+        obj_e_party_cliente = E_party_cliente()
+        obj_party_cliente = obj_e_party_cliente.get_party_cliente(obj_asoc.id_party)
 
-        styleSheet=getSampleStyleSheet()
-        img=Image("cabezal3.png",150,35)
-        img.hAlign = "RIGHT"
-        otro_estilo= ParagraphStyle('',fontSize =6,textColor = '#000',leftIndent = 0,rightIndent = 100)
+        styleSheet = getSampleStyleSheet()
+        otro_estilo = ParagraphStyle('', fontSize=6, textColor='#000', leftIndent=0, rightIndent=100)
 
-        style_barra= ParagraphStyle('',fontSize =10,textColor = '#000',leftIndent = 0,rightIndent = 50)
+        style_barra = ParagraphStyle('', fontSize=10, textColor='#000', leftIndent=0, rightIndent=50)
         texto_principal = ""
-        texto_secundario = ParagraphStyle('',fontSize =10,textColor = '#000',leftIndent = 0,rightIndent = 0)
-        texto_banner2 = ParagraphStyle('',fontSize =6,textColor = '#000',leftIndent =-150,rightIndent = 0)
-
+        texto_secundario = ParagraphStyle('', fontSize=10, textColor='#000', leftIndent=200, rightIndent=1)
         estilo_texto = ParagraphStyle('',
-                fontSize = 5,
-                        alignment = 0,
-                        spaceBefore = 0,
-                        spaceAfter = 0,
-            #backColor = '#fff',
-            textColor = '#000',
-            leftIndent = 5 )
-
-
-        h = ""#Paragraph("<br/><br/><br/>aa<br/><b>Buenos Aires 53 -Local 2 y 3 -Tel.:02920-432424/ Cel.:02920-15695353</b>  ",texto_banner2)
-
-        banner = [ [ img,h] ]
-
-        banner2 = [[Paragraph('''<font size=3> <b> </b></font>''',styleSheet["BodyText"])],
-                    [Paragraph("<b>Buenos Aires 53 -Local 2 y 3 -Tel.:02920-432424/ Cel.:02920-15695353</b><br/><b> Viedma - Río Negro - E-mail: crediprom@outlook.com.ar</b> ",texto_banner2)]]
-
-        banner3 = [[Paragraph('''<font size=8> <b> </b></font>''',styleSheet["BodyText"])],
-                    [Paragraph("<b>RECIBO N° " + str(nro_ticket) + "<br/>Fecha:   " + str (hoy)+ "<br/> CUIT: 30-71446302-7 <br/> ING. BRUTOS: 45969604 <br/> INIC. ACTIVIDADES: 20/05/2014</b>  ",texto_secundario)]]
+                                      fontSize=5,
+                                      alignment=0,
+                                      spaceBefore=0,
+                                      spaceAfter=0,
+                                      # backColor = '#fff',
+                                      textColor='#000',
+                                      leftIndent=5)
+        estilo_detalle_cuota = ParagraphStyle('', fontSize=10, textColor='#000', leftIndent=0, rightIndent=0)
 
         options = QFileDialog.Options()
-        story=[]
+        story = []
 
-        ban = Table( banner, colWidths=300, rowHeights=70,hAlign = "RIGHT")
-        ban2 = Table( banner2, colWidths=300, rowHeights=10)
-        ban3 = Table(banner3, colWidths=318, rowHeights=75, hAlign='RIGHT')
+        nro_credito = self.nro_credito_historial
+        nro_credito2 = self.nro_credito_historial2
+        encabezado = [[Paragraph('''<font size=10> <b> </b></font>''', styleSheet["BodyText"])],
+                      [Paragraph('<font size=10> <b> </b>Crédito N°: <b>' + str(nro_credito2) + '</b> </font>',
+                                 estilo_texto),
+                       Paragraph('<font size=10> <b> </b>RECIBO N°: ' + str(nro_ticket) + '</font>', estilo_texto),
+                       Paragraph('<font size=10> Fecha: ' + str(hoy) + '</font>', estilo_texto)]]
 
+        t = Table(encabezado, (185, 185, 185))
+        t.setStyle(TableStyle([
+            ('INNERGRID', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BOX', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BACKGROUND', (0, 1), (-1, 1), colors.white)
+        ]))
 
-        tban3=ban3
-        tban3.setStyle(TableStyle([
-                                    ('INNERGRID', (0,1), (-1,-1), 0.25, colors.white),
-                                    ('BOX', (0,1), (0,-1), 0.25, colors.white),
-                                    ('BACKGROUND',(0,1),(-1,1),colors.white)
-                                    ]))
-        #story.append(Spacer(100,10))
-        ##superior
-        d = Drawing(100, 1)
-        d.add(Line(-5, -15, 585, -15))
-        story.append(d)
-        #izquierda
-        d = Drawing(100, 1)
-        d.add(Line(-5, -15, -5, -94))
-        story.append(d)
+        story.append(t)
+        story.append(Spacer(0, -15))
 
-        story.append(ban)
-        story.append(Spacer(0,1))
-        story.append(ban2)
-        story.append(Spacer(0,-150))
-        story.append(tban3)
+        cabezal = [[Paragraph('<font size=10> <b> </b></font>', styleSheet["BodyText"])],
+                   [Paragraph('<font size=10> <b> Cliente N°: </b> ' + str(obj_party_cliente.nro_cliente) + '</font>',
+                              estilo_texto),
+                    Paragraph('<font size=10>' + obj_asoc.apellido + ", " + obj_asoc.nombre + ' </font>',
+                              estilo_texto)]]
 
-        #centro
-        d = Drawing(100, 1)
-        d.add(Line(250, -2, 250, 79))
-        story.append(d)
-        #derecha
-        d = Drawing(100, 1)
-        d.add(Line(585, -1, 585, 79))
-        story.append(d)
-        #inferior
-        d = Drawing(100, 1)
-        d.add(Line(-5, 0, 585, 0))
-        story.append(d)
-        story.append(Spacer(150,-10))
+        # cabezal =[[Paragraph('font size=8> <b> </b></font>',styleSheet["BodyText"])],
+        #           [Paragraph('<font size=8> <b> Cliente N°: 61 </font>',estilo_texto),
+        #           Paragraph('<font size=10> <b>  CHAZARRETA, GUSTAVO ANDRÉS </b> </font>',estilo_texto)]]
 
-        cabezal =[[Paragraph('''<font size=8> <b> </b></font>''',styleSheet["BodyText"])],
-                    [Paragraph('<font size=8> <b> Señor(es): '+ obj_asoc.apellido +", "+obj_asoc.nombre +'</b> <br/> <b> Domicilio: ' +obj_address.domicilio +'</b><br/></font>',estilo_texto)]]
+        t = Table(cabezal, (277, 278))
+        t.setStyle(TableStyle([
+            ('INNERGRID', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BOX', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BACKGROUND', (0, 1), (-1, 1), colors.white)
+        ]))
+        story.append(t)
+        story.append(Spacer(-10, -15))
 
-        tcabezal=Table(cabezal, (590))
-        tcabezal.setStyle(TableStyle([
-                                    ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BOX', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BACKGROUND',(0,1),(-1,1),colors.white)
-                                    ]))
-        story.append(tcabezal)
-        story.append(Spacer(0,-15))
+        # a = ("%.2f" % monto_ticket)
 
-        integrantes = [[Paragraph('''<font size=10> <b> </b></font>''',styleSheet["BodyText"])],
-                       [Paragraph('''<font size=10> <b> </b>Credito N°</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Cuota N°</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Monto</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Vencimiento</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Estado</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Descuento</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Interes</font>''',estilo_texto),
-                        Paragraph('''<font size=10> <b> </b>Importe</font>''',estilo_texto)]]
+        importe = float(self.obj_form.lne_importe_cuota.text()) + float(self.obj_form.lne_punitorios.text()) - float(self.obj_form.lne_descuento.text())
+        self.obj_form.lne_importe_cobrar.setText(str(importe))
 
+        cuadro_detalle_cta = [[Paragraph('<font size=8> <b> </b></font>', styleSheet["BodyText"])],
+                              [Paragraph('<font size=8> </font>', estilo_texto),
+                               Paragraph(
+                                   '<font size=10>  Importe Cuota:<br/>Interés por Mora:<br/> Otros: <br/>Descuento:</font>',
+                                   estilo_texto),
+                               Paragraph(
+                                   '<font size=10> $' + self.obj_form.lne_importe_cuota.text() + ' <br/> $' + self.obj_form.lne_punitorios.text() + ' <br/> $' + "" + '<br/> $' + self.obj_form.lne_descuento.text() + '</font>',
+                                   estilo_texto)]]
 
+        estilonom_plan = " <font size=8> </font>"
+        # colocar donde dice 64545 el importe total
+        estilonro_cta = '<font size=8>$' + self.obj_form.lne_importe_cobrar.text() + '</font>'
+        estilointeres = " <font size=8>TOTAL: </font>"
 
-        for item in self.lista_ticket:
-            #obj_cuotas.nro_credito = self.nro_credito_historial
-            #obj_cuotas.importe_primer_venc = self.vencimiento_historial.text()
-            #obj_cuotas.primer_Vencimiento = self.vencimiento_historial.text()
+        cuadro_detalle_cta.append([Paragraph(estilonom_plan, estilo_texto),
+                                   Paragraph(estilointeres, estilo_texto),
+                                   Paragraph(estilonro_cta, estilo_texto)])
 
-            estilonro_credi= " <font size=8>" + str(item.nro_credito) + "</font>"
-            estilonro_cta= " <font size=8>" + str(item.nro_cuota) + "</font>"
-            estilomonto = " <font size=8>" + str(item.importe_primer_venc) + "</font>"
-            estiloprimer_venc = " <font size=8>" + str(item.primer_Vencimiento) + "</font>"
-            estiloestado_cta = " <font size=8>" + item.estado_cuota + "</font>"
-            estilodescuento = " <font size=8>" + str(item.descuento) + "</font>"
-            estilointeres = " <font size=8>" + str(item.punitorios) + "</font>"
-            estiloimporte = " <font size=8>" + str(item.importe_cobrado) + "</font>"
+        t = Table(cuadro_detalle_cta, (305, 125, 125))
+        # El SPAN unifica celdas (los pares ordenados son: [(0,0),(1,0),(2,0)
+        #                                                 (0,1,),(1,1),(2,1)
+        #                                                 (0,2),(1,2),(2,2)]
+        # En este caso se unificó:(0,1),(0,2)
+        t.setStyle(TableStyle([
+            ('INNERGRID', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BOX', (0, 1), (-1, -1), 0.25, colors.black),
+            ('BACKGROUND', (0, 1), (-1, 1), colors.white),
+            ('SPAN', (0, 1), (0, 2)),
+        ]))
+        story.append(t)
+        story.append(Spacer(-10, -5))
+        monto_total_cta_letras = to_word(float(self.obj_form.lne_importe_cobrar.text()), 'EUR')
+        # pyqtRemoveInputHook()
+        # import pdb; pdb.set_trace()
+        prox_fec_venc = datetime.datetime.strptime(self.vencimiento_cta, '%Y-%m-%d').date()
 
+        if prox_fec_venc.month == 12:
+            cadena = '  <br/> <u>   Su próxima cuota vence el:  <b>' + str(prox_fec_venc.day) + "/" + str(1) + "/" + str(prox_fec_venc.year + 1) + ' </b></u><br/>'
+        else:
+            cadena = '  <br/> <u>   Su próxima cuota vence el:  <b>' + str(prox_fec_venc.day) + "/" + str(prox_fec_venc.month + 1) + "/" + str(prox_fec_venc.year) + ' </b></u><br/>'
 
-            integrantes.append([Paragraph(estilonro_credi,estilo_texto),
-                                Paragraph(estilonro_cta,estilo_texto),
-                                Paragraph(estilomonto,estilo_texto),
-                                Paragraph(estiloprimer_venc,estilo_texto),
-                                Paragraph(estiloestado_cta,estilo_texto),
-                                Paragraph(estilodescuento,estilo_texto),
-                                Paragraph(estilointeres,estilo_texto),
-                                Paragraph(estiloimporte,estilo_texto)])
-
-            tintegrantes=Table(integrantes,(60,60,60,70,70,70,70,70))
-            tintegrantes.setStyle(TableStyle([
-                                    ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BOX', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BACKGROUND',(0,1),(-1,1),colors.lightgrey)
-                                    ]))
-        story.append(tintegrantes)
-        cant_list = len(self.lista_ticket)
-        if(cant_list <10):
-            result = 11-cant_list
-            for item in range(1,result):
-                story.append(Spacer(0,8))
-
-        story.append(Spacer(0,1))
-
-        #pyqtRemoveInputHook()
-        #import pdb; pdb.set_trace()
-
-        a = ("%.2f" % monto_ticket)
-        totales =[[Paragraph('''<font size=8> <b> </b></font>''',styleSheet["BodyText"])],
-                    [Paragraph("<b>Importe: $"+str(a) +"  </b>",style_barra)]]
-
-
-        tota = Table(totales, colWidths=200, rowHeights=20, hAlign='RIGHT')
-        #t=Table(totales, (590))
-        tota.setStyle(TableStyle([
-                                    ('INNERGRID', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BOX', (0,1), (-1,-1), 0.25, colors.black),
-                                    ('BACKGROUND',(0,1),(-1,1),colors.white)
-                                    ]))
-        story.append(tota)
-
-        if cant_list >= 1 and cant_list < 6:
-            story.append(Spacer(0,50))
-        elif cant_list > 6 and cant_list < 10:
-            story.append(Spacer(0,25))
-
-
-
-
-        #dejo un mesaje tengo que agregar un while que compara si la cantidad de cuotas pagas es igual
-        # a cantidad el credito esta cancelado
-        #pyqtRemoveInputHook()
-        #import pdb;
-        #pdb.set_trace()
-        if self.credito_cancelado:
-
-            totales = [[Paragraph('''<font size=5> <b> </b></font>''', styleSheet["BodyText"])],
-                       [Paragraph("<b>CREDITO CANCELADO</b>", style_barra)]]
-
-            tota = Table(totales, colWidths=200, rowHeights=20, hAlign='LEFT')
-            # t=Table(totales, (590))
-            tota.setStyle(TableStyle([
+        if str(self.cant_cta) != self.obj_form.lne_nro_cuota.text():
+            leyenda = [[Paragraph('''<font size=10> <b> </b></font>''', styleSheet["BodyText"])],
+                       [Paragraph(
+                           '<font size=10> <br/> Recibimos conformes la suma de: $' + self.obj_form.lne_importe_cobrar.text() + ' <br/> Son: ' + monto_total_cta_letras + ' Pesos <br/>' +
+                           '<br/> En concepto de cuota N°: ' + self.obj_form.lne_nro_cuota.text() + ' de ' + str(
+                               self.cant_cta) + ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Venc.: ' + str(prox_fec_venc.day) + "/" + str(
+                               prox_fec_venc.month) + "/" + str(prox_fec_venc.year) + cadena +
+                           '<u>  Duplicado </u>     <br/>  Firma Responsable</font>', estilo_texto)]]
+            t = Table(leyenda, (555))
+            t.setStyle(TableStyle([
                 ('INNERGRID', (0, 1), (-1, -1), 0.25, colors.black),
                 ('BOX', (0, 1), (-1, -1), 0.25, colors.black),
                 ('BACKGROUND', (0, 1), (-1, 1), colors.white)
             ]))
-            story.append(tota)
+            story.append(t)
+            story.append(Spacer(0, -15))
+        # pyqtRemoveInputHook()
+        # import pdb; pdb.set_trace()
 
-        #-------------Duplicado------------------#
+        if str(self.cant_cta) == self.obj_form.lne_nro_cuota.text():
+            leyenda = [[Paragraph('''<font size=10> <b> </b></font>''', styleSheet["BodyText"])],
+                       [Paragraph(
+                           '<font size=10> <br/> Recibimos conformes la suma de : $' + self.obj_form.lne_importe_cobrar.text() + ' <br/> Son: ' + monto_total_cta_letras + ' Pesos <br/>' +
+                           '<br/> En concepto de cuota N°: ' + self.obj_form.lne_nro_cuota.text() + ' de ' + str(
+                               self.cant_cta) + ' Venc.: ' + str(self.vencimiento_cta) +
+                           '  <br/> <u>   Su próxima cuota vence el:  <b>  CANCELADO </b></u><br/>' +
+                           '<u>  Duplicado </u>     <br/>  Firma Responsable</font>', estilo_texto)]]
+            t = Table(leyenda, (555))
+            t.setStyle(TableStyle([
+                ('INNERGRID', (0, 1), (-1, -1), 0.25, colors.black),
+                ('BOX', (0, 1), (-1, -1), 0.25, colors.black),
+                ('BACKGROUND', (0, 1), (-1, 1), colors.white)
+            ]))
+            story.append(t)
+            story.append(Spacer(0, -15))
 
-        ##superior
-        d = Drawing(100, 1)
-        d.add(Line(-5, -15, 585, -15))
-        story.append(d)
-        #izquierda
-        d = Drawing(100, 1)
-        d.add(Line(-5, -15, -5, -94))
-        story.append(d)
-
-        story.append(ban)
-        story.append(Spacer(0,1))
-        story.append(ban2)
-        story.append(Spacer(0,-150))
-        story.append(tban3)
-        #centro
-        d = Drawing(100, 1)
-        d.add(Line(250, -2, 250, 79))
-        story.append(d)
-        #derecha
-        d = Drawing(100, 1)
-        d.add(Line(585, -1, 585, 79))
-        story.append(d)
-        #inferior
-        d = Drawing(100, 1)
-        d.add(Line(-5, 0, 585, 0))
-        story.append(d)
-        story.append(Spacer(150,-10))
-
-        story.append(Spacer(0,10))
-        story.append(tcabezal)
-        story.append(Spacer(0,10))
-        story.append(tintegrantes)
-        cant_list = len(self.lista_ticket)
-        if(cant_list <10):
-            result = 11-cant_list
-            for item in range(1,result):
-                story.append(Spacer(0,8))
-
-        story.append(Spacer(0,1))
-        story.append(tota)
-
-        if cant_list >= 1 and cant_list < 6:
-            story.append(Spacer(0,50))
-        elif cant_list > 6 and cant_list < 10:
-            story.append(Spacer(0,25))
-
-
-        #---------------------------------------CAMBIAR RUTA (LA PALABRA slam2016 POR LA RUTA DESEADA DE LA PC)------------------------------------------------#
+        # ---------------------------------------CAMBIAR RUTA (LA PALABRA slam2016 POR LA RUTA DESEADA DE LA PC)------------------------------------------------#
 
         obj_config = configuracion()
         cadena = obj_config.ruta()
 
-        file_path = cadena  + "/pdf/ticket/ticket"+str(datetime.date.today().year)+"_"+str(datetime.date.today().month)
-        #---EJEMPLO de windows: c:/Users/tatilu-----------------------------------------------------------------------#
+        file_path = cadena + "/pdf/ticket/ticket" + str(datetime.date.today().year) + "_" + str(
+            datetime.date.today().month)
+        # ---EJEMPLO de windows: c:/Users/tatilu-----------------------------------------------------------------------#
         if not os.path.exists(file_path):
-               os.makedirs(file_path)
-        doc = SimpleDocTemplate(file_path +"/ticket"+  obj_asoc.apellido +"_"+obj_asoc.nombre +".pdf", pagesize=A4, rightMargin=0.5,leftMargin=0.5, topMargin=5,bottomMargin=18)
+            os.makedirs(file_path)
 
-        doc.build(story )
+        doc = SimpleDocTemplate(file_path + "/ticket" + obj_asoc.apellido + "_" + obj_asoc.nombre + ".pdf", pagesize=A4,
+                                rightMargin=14, leftMargin=14, topMargin=5, bottomMargin=18)
+        doc.build(story)
 
         msgBox = QMessageBox()
         msgBox.setWindowTitle("Estado de Ticket")
-        msgBox.setText("El ticket se ha generado correctamente : ticket" + obj_asoc.apellido +"_"+obj_asoc.nombre )
+        msgBox.setText("El ticket se ha generado correctamente : ticket" + obj_asoc.apellido + "_" + obj_asoc.nombre)
         msgBox.exec_()
 
         if sys.platform == 'linux':
-            subprocess.call(["xdg-open", file_path +"/ticket"+  obj_asoc.apellido +"_"+obj_asoc.nombre +".pdf"])
+            subprocess.call(["xdg-open", file_path + "/ticket" + obj_asoc.apellido + "_" + obj_asoc.nombre + ".pdf"])
         else:
-            os.startfile( file_path +"/ticket"+ obj_asoc.apellido +"_"+obj_asoc.nombre  +".pdf")
-
+            os.startfile(file_path + "/ticket" + obj_asoc.apellido + "_" + obj_asoc.nombre + ".pdf")
 
     def limpiar(self):
         self.id_party = ""
@@ -407,9 +279,7 @@ class Cuotas_pagar(QDialog):
         for x in self.lista_ticket:
             self.lista_ticket.remove(x)
 
-
     def seleccion_item_tabla(self, clickedIndex):
-
         self.clickedIndex_pagar=clickedIndex
         #print (clickedIndex)
         #*-------------ACA SE VALIDA USUARIO PARA EDITAR PAGOS PARCIALEES INICIO-------------##
@@ -427,8 +297,11 @@ class Cuotas_pagar(QDialog):
         self.estado_cuota = self.obj_form.tw_listado_cuotas.item(clickedIndex,0)
         self.nro_cuota = self.obj_form.tw_listado_cuotas.item(clickedIndex,1)
         self.vencimiento_historial = self.obj_form.tw_listado_cuotas.item(clickedIndex,2)
+
         nro_cuota = self.nro_cuota.text()
         estado_cuota =self.estado_cuota.text()
+        self.vencimiento_cta = self.vencimiento_historial.text()
+
 
         self.id_cuota = self.obj_form.tw_listado_cuotas.item(clickedIndex,14)
         self.id_cuota_historial= int(self.obj_form.tw_listado_cuotas.item(clickedIndex,14).text())
@@ -498,10 +371,16 @@ class Cuotas_pagar(QDialog):
 
         while (self.obj_form.tw_listado_cuotas.rowCount() > 0):
             self.obj_form.tw_listado_cuotas.removeRow(0)
-
-        twi0 = self.obj_form.tw_lista_creditos.item(clickedIndex,0)
+        #//ACLARACIÓN: twi0 y twi10 estan cruzados porque se agregó nueva columna crédito2
+        twi0 = self.obj_form.tw_lista_creditos.item(clickedIndex,10)
+        twi10 = self.obj_form.tw_lista_creditos.item(clickedIndex,0)
         nro_credito = twi0.text()
+
+
         self.nro_credito_historial= int(twi0.text())
+        self.nro_credito_historial2 = int(twi10.text())
+        cant_ctas= self.obj_form.tw_lista_creditos.item(clickedIndex,3)
+        self.cant_cta = int(cant_ctas.text())
         obj_cuotas = N_cuotas(1)
         lista_cuotas = list()
         lista_cuotas = obj_cuotas.get_cuotas_por_nro_credito(int(nro_credito))
@@ -510,13 +389,16 @@ class Cuotas_pagar(QDialog):
         lst_ord.sort()
         lst_ord = [ i[1] for i in lst_ord ]
         for item in lst_ord:
-            saldo= round(float(item.capital) + float(item.interes) + float(item.gastos) + float(item.punitorios)  - float(item.importe_cobrado),2)  - round(float(item.descuento),2)
-            cuota_pagar = float(item.capital) + float(item.interes) + float(item.gastos) + float(item.punitorios) - float(item.descuento)
+            #saldo = item.importe_cuota
+            saldo = float(item.importe_cuota) + float(item.punitorios) - float(item.descuento) - float(item.importe_cobrado)
+            cuota_pagar = float(item.importe_cuota) + float(item.punitorios) - float(item.descuento) - float(item.importe_cobrado)
+            #cuota_pagar = item.importe_cuota
             rowPosition = self.obj_form.tw_listado_cuotas.rowCount()
             self.obj_form.tw_listado_cuotas.insertRow(rowPosition)
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 0, QTableWidgetItem(str(item.estado_cuota)))
+            #☻self.obj_form.tw_listado_cuotas.setItem(rowPosition , 0, QTableWidgetItem(str(item.estado_cuota)))
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 1, QTableWidgetItem(str(item.nro_cuota)))
-            self.obj_form.tw_listado_cuotas.setItem(rowPosition , 2, QTableWidgetItem(str(item.primer_vencimiento)[:10]))
+            self.obj_form.tw_listado_cuotas.setItem(rowPosition , 2, QTableWidgetItem(str(item.primer_Vencimiento)[:10]))
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 3, QTableWidgetItem(str(item.importe_cuota)))
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 4, QTableWidgetItem(str(round(item.punitorios,2))))
             if item.fecha_cobro != None :
@@ -534,256 +416,241 @@ class Cuotas_pagar(QDialog):
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 12, QTableWidgetItem(str(item.gastos)))
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 13, QTableWidgetItem(str(item.descripcion)))
             self.obj_form.tw_listado_cuotas.setItem(rowPosition , 14, QTableWidgetItem(str(item.id)))
+            self.obj_form.tw_listado_cuotas.setItem(rowPosition, 15, QTableWidgetItem(str(item.nro_credito)))
 
     def pagar_cuota(self):
-            estado = self.obj_form.tw_listado_cuotas.item(self.clickedIndex_pagar,0).text()
-            if estado != "Pagada":
-                obj_N_cuotas = N_cuotas(1)
-                obj_cuotas = N_cuotas(1)
+        estado = self.obj_form.tw_listado_cuotas.item(self.clickedIndex_pagar,0).text()
 
-                try:
-                    obj_cuotas.id = int(self.id_cuota.text())
-                    obj_cuotas.nro_cuota = self.nro_cuota.text()
-                except:
-                    msgBox = QMessageBox()
-                    msgBox.setWindowTitle("Error")
-                    msgBox.setText( 'Seleccione la cuota nuevamente')
-                    msgBox.exec_()
-                    return False
+        if estado != "Pagada":
+            obj_N_cuotas = N_cuotas(1)
+            obj_cuotas = N_cuotas(1)
 
-                obj_cuotas.estado_cuota = self.obj_form.cbx_estado.currentText()
-                obj_cuotas.fecha_cobro = self.obj_form.dte_fecha_cobro.text()
-                obj_cuotas.importe_cobrado =  float (self.obj_form.lne_importe_cobrar.text()) +  self.importe_cobrado
-                obj_cuotas.interes = float (self.obj_form.lne_interes.text())
-                obj_cuotas.punitorios = float (self.obj_form.lne_punitorios.text())
-                obj_cuotas.gastos = float (self.obj_form.lne_gastos.text())
-                obj_cuotas.descripcion = self.obj_form.lne_descripcion.text()
-                obj_cuotas.descuento = self.obj_form.lne_descuento.text()
-
-                if self.obj_form.cbx_estado.currentText() == "Pagada":
-                    #pyqtRemoveInputHook()
-                    #import pdb; pdb.set_trace()
-                    if obj_cuotas.nro_cuota == 1 :
-                        resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()) - float(self.obj_form.lne_descuento.text()))
-                        if resultado >= 0:
-                            msgBox = QMessageBox()
-                            msgBox.setWindowTitle("Error")
-                            msgBox.setText( 'Actualizar el estado de la cuota a Pago Parcial. No se modifico el saldo')
-                            msgBox.exec_()
-                            return False
-                    else :
-                        resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()) - float(self.obj_form.lne_descuento.text()))
-                        if resultado >= 0:
-                            msgBox = QMessageBox()
-                            msgBox.setWindowTitle("Error")
-                            msgBox.setText( 'Actualizar el estado de la cuota a Pago Parcial. No se modifico el saldo')
-                            msgBox.exec_()
-                            return False
-
-                if self.obj_form.cbx_estado.currentText() == "Pago Parcial":
-                    resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()))
-                    if resultado == 0:
-                        msgBox = QMessageBox()
-                        msgBox.setWindowTitle("Aviso Cambiar estado cuota")
-                        msgBox.setText( 'Actualizar el estado de la cuota a Pagada. No se modifico el saldo')
-                        msgBox.exec_()
-                        return False
-                a=0
-
-                while (self.obj_form.tw_listado_cuotas.rowCount() != a):
-
-                    estado = self.obj_form.tw_listado_cuotas.item(a,0).text()
-                    if estado == "A pagar":
-                        if int(self.obj_form.lne_nro_cuota.text()) > int(self.obj_form.tw_listado_cuotas.item(a,1).text()):
-                            msgBox = QMessageBox()
-                            msgBox.setWindowTitle("Informacion")
-                            msgBox.setText('Tiene cuotas pendientes')
-                            msgBox.exec_()
-                            return False
-                    elif estado == "Pago Parcial":
-                        if int(self.obj_form.lne_nro_cuota.text()) > int(self.obj_form.tw_listado_cuotas.item(a,1).text()):
-                            msgBox = QMessageBox()
-                            msgBox.setWindowTitle("Informacion")
-                            msgBox.setText( 'Tiene cuotas pendientes')
-                            msgBox.exec_()
-                            return False
-                    a = a + 1
-
-                obj_N_cuotas.pagar_cuota(obj_cuotas)
-                obj_N_cuotas.guardar_ingresos(obj_cuotas)
-                obj_hist_cuota= E_historial_cuota()
-                obj_hist_cuota.nro_credito =self.nro_credito_historial
-                obj_hist_cuota.nro_cuota = int(self.obj_form.lne_nro_cuota.text())
-                obj_hist_cuota.estado_cuota = self.obj_form.cbx_estado.currentText()
-                obj_hist_cuota.fecha_cobro = self.obj_form.dte_fecha_cobro.text()
-                obj_hist_cuota.importe_cobrado= float (self.obj_form.lne_importe_cobrar.text())
-                obj_hist_cuota.descripcion= self.obj_form.lne_descripcion.text()
-                obj_hist_cuota.importe_cuota= self.obj_form.lne_importe_cuota.text()
-                obj_hist_cuota.write_uid= self.singleton_idusu.idusu
-                obj_hist_cuota.primer_vencimiento= self.vencimiento_historial.text()
-                obj_hist_cuota.id_cuota = self.id_cuota_historial
-
-                obj_E_hist_cuota= E_historial_cuota()
-                obj_E_hist_cuota.guardar(obj_hist_cuota)
-
-                #pyqtRemoveInputHook()
-                #import pdb; pdb.set_trace()
-                obj_cuotas.nro_credito = self.nro_credito_historial
-                obj_cuotas.importe_primer_venc = self.obj_form.lne_importe_cuota.text()
-                obj_cuotas.primer_Vencimiento = self.vencimiento_historial.text()
-                self.lista_ticket.append(obj_cuotas)
-
-                while (self.obj_form.tw_listado_cuotas.rowCount() > 0):
-                    self.obj_form.tw_listado_cuotas.removeRow(0)
-
-                obj_cuota_nro_credito = obj_N_cuotas.buscar_cuota_por_id_cuota(obj_cuotas.id)
-                nro_credito = obj_cuota_nro_credito.nro_credito
-                self.nro_credito_ticket=nro_credito
-                obj_cuotas = N_cuotas(1)
-                lista_cuotas = list()
-                lista_cuotas = obj_cuotas.get_cuotas_por_nro_credito(int(nro_credito))
-                #ordena lista
-                lst_ord = [ (i.nro_cuota, i) for i in lista_cuotas ]
-                lst_ord.sort()
-                lst_ord = [ i[1] for i in lst_ord ]
-
-
-                for item in lst_ord:
-                    saldo= round(float(item.capital) + float(item.interes) + float(item.gastos) + float(item.punitorios)  - float(item.importe_cobrado),2)  - round(float(item.descuento),2)
-                    cuota_pagar = float(item.capital) + float(item.interes) + float(item.gastos) + float(item.punitorios) - float(item.descuento)
-                    rowPosition = self.obj_form.tw_listado_cuotas.rowCount()
-                    self.obj_form.tw_listado_cuotas.insertRow(rowPosition)
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 0, QTableWidgetItem(str(item.estado_cuota)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 1, QTableWidgetItem(str(item.nro_cuota)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 2, QTableWidgetItem(str(item.primer_vencimiento)[:10]))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 3, QTableWidgetItem(str(item.importe_cuota)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 4, QTableWidgetItem(str(round(item.punitorios,2))))
-                    if item.fecha_cobro != None :
-                        self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(str(item.fecha_cobro)[:10]))
-                    else:
-                        self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(""))
-
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 5, QTableWidgetItem(str(item.descuento)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 6, QTableWidgetItem(str(cuota_pagar)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 7, QTableWidgetItem(str(round(item.importe_cobrado))))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 8, QTableWidgetItem(str(saldo)))
-                    #self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(str(item.fecha_cobro)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 10, QTableWidgetItem(str(item.capital)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 11, QTableWidgetItem(str(item.interes)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 12, QTableWidgetItem(str(item.gastos)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 13, QTableWidgetItem(str(item.descripcion)))
-                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 14, QTableWidgetItem(str(item.id)))
-
-                self.obj_form.lne_total_cuotas.setText("0")
-                self.obj_form.lne_descripcion.setText("")
-                self.obj_form.lne_cant_cuotas.setText("0")
-                for item in self.list_importe_cuota :
-                    self.list_importe_cuota.remove(item)
-
-                msgBox = QMessageBox()
-                msgBox.setWindowTitle("Informacion")
-                msgBox.setText( 'Pago Realizado')
-                msgBox.exec_()
-
-                control_de_cta=0
-                prestamo_cancelado=0
-
-                #pyqtRemoveInputHook()
-                #import pdb; pdb.set_trace()
-                while (self.obj_form.tw_listado_cuotas.rowCount() != control_de_cta):
-                    estado = self.obj_form.tw_listado_cuotas.item(control_de_cta,0).text()
-                    if estado == "Pagada":
-                        prestamo_cancelado=prestamo_cancelado+1
-                    if prestamo_cancelado ==int(self.obj_form.tw_listado_cuotas.rowCount()):
-                        #aca hay que terminar y actualizar el prestamo cancelado
-                        self.credito_cancelado = True
-                        obj_creditos = N_creditos(1)
-                        obj_creditos.cancelar_credito(nro_credito)
-                        msgBox = QMessageBox()
-                        msgBox.setWindowTitle("Atencion")
-                        msgBox.setText( 'El credito fue cancelado')
-                        msgBox.exec_()
-
-
-                    control_de_cta=control_de_cta+1
-            else:
-                msgBox = QMessageBox()
-                msgBox.setWindowTitle("Atención")
-                msgBox.setText( 'La cuota ya esta pagada.')
-                msgBox.exec_()
-                return True
-
-
-    def buscar_cliente(self):
-        self.limpiar()
-        numero_dni = self.obj_form.lne_dni.text()
-        obj_N_datos_cliente= N_creditos("a")
-        if numero_dni != "":
             try:
-                numero_documento_cliente= int(numero_dni)
+                obj_cuotas.id = int(self.id_cuota.text())
+                obj_cuotas.nro_cuota = self.nro_cuota.text()
             except:
                 msgBox = QMessageBox()
-                msgBox.setWindowTitle("Atencion")
-                msgBox.setText( 'Ingresar nuevamente el numero de documento sin espacios y sin puntos')
+                msgBox.setWindowTitle("Error")
+                msgBox.setText( 'Seleccione la cuota nuevamente')
                 msgBox.exec_()
+                return False
 
-        obj_N_datos_personales_cliente = N_datos_personales_cliente()
-        obj_party_party=obj_N_datos_personales_cliente.buscar_party_party_por_nro_doc(numero_documento_cliente)
-        if obj_party_party != False:
-            self.obj_form.lne_nom_ape.setText(obj_party_party.nombre + ", " + obj_party_party.apellido + "   DNI:" +  obj_party_party.num_doc)
-            self.obj_form.tw_lista_creditos.setEnabled(True)
-            self.obj_form.tw_listado_cuotas.setEnabled(True)
+            obj_cuotas.estado_cuota = self.obj_form.cbx_estado.currentText()
+            obj_cuotas.fecha_cobro = self.obj_form.dte_fecha_cobro.text()
+            obj_cuotas.importe_cobrado = float(self.obj_form.lne_importe_cobrar.text()) + self.importe_cobrado
+            obj_cuotas.interes = float(self.obj_form.lne_interes.text())
+            obj_cuotas.punitorios = float(self.obj_form.lne_punitorios.text())
+            obj_cuotas.gastos = float(self.obj_form.lne_gastos.text())
+            obj_cuotas.descripcion = self.obj_form.lne_descripcion.text()
+            obj_cuotas.descuento = self.obj_form.lne_descuento.text()
+            obj_cuotas.nro_credito = int(self.obj_form.tw_listado_cuotas.item(self.clickedIndex_pagar,15).text())
 
-            obj_N_credito = N_creditos(1)
-            list_credito_party = obj_N_credito.get_list_credito(obj_party_party.id_party)
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            if self.obj_form.cbx_estado.currentText() == "Pagada":
+                #pyqtRemoveInputHook()
+                #import pdb; pdb.set_trace()
+                if obj_cuotas.nro_cuota == '1' :
+                    resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()) - float(self.obj_form.lne_descuento.text()))
+                    if resultado > 0.0:
+                        msgBox = QMessageBox()
+                        msgBox.setWindowTitle("Error")
+                        msgBox.setText( 'Actualizar el estado de la cuota a Pago Parcial. No se modifico el saldo')
+                        msgBox.exec_()
+                        return False
+                else :
+                    resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()) - float(self.obj_form.lne_descuento.text()))
+                    if resultado > 0.0:
+                        msgBox = QMessageBox()
+                        msgBox.setWindowTitle("Error")
+                        msgBox.setText( 'Actualizar el estado de la cuota a Pago Parcial. No se modifico el saldo')
+                        msgBox.exec_()
+                        return False
 
-            lst_cred_party_activos=list()
-            lst_cred_party_morosos = list()
-            lst_cred_party_cancelado = list()
+            if self.obj_form.cbx_estado.currentText() == "Pago Parcial":
+                resultado = float(float (self.importe_apagar) - float(self.obj_form.lne_importe_cobrar.text()))
+                if resultado == 0:
+                    msgBox = QMessageBox()
+                    msgBox.setWindowTitle("Aviso Cambiar estado cuota")
+                    msgBox.setText( 'Actualizar el estado de la cuota a Pagada. No se modifico el saldo')
+                    msgBox.exec_()
+                    return False
+            a=0
 
-            for item in list_credito_party:
-                if item.estado == "Activo":
-                    lst_cred_party_activos.append(item)
-                elif item.estado == "Cancelado":
-                    lst_cred_party_cancelado.append(item)
+            while (self.obj_form.tw_listado_cuotas.rowCount() != a):
+
+                estado = self.obj_form.tw_listado_cuotas.item(a,0).text()
+                if estado == "A pagar":
+                    if int(self.obj_form.lne_nro_cuota.text()) > int(self.obj_form.tw_listado_cuotas.item(a,1).text()):
+                        msgBox = QMessageBox()
+                        msgBox.setWindowTitle("Informacion")
+                        msgBox.setText('Tiene cuotas pendientes')
+                        msgBox.exec_()
+                        return False
+                elif estado == "Pago Parcial":
+                    if int(self.obj_form.lne_nro_cuota.text()) > int(self.obj_form.tw_listado_cuotas.item(a,1).text()):
+                        msgBox = QMessageBox()
+                        msgBox.setWindowTitle("Informacion")
+                        msgBox.setText( 'Tiene cuotas pendientes')
+                        msgBox.exec_()
+                        return False
+                a = a + 1
+
+            obj_N_cuotas.pagar_cuota(obj_cuotas)
+            obj_N_cuotas.guardar_ingresos(obj_cuotas)
+            obj_hist_cuota= E_historial_cuota()
+            obj_hist_cuota.nro_credito =self.nro_credito_historial
+            obj_hist_cuota.nro_cuota = int(self.obj_form.lne_nro_cuota.text())
+            obj_hist_cuota.estado_cuota = self.obj_form.cbx_estado.currentText()
+            obj_hist_cuota.fecha_cobro = self.obj_form.dte_fecha_cobro.text()
+            obj_hist_cuota.importe_cobrado= float(self.obj_form.lne_importe_cobrar.text())
+            obj_hist_cuota.descripcion= self.obj_form.lne_descripcion.text()
+            obj_hist_cuota.importe_cuota= self.obj_form.lne_importe_cuota.text()
+            obj_hist_cuota.write_uid= self.singleton_idusu.idusu
+            obj_hist_cuota.primer_Vencimiento= self.vencimiento_historial.text()
+            obj_hist_cuota.id_cuota = self.id_cuota_historial
+
+            obj_E_hist_cuota= E_historial_cuota()
+            obj_E_hist_cuota.guardar(obj_hist_cuota)
+
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            obj_cuotas.nro_credito = self.nro_credito_historial
+            obj_cuotas.importe_primer_venc = self.obj_form.lne_importe_cuota.text()
+            obj_cuotas.primer_Vencimiento = self.vencimiento_historial.text()
+            obj_cuotas.importe_cobrado =  float(self.obj_form.lne_importe_cobrar.text())
+            self.lista_ticket.append(obj_cuotas)
+
+            while (self.obj_form.tw_listado_cuotas.rowCount() > 0):
+                self.obj_form.tw_listado_cuotas.removeRow(0)
+
+            obj_cuota_nro_credito = obj_N_cuotas.buscar_cuota_por_id_cuota(obj_cuotas.id)
+            nro_credito = obj_cuota_nro_credito.nro_credito
+            self.nro_credito_ticket=nro_credito
+            obj_cuotas = N_cuotas(1)
+            lista_cuotas = list()
+            lista_cuotas = obj_cuotas.get_cuotas_por_nro_credito(int(nro_credito))
+            #ordena lista
+            lst_ord = [ (i.nro_cuota, i) for i in lista_cuotas ]
+            lst_ord.sort()
+            lst_ord = [ i[1] for i in lst_ord ]
+
+
+            for item in lst_ord:
+                saldo = float(item.importe_cuota) + float(item.punitorios) - float(item.descuento) - float(item.importe_cobrado)
+                cuota_pagar = float(item.importe_cuota) + float(item.punitorios) - float(item.descuento) - float(item.importe_cobrado)
+                rowPosition = self.obj_form.tw_listado_cuotas.rowCount()
+                self.obj_form.tw_listado_cuotas.insertRow(rowPosition)
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 0, QTableWidgetItem(str(item.estado_cuota)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 1, QTableWidgetItem(str(item.nro_cuota)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 2, QTableWidgetItem(str(item.primer_Vencimiento)[:10]))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 3, QTableWidgetItem(str(item.importe_cuota)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 4, QTableWidgetItem(str(round(item.punitorios,2))))
+                if item.fecha_cobro != None :
+                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(str(item.fecha_cobro)[:10]))
                 else:
-                    lst_cred_party_morosos.append(item)
+                    self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(""))
 
-            for item in lst_cred_party_activos:
-                rowPosition = self.obj_form.tw_lista_creditos.rowCount()
-                self.obj_form.tw_lista_creditos.insertRow(rowPosition)
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 0, QTableWidgetItem(str(item.nro_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 1, QTableWidgetItem(str(item.nro_cliente)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 2, QTableWidgetItem(str(item.fecha_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 3, QTableWidgetItem(str(item.cantidad_cuotas)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 4, QTableWidgetItem(str(item.importe_prestamo)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 5, QTableWidgetItem(str(item.estado)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 6, QTableWidgetItem(str(item.observaciones)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 5, QTableWidgetItem(str(item.descuento)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 6, QTableWidgetItem(str(cuota_pagar)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 7, QTableWidgetItem(str(item.importe_cobrado)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 8, QTableWidgetItem(str(saldo)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 9, QTableWidgetItem(str(item.fecha_cobro)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 10, QTableWidgetItem(str(item.capital)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 11, QTableWidgetItem(str(item.interes)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 12, QTableWidgetItem(str(item.gastos)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 13, QTableWidgetItem(str(item.descripcion)))
+                self.obj_form.tw_listado_cuotas.setItem(rowPosition , 14, QTableWidgetItem(str(item.id)))
 
-            for item in lst_cred_party_morosos:
-                rowPosition = self.obj_form.tw_lista_creditos.rowCount()
-                self.obj_form.tw_lista_creditos.insertRow(rowPosition)
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 0, QTableWidgetItem(str(item.nro_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 1, QTableWidgetItem(str(item.nro_cliente)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 2, QTableWidgetItem(str(item.fecha_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 3, QTableWidgetItem(str(item.cantidad_cuotas)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 4, QTableWidgetItem(str(item.importe_prestamo)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 5, QTableWidgetItem(str(item.estado)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 6, QTableWidgetItem(str(item.observaciones)))
+            self.obj_form.lne_total_cuotas.setText("0")
+            self.obj_form.lne_descripcion.setText("")
+            self.obj_form.lne_cant_cuotas.setText("0")
+            for item in self.list_importe_cuota :
+                self.list_importe_cuota.remove(item)
 
-            for item in lst_cred_party_cancelado:
-                rowPosition = self.obj_form.tw_lista_creditos.rowCount()
-                self.obj_form.tw_lista_creditos.insertRow(rowPosition)
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 0, QTableWidgetItem(str(item.nro_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 1, QTableWidgetItem(str(item.nro_cliente)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 2, QTableWidgetItem(str(item.fecha_credito)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 3, QTableWidgetItem(str(item.cantidad_cuotas)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 4, QTableWidgetItem(str(item.importe_prestamo)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 5, QTableWidgetItem(str(item.estado)))
-                self.obj_form.tw_lista_creditos.setItem(rowPosition, 6, QTableWidgetItem(str(item.observaciones)))
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle("Informacion")
+            msgBox.setText( 'Pago Realizado')
+            msgBox.exec_()
+
+            control_de_cta=0
+            prestamo_cancelado=0
+
+            #pyqtRemoveInputHook()
+            #import pdb; pdb.set_trace()
+            while (self.obj_form.tw_listado_cuotas.rowCount() != control_de_cta):
+                estado = self.obj_form.tw_listado_cuotas.item(control_de_cta,0).text()
+                if estado == "Pagada":
+                    prestamo_cancelado=prestamo_cancelado+1
+                if prestamo_cancelado ==int(self.obj_form.tw_listado_cuotas.rowCount()):
+                    #aca hay que terminar y actualizar el prestamo cancelado
+                    self.credito_cancelado = True
+                    obj_creditos = N_creditos(1)
+                    obj_creditos.cancelar_credito(nro_credito)
+                    msgBox = QMessageBox()
+                    msgBox.setWindowTitle("Atencion")
+                    msgBox.setText( 'El credito fue cancelado')
+                    msgBox.exec_()
 
 
+                control_de_cta=control_de_cta+1
+        else:
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle("Atención")
+            msgBox.setText( 'La cuota ya esta pagada.')
+            msgBox.exec_()
+            return True
 
+    def buscar_cliente(self):
+        try:
+            self.limpiar()
+            numero_dni= self.obj_form.lne_dni.text()
+            obj_N_datos_cliente= N_creditos("a")
+            if numero_dni != "":
+                try:
+                    numero_documento_cliente= int(numero_dni)
+                except:
+                    msgBox = QMessageBox()
+                    msgBox.setWindowTitle("Atencion")
+                    msgBox.setText( 'Ingresar nuevamente el numero de documento sin espacios y sin puntos')
+                    msgBox.exec_()
+
+            obj_N_datos_personales_cliente = N_datos_personales_cliente()
+            obj_party_party=obj_N_datos_personales_cliente.buscar_party_party_por_nro_doc(numero_documento_cliente)
+            if obj_party_party != False:
+                self.obj_form.lne_nom_ape.setText(obj_party_party.nombre + ", " + obj_party_party.apellido + "   DNI:" +  obj_party_party.num_doc)
+                self.obj_form.tw_lista_creditos.setEnabled(True)
+                self.obj_form.tw_listado_cuotas.setEnabled(True)
+
+                obj_N_credito = N_creditos(1)
+                list_credito_party = obj_N_credito.get_list_credito(obj_party_party.id_party)
+
+
+                for item in list_credito_party:
+                    nro_cliente = item.nro_cliente
+                    fecha_credito = item.fecha_credito
+                    nro_credito = item.nro_credito2
+                    cantidad_cuotas = item.cantidad_cuotas
+                    importe_prestamo = item.importe_prestamo
+                    observaciones = item.observaciones
+                    estado = item.estado
+                    formula = item.formula
+
+                    rowPosition = self.obj_form.tw_lista_creditos.rowCount()
+                    self.obj_form.tw_lista_creditos.insertRow(rowPosition)
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 0, QTableWidgetItem(str(nro_credito)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 1, QTableWidgetItem(str(nro_cliente)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 2, QTableWidgetItem(str(fecha_credito)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 3, QTableWidgetItem(str(cantidad_cuotas)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 4, QTableWidgetItem(str(importe_prestamo)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 5, QTableWidgetItem(str(estado)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 6, QTableWidgetItem(str(formula)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 7, QTableWidgetItem(str(observaciones)))
+                    self.obj_form.tw_lista_creditos.setItem(rowPosition , 10, QTableWidgetItem(str(item.nro_credito)))
+            else:
+                QMessageBox.information(self, "Atención", "Número de DNI incorrecto.")
+        except:
+            QMessageBox.information(self, "Atención", "Debe ingresar un número de DNI para realizar la búsqueda.")
 
 
 #app = QApplication(sys.argv)
